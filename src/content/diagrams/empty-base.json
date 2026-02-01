@@ -1,0 +1,62 @@
+{
+  "id": "empty-base",
+  "name": "Empty Formation — Quick Passing Concept",
+  "formation": { "offense": "empty", "defense": "nickel" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "F", "position": "WR", "x": 40, "y": 35, "label": "F" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 42, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 58, "y": 46, "label": "M" },
+      { "id": "NB", "position": "DB", "x": 30, "y": 42, "label": "N" },
+      { "id": "CB1", "position": "DB", "x": 10, "y": 44, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 90, "y": 44, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 70, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "X", "type": "route", "path": [[10,37],[12,40],[14,42]] },
+      { "playerId": "H", "type": "route", "path": [[25,35],[28,38],[32,40],[38,40]] },
+      { "playerId": "F", "type": "route", "path": [[40,35],[42,38],[48,40],[55,40]] },
+      { "playerId": "Y", "type": "route", "path": [[75,35],[73,38],[68,40],[62,40]] },
+      { "playerId": "Z", "type": "route", "path": [[90,37],[88,40],[86,42]] },
+      { "playerId": "LT", "type": "block", "path": [[38,37],[37,40]] },
+      { "playerId": "LG", "type": "block", "path": [[44,37],[44,40]] },
+      { "playerId": "C", "type": "block", "path": [[50,37],[50,40]] },
+      { "playerId": "RG", "type": "block", "path": [[56,37],[56,40]] },
+      { "playerId": "RT", "type": "block", "path": [[62,37],[63,40]] }
+    ],
+    "defense": [
+      { "playerId": "CB1", "type": "zone", "path": [[10,44],[12,48]], "style": "dashed" },
+      { "playerId": "CB2", "type": "zone", "path": [[90,44],[88,48]], "style": "dashed" },
+      { "playerId": "NB", "type": "zone", "path": [[30,42],[32,46]], "style": "dashed" },
+      { "playerId": "WLB", "type": "zone", "path": [[42,46],[40,50]], "style": "dashed" },
+      { "playerId": "MLB", "type": "zone", "path": [[58,46],[55,50]], "style": "dashed" },
+      { "playerId": "FS", "type": "zone", "path": [[50,56],[48,60]], "style": "dashed" },
+      { "playerId": "SS", "type": "zone", "path": [[70,52],[68,56]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: All five receivers release on quick routes (hitches, slants, outs)", "events": ["snap"] },
+    { "step": 2, "description": "X and Z run quick hitches; H and Y run slants; F runs a quick out", "events": ["route"] },
+    { "step": 3, "description": "QB makes hot read — throw to whichever receiver's defender is out of position", "events": ["read", "throw"] }
+  ],
+  "tags": ["formation", "empty", "passing", "quick-game", "10-personnel"]
+}

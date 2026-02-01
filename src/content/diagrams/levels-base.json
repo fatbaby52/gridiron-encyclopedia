@@ -1,0 +1,48 @@
+{
+  "id": "levels-base",
+  "name": "Levels Concept",
+  "formation": { "offense": "shotgun-2x2", "defense": "cover-3" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 58, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "Y", "type": "route", "path": [[75,35],[72,38],[65,40],[55,42],[45,42]] },
+      { "playerId": "Z", "type": "route", "path": [[90,37],[90,45],[90,50],[82,52],[70,52],[58,52]] },
+      { "playerId": "X", "type": "route", "path": [[10,37],[12,45],[18,55],[28,60],[38,62]] },
+      { "playerId": "H", "type": "route", "path": [[25,35],[25,42],[25,44],[25,43]] },
+      { "playerId": "RB", "type": "route", "path": [[45,28],[45,32],[40,36],[35,38]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: Y releases on shallow drag at 5 yards, Z pushes vertical before breaking on dig at 12 yards", "events": ["snap", "release"] },
+    { "step": 2, "description": "X runs deep post at 20+ yards to stretch defense vertically, H runs hitch as backside option", "events": ["stretch"] },
+    { "step": 3, "description": "QB reads high to low: deep post first, then dig, then shallow drag, checkdown to RB", "events": ["read", "throw"] }
+  ],
+  "tags": ["pass", "levels", "zone-beater", "vertical-stretch"]
+}

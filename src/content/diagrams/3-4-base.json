@@ -1,0 +1,55 @@
+{
+  "id": "3-4-base",
+  "name": "3-4 Front",
+  "formation": { "offense": "shotgun-2x2", "defense": "3-4" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "NT", "position": "DL", "x": 50, "y": 40, "label": "N" },
+      { "id": "DE1", "position": "DL", "x": 38, "y": 40, "label": "E" },
+      { "id": "DE2", "position": "DL", "x": 62, "y": 40, "label": "E" },
+      { "id": "ILB1", "position": "LB", "x": 44, "y": 45, "label": "M" },
+      { "id": "ILB2", "position": "LB", "x": 56, "y": 45, "label": "W" },
+      { "id": "OLB1", "position": "LB", "x": 32, "y": 43, "label": "J" },
+      { "id": "OLB2", "position": "LB", "x": 68, "y": 43, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 45, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 60, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [],
+    "defense": [
+      { "playerId": "NT", "type": "zone", "path": [[50,40],[50,39]], "style": "dashed", "note": "0-tech, two-gap A-gaps" },
+      { "playerId": "DE1", "type": "zone", "path": [[38,40],[38,39]], "style": "dashed", "note": "5-tech, two-gap B/C" },
+      { "playerId": "DE2", "type": "zone", "path": [[62,40],[62,39]], "style": "dashed", "note": "5-tech, two-gap B/C" },
+      { "playerId": "ILB1", "type": "zone", "path": [[44,45],[44,42]], "style": "dashed", "note": "A-gap fill weak side" },
+      { "playerId": "ILB2", "type": "zone", "path": [[56,45],[56,42]], "style": "dashed", "note": "A-gap fill strong side" },
+      { "playerId": "OLB1", "type": "zone", "path": [[32,43],[30,41]], "style": "dashed", "note": "Edge contain / C-gap, rush or drop" },
+      { "playerId": "OLB2", "type": "zone", "path": [[68,43],[70,41]], "style": "dashed", "note": "Edge contain / C-gap, rush or drop" },
+      { "playerId": "CB1", "type": "zone", "path": [[12,42],[12,50]], "style": "dashed", "note": "Man/zone on X receiver" },
+      { "playerId": "CB2", "type": "zone", "path": [[88,42],[88,50]], "style": "dashed", "note": "Man/zone on Z receiver" },
+      { "playerId": "FS", "type": "zone", "path": [[45,56],[45,62]], "style": "dashed", "note": "Center field deep half/third" },
+      { "playerId": "SS", "type": "zone", "path": [[60,52],[65,48]], "style": "dashed", "note": "Box support / curl-flat zone" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Pre-snap: OLBs show edge rush threat. ILBs read through OL for run/pass key.", "events": ["alignment"] },
+    { "step": 2, "description": "Post-snap: NT two-gaps center, DEs engage tackles. OLBs either rush or drop based on call.", "events": ["snap", "read"] },
+    { "step": 3, "description": "ILBs fill A-gaps vs run or drop to hook/curl zones vs pass. OLBs execute rush or coverage.", "events": ["fill", "drop"] }
+  ],
+  "tags": ["defense", "front", "3-4", "two-gap"]
+}

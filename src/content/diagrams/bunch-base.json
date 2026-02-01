@@ -1,0 +1,62 @@
+{
+  "id": "bunch-base",
+  "name": "Bunch Formation — Mesh Concept",
+  "formation": { "offense": "bunch", "defense": "nickel" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 72, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 76, "y": 33, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 78, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 42, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 55, "y": 46, "label": "M" },
+      { "id": "NB", "position": "DB", "x": 74, "y": 42, "label": "N" },
+      { "id": "CB1", "position": "DB", "x": 10, "y": 44, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 82, "y": 44, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 45, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 56, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "H", "type": "route", "path": [[72,35],[68,36],[55,36],[40,35],[25,34]] },
+      { "playerId": "Y", "type": "route", "path": [[76,33],[72,34],[60,34],[45,35],[30,36]] },
+      { "playerId": "Z", "type": "route", "path": [[78,37],[82,38],[86,42],[88,50]] },
+      { "playerId": "X", "type": "route", "path": [[10,37],[10,42],[12,48],[18,52]] },
+      { "playerId": "RB", "type": "route", "path": [[45,28],[40,30],[35,34],[30,38],[28,42]] },
+      { "playerId": "LT", "type": "block", "path": [[38,37],[37,40]] },
+      { "playerId": "LG", "type": "block", "path": [[44,37],[44,40]] },
+      { "playerId": "C", "type": "block", "path": [[50,37],[50,40]] },
+      { "playerId": "RG", "type": "block", "path": [[56,37],[55,40]] },
+      { "playerId": "RT", "type": "block", "path": [[62,37],[63,40]] }
+    ],
+    "defense": [
+      { "playerId": "CB1", "type": "zone", "path": [[10,44],[12,50]], "style": "dashed" },
+      { "playerId": "CB2", "type": "zone", "path": [[82,44],[84,50]], "style": "dashed" },
+      { "playerId": "NB", "type": "zone", "path": [[74,42],[70,46]], "style": "dashed" },
+      { "playerId": "FS", "type": "zone", "path": [[45,56],[42,60]], "style": "dashed" },
+      { "playerId": "SS", "type": "zone", "path": [[65,56],[60,60]], "style": "dashed" },
+      { "playerId": "WLB", "type": "zone", "path": [[42,46],[38,50]], "style": "dashed" },
+      { "playerId": "MLB", "type": "zone", "path": [[55,46],[50,50]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: H and Y release from bunch and cross underneath (mesh)", "events": ["snap"] },
+    { "step": 2, "description": "H drags left, Y follows on crossing route; Z wheels up sideline", "events": ["mesh", "route"] },
+    { "step": 3, "description": "QB reads flat defender — throw mesh if he widens, throw wheel if he stays inside", "events": ["read", "throw"] }
+  ],
+  "tags": ["formation", "bunch", "passing", "mesh", "11-personnel"]
+}

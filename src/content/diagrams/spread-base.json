@@ -1,0 +1,62 @@
+{
+  "id": "spread-base",
+  "name": "Spread Formation — RPO (Slant/Bubble)",
+  "formation": { "offense": "spread", "defense": "nickel" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 27, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 42, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 55, "y": 46, "label": "M" },
+      { "id": "NB", "position": "DB", "x": 72, "y": 42, "label": "N" },
+      { "id": "CB1", "position": "DB", "x": 10, "y": 44, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 90, "y": 44, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "RB", "type": "run", "path": [[45,27],[47,32],[49,37],[50,42],[51,46]] },
+      { "playerId": "H", "type": "route", "path": [[25,35],[30,38],[36,40]], "style": "dashed" },
+      { "playerId": "X", "type": "route", "path": [[10,37],[14,38],[16,37],[18,36]], "style": "dashed" },
+      { "playerId": "Y", "type": "route", "path": [[75,35],[80,34],[85,35]], "style": "dashed" },
+      { "playerId": "Z", "type": "route", "path": [[90,37],[86,36],[82,37]], "style": "dashed" },
+      { "playerId": "LT", "type": "block", "path": [[38,37],[38,40]] },
+      { "playerId": "LG", "type": "block", "path": [[44,37],[46,40]] },
+      { "playerId": "C", "type": "block", "path": [[50,37],[50,42]] },
+      { "playerId": "RG", "type": "block", "path": [[56,37],[55,40]] },
+      { "playerId": "RT", "type": "block", "path": [[62,37],[62,40]] }
+    ],
+    "defense": [
+      { "playerId": "WLB", "type": "zone", "path": [[42,46],[40,44]], "style": "dashed" },
+      { "playerId": "MLB", "type": "zone", "path": [[55,46],[52,44]], "style": "dashed" },
+      { "playerId": "NB", "type": "zone", "path": [[72,42],[76,44]], "style": "dashed" },
+      { "playerId": "CB1", "type": "zone", "path": [[10,44],[12,48]], "style": "dashed" },
+      { "playerId": "CB2", "type": "zone", "path": [[90,44],[88,48]], "style": "dashed" },
+      { "playerId": "FS", "type": "zone", "path": [[50,56],[48,52]], "style": "dashed" },
+      { "playerId": "SS", "type": "zone", "path": [[65,52],[62,50]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: OL fires off for inside zone; QB reads WLB as RPO key", "events": ["snap"] },
+    { "step": 2, "description": "If WLB drops into coverage, QB hands off to RB on inside zone", "events": ["mesh", "read"] },
+    { "step": 3, "description": "If WLB fills the run, QB pulls ball and throws slant to H or bubble to Y", "events": ["pull", "throw"] }
+  ],
+  "tags": ["formation", "spread", "rpo", "run", "passing", "11-personnel"]
+}

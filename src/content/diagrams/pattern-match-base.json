@@ -1,0 +1,50 @@
+{
+  "id": "pattern-match-base",
+  "name": "Pattern Match Principles (Cover 3 Shell)",
+  "formation": { "offense": "shotgun-2x2", "defense": "4-3-pattern-match" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 58, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 48, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [],
+    "defense": [
+      { "playerId": "CB1", "type": "zone", "path": [[12,42],[14,48],[16,54],[18,60]], "style": "dashed" },
+      { "playerId": "CB2", "type": "zone", "path": [[88,42],[86,48],[84,54],[82,60]], "style": "dashed" },
+      { "playerId": "FS", "type": "zone", "path": [[50,58],[50,64]], "style": "dashed" },
+      { "playerId": "SS", "type": "zone", "path": [[65,48],[72,52],[76,54]], "style": "dashed" },
+      { "playerId": "WLB", "type": "zone", "path": [[40,46],[32,50],[28,52]], "style": "dashed" },
+      { "playerId": "MLB", "type": "zone", "path": [[50,46],[50,52]], "style": "dashed" },
+      { "playerId": "SLB", "type": "zone", "path": [[60,46],[65,50],[68,52]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Post-snap: Defenders begin in Cover 3 zone drops, reading #1 and #2 receivers on their side", "events": ["read", "drop"] },
+    { "step": 2, "description": "Defenders match routes entering their zones man-to-man; CBs carry vertical #1, LBs match underneath crossers, FS plays deep middle", "events": ["match", "carry", "convert"] }
+  ],
+  "tags": ["defense", "coverage", "pattern-match", "cover-3", "zone", "single-high"]
+}

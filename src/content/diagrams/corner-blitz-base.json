@@ -1,0 +1,55 @@
+{
+  "id": "corner-blitz-base",
+  "name": "Corner Blitz",
+  "formation": { "offense": "shotgun-2x2", "defense": "4-3-corner-blitz" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 40, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 58, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 35, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [],
+    "defense": [
+      { "playerId": "CB1", "type": "blitz", "path": [[12,40],[14,38],[20,36],[30,34],[38,32]], "style": "solid" },
+      { "playerId": "SS", "type": "zone", "path": [[35,52],[20,48],[12,44]], "style": "dashed" },
+      { "playerId": "DE1", "type": "blitz", "path": [[36,40],[34,37],[33,34]], "style": "solid" },
+      { "playerId": "DT1", "type": "blitz", "path": [[47,40],[47,37],[47,34]], "style": "solid" },
+      { "playerId": "DT2", "type": "blitz", "path": [[55,40],[55,37],[55,34]], "style": "solid" },
+      { "playerId": "DE2", "type": "blitz", "path": [[64,40],[66,37],[67,34]], "style": "solid" },
+      { "playerId": "WLB", "type": "zone", "path": [[40,46],[35,50]], "style": "dashed" },
+      { "playerId": "MLB", "type": "zone", "path": [[50,46],[50,52]], "style": "dashed" },
+      { "playerId": "SLB", "type": "zone", "path": [[60,46],[65,50]], "style": "dashed" },
+      { "playerId": "CB2", "type": "zone", "path": [[88,42],[85,50],[80,58]], "style": "dashed" },
+      { "playerId": "FS", "type": "zone", "path": [[50,58],[50,65]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Pre-snap: CB1 in press alignment, SS cheats toward CB1's receiver side", "events": ["alignment"] },
+    { "step": 2, "description": "Snap: CB1 abandons receiver and blitzes off the edge, SS rotates down to cover X receiver", "events": ["snap", "blitz"] },
+    { "step": 3, "description": "Coverage adjusts: FS stays deep middle, CB2 takes deep third, LBs drop underneath", "events": ["coverage", "rotation"] }
+  ],
+  "tags": ["defense", "pressure", "corner-blitz", "secondary-pressure", "blitz"]
+}

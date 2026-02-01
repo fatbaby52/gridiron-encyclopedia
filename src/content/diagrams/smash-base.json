@@ -1,0 +1,48 @@
+{
+  "id": "smash-base",
+  "name": "Smash Concept",
+  "formation": { "offense": "shotgun-2x2", "defense": "cover-2" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 35, "y": 58, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 58, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "Z", "type": "route", "path": [[90,37],[90,42],[90,44],[90,43]] },
+      { "playerId": "Y", "type": "route", "path": [[75,35],[78,42],[82,49],[88,54]] },
+      { "playerId": "X", "type": "route", "path": [[10,37],[10,42],[10,44],[10,43]] },
+      { "playerId": "H", "type": "route", "path": [[25,35],[22,42],[18,49],[12,54]] },
+      { "playerId": "RB", "type": "block", "path": [[45,28],[45,32]] }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: Outside WRs (X, Z) run 5-yard hitches, inside WRs (H, Y) push vertical then break on corner routes at 12-15 yards", "events": ["snap", "release"] },
+    { "step": 2, "description": "Outside WRs settle on hitch, inside WRs angle toward back pylon on corners", "events": ["break"] },
+    { "step": 3, "description": "QB reads the cornerback: if CB sinks on the hitch, throw corner over the top; if CB bails, throw hitch underneath", "events": ["read", "throw"] }
+  ],
+  "tags": ["pass", "smash", "high-low", "cover-2-beater"]
+}

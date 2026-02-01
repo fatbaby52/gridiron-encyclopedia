@@ -1,0 +1,55 @@
+{
+  "id": "3-3-5-base",
+  "name": "3-3-5 Stack Front",
+  "formation": { "offense": "shotgun-2x2", "defense": "3-3-5-stack" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "NT", "position": "DL", "x": 50, "y": 40, "label": "N" },
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "LB1", "position": "LB", "x": 40, "y": 45, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 45, "label": "M" },
+      { "id": "LB3", "position": "LB", "x": 60, "y": 45, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "NB", "position": "DB", "x": 72, "y": 46, "label": "N" },
+      { "id": "FS", "position": "DB", "x": 43, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 57, "y": 56, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [],
+    "defense": [
+      { "playerId": "NT", "type": "zone", "path": [[50,40],[50,39]], "style": "dashed", "note": "A-gap control, two-gap" },
+      { "playerId": "DE1", "type": "zone", "path": [[36,40],[34,39]], "style": "dashed", "note": "C-gap contain" },
+      { "playerId": "DE2", "type": "zone", "path": [[64,40],[66,39]], "style": "dashed", "note": "C-gap contain" },
+      { "playerId": "LB1", "type": "zone", "path": [[40,45],[37,42]], "style": "dashed", "note": "B-gap fill, stacked behind DE" },
+      { "playerId": "MLB", "type": "zone", "path": [[50,45],[50,42]], "style": "dashed", "note": "A-gap fill, stacked behind NT" },
+      { "playerId": "LB3", "type": "zone", "path": [[60,45],[63,42]], "style": "dashed", "note": "B-gap fill, stacked behind DE" },
+      { "playerId": "CB1", "type": "zone", "path": [[12,42],[12,50]], "style": "dashed", "note": "Deep third left" },
+      { "playerId": "CB2", "type": "zone", "path": [[88,42],[88,50]], "style": "dashed", "note": "Deep third right" },
+      { "playerId": "NB", "type": "zone", "path": [[72,46],[75,50]], "style": "dashed", "note": "Slot coverage / flat zone" },
+      { "playerId": "FS", "type": "zone", "path": [[43,56],[43,62]], "style": "dashed", "note": "Deep half / center field" },
+      { "playerId": "SS", "type": "zone", "path": [[57,56],[57,62]], "style": "dashed", "note": "Deep half / robber" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Pre-snap: LBs stacked behind DL, hiding gap assignments. Offense cannot read blitz intent.", "events": ["alignment"] },
+    { "step": 2, "description": "Post-snap: DL engages blocks, stacked LBs read and fill assigned gaps. DBs drop to zones.", "events": ["snap", "read"] },
+    { "step": 3, "description": "LBs flow to ball or drop to underneath coverage based on run/pass key.", "events": ["fill", "drop"] }
+  ],
+  "tags": ["defense", "front", "3-3-5", "stack", "spread-defense"]
+}

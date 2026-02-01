@@ -1,0 +1,52 @@
+{
+  "id": "toss-base",
+  "name": "Toss (Offset I)",
+  "formation": { "offense": "offset-i", "defense": "4-3-over" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 35, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 42, "y": 26, "label": "R" },
+      { "id": "FB", "position": "FB", "x": 50, "y": 28, "label": "F" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "TE", "position": "TE", "x": 33, "y": 37, "label": "Y" },
+      { "id": "X", "position": "WR", "x": 15, "y": 37, "label": "X" },
+      { "id": "Z", "position": "WR", "x": 88, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 46, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 54, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 45, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 45, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 15, "y": 44, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 44, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "RB", "type": "run", "path": [[42,26],[36,28],[28,32],[22,36],[16,39],[12,42]] },
+      { "playerId": "QB", "type": "run", "path": [[50,35],[46,33],[42,30]], "style": "dashed" },
+      { "playerId": "FB", "type": "block", "path": [[50,28],[44,32],[36,36],[32,40]] },
+      { "playerId": "LT", "type": "block", "path": [[38,37],[36,38],[34,40]] },
+      { "playerId": "LG", "type": "block", "path": [[44,37],[42,38],[38,40]] },
+      { "playerId": "C", "type": "block", "path": [[50,37],[48,38],[46,40]] },
+      { "playerId": "RG", "type": "block", "path": [[56,37],[54,40]] },
+      { "playerId": "RT", "type": "block", "path": [[62,37],[64,40]] },
+      { "playerId": "TE", "type": "block", "path": [[33,37],[31,40],[31,44]] }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: QB quick-tosses the ball to RB running left, OL reaches left", "events": ["snap", "toss"] },
+    { "step": 2, "description": "FB leads to edge, OL walls off inside pursuit", "events": ["lead", "reach"] },
+    { "step": 3, "description": "RB catches toss in stride and attacks left edge behind blockers", "events": ["run"] }
+  ],
+  "tags": ["run", "toss", "outside-run", "perimeter"]
+}

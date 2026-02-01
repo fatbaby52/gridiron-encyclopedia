@@ -1,0 +1,48 @@
+{
+  "id": "slant-flat-base",
+  "name": "Slant-Flat Concept",
+  "formation": { "offense": "shotgun-2x2", "defense": "cover-3" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 58, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "Z", "type": "route", "path": [[90,37],[88,40],[80,42],[72,44]] },
+      { "playerId": "Y", "type": "route", "path": [[75,35],[78,38],[85,40],[92,42]] },
+      { "playerId": "X", "type": "route", "path": [[10,37],[12,40],[20,42],[28,44]] },
+      { "playerId": "H", "type": "route", "path": [[25,35],[22,38],[15,40],[8,42]] },
+      { "playerId": "RB", "type": "block", "path": [[45,28],[45,32]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: Inside WRs run 3-step slants, outside WRs release to flat", "events": ["snap", "release"] },
+    { "step": 2, "description": "QB reads flat defender: if he squats on flat, throw slant; if he jumps slant, throw flat", "events": ["read"] },
+    { "step": 3, "description": "Quick throw to the open receiver based on flat defender's reaction", "events": ["throw"] }
+  ],
+  "tags": ["pass", "quick-game", "slant", "flat", "high-low"]
+}

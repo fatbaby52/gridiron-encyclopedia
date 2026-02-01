@@ -1,0 +1,51 @@
+{
+  "id": "lead-zone-base",
+  "name": "Lead Zone (Singleback with FB)",
+  "formation": { "offense": "singleback-fb", "defense": "4-3-over" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "FB", "position": "FB", "x": 42, "y": 30, "label": "F" },
+      { "id": "RB", "position": "RB", "x": 55, "y": 26, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "TE", "position": "TE", "x": 33, "y": 37, "label": "Y" },
+      { "id": "X", "position": "WR", "x": 15, "y": 37, "label": "X" },
+      { "id": "Z", "position": "WR", "x": 88, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 46, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 54, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 45, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 45, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 15, "y": 44, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 44, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "RB", "type": "run", "path": [[55,26],[52,30],[48,34],[44,37],[40,42],[36,46]] },
+      { "playerId": "FB", "type": "block", "path": [[42,30],[40,34],[36,37],[34,40]] },
+      { "playerId": "LT", "type": "zone", "path": [[38,37],[36,38],[34,40]] },
+      { "playerId": "LG", "type": "zone", "path": [[44,37],[42,38],[40,40]] },
+      { "playerId": "C", "type": "zone", "path": [[50,37],[48,38],[46,40]] },
+      { "playerId": "RG", "type": "zone", "path": [[56,37],[54,38],[52,40]] },
+      { "playerId": "RT", "type": "zone", "path": [[62,37],[60,38],[58,40]] },
+      { "playerId": "TE", "type": "zone", "path": [[33,37],[32,40],[32,44]] }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: OL zone-steps left, FB aims for edge defender", "events": ["snap"] },
+    { "step": 2, "description": "FB kicks out DE, OL executes zone combos to second level", "events": ["kickout", "zone"] },
+    { "step": 3, "description": "RB reads zone blocks, follows FB lead through the playside C-gap", "events": ["read", "run"] }
+  ],
+  "tags": ["run", "zone", "lead-zone", "fullback"]
+}

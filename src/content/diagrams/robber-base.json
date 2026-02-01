@@ -1,0 +1,50 @@
+{
+  "id": "robber-base",
+  "name": "Robber Coverage",
+  "formation": { "offense": "shotgun-2x2", "defense": "4-3-robber" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 39, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 39, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 62, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 50, "y": 48, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [],
+    "defense": [
+      { "playerId": "CB1", "type": "route", "path": [[12,39],[11,43],[10,48],[12,54]], "style": "solid" },
+      { "playerId": "CB2", "type": "route", "path": [[88,39],[89,43],[90,48],[88,54]], "style": "solid" },
+      { "playerId": "WLB", "type": "route", "path": [[40,46],[30,44],[26,48],[25,52]], "style": "solid" },
+      { "playerId": "SLB", "type": "route", "path": [[60,46],[70,44],[74,48],[75,52]], "style": "solid" },
+      { "playerId": "SS", "type": "spy", "path": [[50,48],[48,50],[45,52],[42,54]], "style": "dashed" },
+      { "playerId": "FS", "type": "zone", "path": [[50,62],[50,66]], "style": "dashed" },
+      { "playerId": "MLB", "type": "route", "path": [[50,46],[47,44],[45,42]], "style": "solid" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Post-snap: CBs press and trail outside WRs; FS backpedals to deep center field as single-high safety", "events": ["press", "trail", "drop"] },
+    { "step": 2, "description": "SS plays robber at 10-12 yards, reading QB eyes and breaking on throws; WLB/SLB carry slots man-to-man; MLB covers RB", "events": ["read", "rob", "trail"] }
+  ],
+  "tags": ["defense", "coverage", "robber", "man", "single-high", "hybrid"]
+}

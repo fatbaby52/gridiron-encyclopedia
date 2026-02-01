@@ -1,0 +1,62 @@
+{
+  "id": "west-coast-offense-base",
+  "name": "West Coast Offense — 22 Z In (Short Passing Concept)",
+  "formation": { "offense": "pro-set", "defense": "cover-3" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 44, "y": 27, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "TE", "position": "TE", "x": 67, "y": 37, "label": "Y" },
+      { "id": "X", "position": "WR", "x": 12, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Z", "position": "WR", "x": 88, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 65, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 45, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 52, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 62, "y": 45, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 44, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 44, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 58, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 68, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "Z", "type": "route", "path": [[88,37],[84,40],[78,42],[70,44],[62,44]] },
+      { "playerId": "X", "type": "route", "path": [[12,37],[12,42],[12,48],[14,54]] },
+      { "playerId": "H", "type": "route", "path": [[25,35],[28,38],[34,42],[40,44]] },
+      { "playerId": "TE", "type": "route", "path": [[67,37],[68,40],[70,44],[72,48]] },
+      { "playerId": "RB", "type": "route", "path": [[44,27],[40,30],[36,34],[32,38],[28,40]] },
+      { "playerId": "LT", "type": "block", "path": [[38,37],[37,40]] },
+      { "playerId": "LG", "type": "block", "path": [[44,37],[44,40]] },
+      { "playerId": "C", "type": "block", "path": [[50,37],[50,40]] },
+      { "playerId": "RG", "type": "block", "path": [[56,37],[56,40]] },
+      { "playerId": "RT", "type": "block", "path": [[62,37],[63,40]] }
+    ],
+    "defense": [
+      { "playerId": "CB1", "type": "zone", "path": [[12,44],[14,48]], "style": "dashed" },
+      { "playerId": "CB2", "type": "zone", "path": [[88,44],[84,48]], "style": "dashed" },
+      { "playerId": "FS", "type": "zone", "path": [[50,58],[48,56]], "style": "dashed" },
+      { "playerId": "SS", "type": "zone", "path": [[68,52],[66,50]], "style": "dashed" },
+      { "playerId": "WLB", "type": "zone", "path": [[40,45],[36,48]], "style": "dashed" },
+      { "playerId": "MLB", "type": "zone", "path": [[52,46],[52,50]], "style": "dashed" },
+      { "playerId": "SLB", "type": "zone", "path": [[62,45],[66,48]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: Z releases inside on a deep in-cut; X runs a clear-out go route", "events": ["snap"] },
+    { "step": 2, "description": "Z crosses the field at 10-12 yards (the primary read); H runs a dig underneath; TE runs seam as safety hold", "events": ["route"] },
+    { "step": 3, "description": "QB progression: Z in-cut first, H dig second, RB checkdown third — throw to the first open window", "events": ["read", "progression", "throw"] }
+  ],
+  "tags": ["system", "west-coast", "passing", "short-passing", "precision", "11-personnel"]
+}

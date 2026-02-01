@@ -1,0 +1,59 @@
+{
+  "id": "unbalanced-line-base",
+  "name": "Unbalanced Line — Power Run to Heavy Side",
+  "formation": { "offense": "unbalanced", "defense": "4-3-over" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 35, "label": "Q" },
+      { "id": "FB", "position": "FB", "x": 50, "y": 30, "label": "F" },
+      { "id": "RB", "position": "RB", "x": 50, "y": 24, "label": "R" },
+      { "id": "LG", "position": "OL", "x": 38, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 44, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 50, "y": 37, "label": "G" },
+      { "id": "RT1", "position": "OL", "x": 56, "y": 37, "label": "T" },
+      { "id": "RT2", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "TE", "position": "TE", "x": 68, "y": 37, "label": "Y" },
+      { "id": "X", "position": "WR", "x": 15, "y": 37, "label": "X" },
+      { "id": "Z", "position": "WR", "x": 88, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 46, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 54, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 66, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 45, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 52, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 62, "y": 45, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 15, "y": 44, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 44, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 68, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "RB", "type": "run", "path": [[50,24],[50,30],[54,34],[58,37],[60,42],[62,46]] },
+      { "playerId": "FB", "type": "block", "path": [[50,30],[56,34],[62,38],[66,40]] },
+      { "playerId": "LG", "type": "block", "path": [[38,37],[40,38],[46,42],[50,46]] },
+      { "playerId": "C", "type": "block", "path": [[44,37],[46,40]] },
+      { "playerId": "RG", "type": "block", "path": [[50,37],[52,40]] },
+      { "playerId": "RT1", "type": "block", "path": [[56,37],[54,40]] },
+      { "playerId": "RT2", "type": "block", "path": [[62,37],[62,40]] },
+      { "playerId": "TE", "type": "block", "path": [[68,37],[66,40],[64,42]] },
+      { "playerId": "X", "type": "block", "path": [[15,37],[15,42]], "style": "dashed" },
+      { "playerId": "Z", "type": "block", "path": [[88,37],[88,42]], "style": "dashed" }
+    ],
+    "defense": [
+      { "playerId": "SLB", "type": "blitz", "path": [[62,45],[60,42]], "style": "dashed" },
+      { "playerId": "MLB", "type": "zone", "path": [[52,46],[54,44]], "style": "dashed" },
+      { "playerId": "WLB", "type": "zone", "path": [[40,45],[42,43]], "style": "dashed" },
+      { "playerId": "SS", "type": "zone", "path": [[68,52],[64,48]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: QB reverse pivots, backside guard (LG) pulls playside", "events": ["snap", "pull"] },
+    { "step": 2, "description": "FB kicks out DE2; pulling guard leads through C-gap on strong side", "events": ["kickout", "lead"] },
+    { "step": 3, "description": "RB follows pulling guard into the hole behind the unbalanced side wall", "events": ["run"] }
+  ],
+  "tags": ["formation", "unbalanced", "run", "power", "21-personnel"]
+}

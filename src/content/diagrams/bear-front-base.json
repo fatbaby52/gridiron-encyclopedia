@@ -1,0 +1,55 @@
+{
+  "id": "bear-front-base",
+  "name": "Bear Front (46 Defense)",
+  "formation": { "offense": "shotgun-2x2", "defense": "bear-46" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "NT", "position": "DL", "x": 50, "y": 40, "label": "N" },
+      { "id": "DT1", "position": "DL", "x": 44, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 56, "y": 40, "label": "T" },
+      { "id": "DE1", "position": "DL", "x": 34, "y": 40, "label": "E" },
+      { "id": "DE2", "position": "DL", "x": 66, "y": 40, "label": "E" },
+      { "id": "SS", "position": "DB", "x": 70, "y": 41, "label": "$" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 56, "label": "F" }
+    ]
+  },
+  "assignments": {
+    "offense": [],
+    "defense": [
+      { "playerId": "NT", "type": "zone", "path": [[50,40],[50,39]], "style": "dashed", "note": "0-tech, head-up on center, A-gaps" },
+      { "playerId": "DT1", "type": "zone", "path": [[44,40],[44,39]], "style": "dashed", "note": "3-tech on LG, B-gap left" },
+      { "playerId": "DT2", "type": "zone", "path": [[56,40],[56,39]], "style": "dashed", "note": "3-tech on RG, B-gap right" },
+      { "playerId": "DE1", "type": "zone", "path": [[34,40],[32,39]], "style": "dashed", "note": "Wide tech, C-gap contain left" },
+      { "playerId": "DE2", "type": "zone", "path": [[66,40],[68,39]], "style": "dashed", "note": "Wide tech, C-gap contain right" },
+      { "playerId": "SS", "type": "blitz", "path": [[70,41],[70,39]], "style": "solid", "note": "Walked-up SS, D-gap edge, 6th on LOS" },
+      { "playerId": "MLB", "type": "zone", "path": [[50,46],[50,42]], "style": "dashed", "note": "Free to flow, reads unblocked" },
+      { "playerId": "WLB", "type": "zone", "path": [[40,46],[35,50]], "style": "dashed", "note": "Weak flat zone / pursuit" },
+      { "playerId": "CB1", "type": "zone", "path": [[12,42],[12,52]], "style": "dashed", "note": "Man/press on X" },
+      { "playerId": "CB2", "type": "zone", "path": [[88,42],[88,52]], "style": "dashed", "note": "Man/press on Z" },
+      { "playerId": "FS", "type": "zone", "path": [[50,56],[50,64]], "style": "dashed", "note": "Center field safety, last line" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Pre-snap: 6 defenders on LOS (NT, 2 DTs, 2 DEs, walked-up SS). Interior gaps filled by alignment.", "events": ["alignment"] },
+    { "step": 2, "description": "Post-snap: NT and DTs engage center and guards. All interior gaps occupied. MLB reads free.", "events": ["snap", "engage"] },
+    { "step": 3, "description": "SS rushes off edge. MLB flows to ball untouched. FS provides deep cover. CBs in man.", "events": ["rush", "flow", "cover"] }
+  ],
+  "tags": ["defense", "front", "bear", "46-defense", "aggressive"]
+}

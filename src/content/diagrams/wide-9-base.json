@@ -1,0 +1,55 @@
+{
+  "id": "wide-9-base",
+  "name": "Wide 9 Alignment",
+  "formation": { "offense": "shotgun-2x2", "defense": "wide-9" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 28, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 46, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 72, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 58, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 48, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [],
+    "defense": [
+      { "playerId": "DE1", "type": "blitz", "path": [[28,40],[28,38],[35,35]], "style": "solid", "note": "Wide 9, speed rush outside to QB. Wide alignment isolates vs OT." },
+      { "playerId": "DT1", "type": "zone", "path": [[46,40],[44,39]], "style": "dashed", "note": "1-tech, A-gap" },
+      { "playerId": "DT2", "type": "zone", "path": [[55,40],[57,39]], "style": "dashed", "note": "3-tech, B-gap" },
+      { "playerId": "DE2", "type": "blitz", "path": [[72,40],[72,38],[65,35]], "style": "solid", "note": "Wide 9, speed rush outside to QB. Wide alignment isolates vs OT." },
+      { "playerId": "WLB", "type": "zone", "path": [[40,46],[35,43]], "style": "dashed", "note": "Must fill C-gap void left by wide DE. Critical run-fit responsibility." },
+      { "playerId": "MLB", "type": "zone", "path": [[50,46],[50,42]], "style": "dashed", "note": "A/B gap fill, reads through OL" },
+      { "playerId": "SLB", "type": "zone", "path": [[60,46],[65,43]], "style": "dashed", "note": "Must fill C-gap void right. Critical run-fit responsibility." },
+      { "playerId": "CB1", "type": "zone", "path": [[12,42],[15,50],[20,60]], "style": "dashed", "note": "Deep third left" },
+      { "playerId": "CB2", "type": "zone", "path": [[88,42],[85,50],[80,60]], "style": "dashed", "note": "Deep third right" },
+      { "playerId": "FS", "type": "zone", "path": [[50,58],[50,65]], "style": "dashed", "note": "Deep middle third" },
+      { "playerId": "SS", "type": "zone", "path": [[65,48],[72,52]], "style": "dashed", "note": "Curl-flat zone, run alley fill" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Pre-snap: DEs aligned extremely wide (~9-tech). Gap between DE and DT creates run lane that LBs must fill.", "events": ["alignment"] },
+    { "step": 2, "description": "Post-snap: DEs fire upfield on outside speed rush, isolating OTs 1-on-1. DTs attack interior gaps.", "events": ["snap", "rush"] },
+    { "step": 3, "description": "LBs must aggressively fill C-gap voids vacated by wide DEs. Secondary drops to zones.", "events": ["fill", "drop"] }
+  ],
+  "tags": ["defense", "front", "wide-9", "pass-rush", "edge-rush"]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "tampa-2-base",
+  "name": "Tampa 2",
+  "formation": { "offense": "shotgun-2x2", "defense": "4-3-tampa-2" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 40, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 40, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 30, "y": 58, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 70, "y": 58, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [],
+    "defense": [
+      { "playerId": "CB1", "type": "zone", "path": [[12,40],[15,44],[18,48]], "style": "dashed" },
+      { "playerId": "CB2", "type": "zone", "path": [[88,40],[85,44],[82,48]], "style": "dashed" },
+      { "playerId": "MLB", "type": "zone", "path": [[50,46],[50,52],[50,58],[50,62]], "style": "dashed" },
+      { "playerId": "WLB", "type": "zone", "path": [[40,46],[30,50]], "style": "dashed" },
+      { "playerId": "SLB", "type": "zone", "path": [[60,46],[70,50]], "style": "dashed" },
+      { "playerId": "FS", "type": "zone", "path": [[30,58],[22,62],[18,66]], "style": "dashed" },
+      { "playerId": "SS", "type": "zone", "path": [[70,58],[78,62],[82,66]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Post-snap: CBs jam and sink to flat zones; MLB reads vertical threat and sprints to deep middle third", "events": ["jam", "drop", "sprint"] },
+    { "step": 2, "description": "Safeties cover deep halves; WLB and SLB fill hook/curl underneath zones; 3-deep / 4-under structure forms", "events": ["drop", "zone"] }
+  ],
+  "tags": ["defense", "coverage", "tampa-2", "cover-2", "zone", "two-high"]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "i-formation-base",
+  "name": "I-Formation (Base Alignment)",
+  "formation": { "offense": "i-formation", "defense": "4-3-over" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 35, "label": "Q" },
+      { "id": "FB", "position": "FB", "x": 50, "y": 30, "label": "F" },
+      { "id": "TB", "position": "RB", "x": 50, "y": 24, "label": "T" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "TE", "position": "TE", "x": 67, "y": 37, "label": "Y" },
+      { "id": "X", "position": "WR", "x": 15, "y": 37, "label": "X" },
+      { "id": "Z", "position": "WR", "x": 88, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 65, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 45, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 52, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 62, "y": 45, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 15, "y": 44, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 44, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 68, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": []
+  },
+  "timing": [
+    { "step": 1, "description": "Pre-snap alignment: I-Formation with TE strong right", "events": ["alignment"] }
+  ],
+  "tags": ["formation", "i-formation", "21-personnel"]
+}

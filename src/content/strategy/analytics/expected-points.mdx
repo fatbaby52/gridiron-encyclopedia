@@ -1,0 +1,107 @@
+---
+title: "Expected Points Model"
+slug: "expected-points"
+category: "strategy/analytics"
+level: ["hs", "college", "nfl"]
+tags: ["analytics", "expected-points", "advanced-stats"]
+related: ["epa-explained", "success-rate", "win-probability", "dvoa-explained"]
+status: "published"
+---
+
+## Overview
+
+The Expected Points (EP) model is a foundational framework in football analytics that assigns a point value to every game situation based on historical outcomes. Rather than treating all field positions, downs, and distances equally, the EP model recognizes that a team with first-and-10 at the opponent's 5-yard line is in a dramatically more valuable position than a team with third-and-15 from its own 10-yard line. By quantifying this value in terms of expected points — the average number of points a team will score (or allow) from a given situation — the EP model provides a common currency for evaluating plays, decisions, and strategies. The Expected Points model is the foundation upon which Expected Points Added (EPA) and many other advanced metrics are built.
+
+## How the Model Works
+
+### Historical Data Foundation
+
+The EP model is constructed from millions of plays in historical game data. For each combination of down, distance, and field position, analysts calculate the average number of points ultimately scored on that drive, including negative values for opponent scores resulting from turnovers. By aggregating these outcomes across thousands of similar situations, the model establishes a reliable expected value for each game state.
+
+For example, analysts might find that across all historical instances of first-and-10 at the opponent's 30-yard line, the average drive outcome is +3.2 points. This accounts for the probability of scoring a touchdown (worth 7 points), kicking a field goal (worth 3), punting (worth 0 to the offense but potentially gives the opponent points), turning the ball over (negative value), and every other possible outcome.
+
+### The EP Curve
+
+When Expected Points values are plotted against field position for first-and-10, the result is a smooth curve that increases as the offense moves toward the opponent's end zone. At the offense's own 1-yard line, the EP is slightly negative (approximately -0.5 to 0, because the risk of a safety or a short field for the opponent after a punt partially offsets the possibility of a long drive resulting in points). At midfield, the EP is approximately +2.0. At the opponent's 20-yard line, the EP is approximately +4.0. At the opponent's 1-yard line, the EP approaches +6.0, just below the value of a guaranteed touchdown.
+
+### Down and Distance Adjustments
+
+The EP value changes significantly with down and distance. First-and-10 at the 50-yard line might have an EP of +2.0, while third-and-10 at the same spot might have an EP of +0.8, reflecting the lower probability of sustaining the drive. Fourth-and-1 at the 50 might have an EP of +1.5 if the offense goes for it (accounting for conversion probability) but only +0.5 if the offense punts (accounting for the field position value of the punt). These down-and-distance adjustments are critical to the model's accuracy and usefulness.
+
+## Building an EP Model
+
+### Data Collection
+
+The first step in building an EP model is assembling a comprehensive play-by-play dataset. For NFL models, this typically includes all regular season and playoff games from the past 10 to 20 seasons. The dataset must include the down, distance, yard line, and the eventual scoring outcome of each drive.
+
+### Smoothing and Regression
+
+Raw averages from historical data can be noisy, particularly for uncommon situations (such as fourth-and-20 from the 50-yard line). Analysts use statistical smoothing techniques — regression models, generalized additive models, or machine learning algorithms — to create a continuous, smooth EP function that produces reasonable estimates even for rare situations. The goal is a model that captures the true underlying relationship between game state and expected scoring.
+
+### Accounting for Opponent Scoring
+
+A critical aspect of the EP model is that it accounts for the full drive outcome, including the possibility that a turnover leads to opponent points. If a team has the ball at its own 5-yard line, the EP is low not only because the team is far from the opponent's end zone but also because a turnover or short punt gives the opponent a short field. This bidirectional accounting is what makes the EP model a true measure of situational value rather than simply a yardage-based estimate.
+
+## Applications
+
+### Expected Points Added (EPA)
+
+The most prominent application of the EP model is the calculation of EPA, which measures the change in expected points from one play to the next. EPA is the workhorse metric of modern football analytics, used to evaluate quarterbacks, play-callers, and teams. Without the underlying EP model, EPA cannot be calculated.
+
+### Fourth-Down Decision Models
+
+EP is the foundation of fourth-down decision models. When a coach faces a fourth-down decision, the EP model calculates the expected value of each option:
+
+- **Go for it**: EP = (probability of conversion * EP after successful conversion) + (probability of failure * EP after failed conversion for the opponent)
+- **Punt**: EP = (average EP value of the opponent's starting position after the punt, inverted)
+- **Field goal**: EP = (probability of make * 3 points) + (probability of miss * EP of opponent's starting position after a miss, inverted)
+
+The option with the highest EP is the analytically optimal choice.
+
+### Game State Evaluation
+
+The EP model allows teams and analysts to assess the value of any game state. This is useful for evaluating strategic decisions, projecting game outcomes, and understanding the relative importance of field position versus down and distance.
+
+## Strengths
+
+### Intuitive Point-Based Scale
+
+The EP model expresses value in terms of points, which is the most natural and intuitive unit of measurement in football. Saying that first-and-10 at the opponent's 20 is "worth 4 points" is immediately meaningful to coaches, players, and fans.
+
+### Foundation for Other Metrics
+
+The EP model underpins an entire family of advanced metrics, including EPA, WPA (Win Probability Added), and various decision models. Its foundational role makes it one of the most important concepts in football analytics.
+
+### Data-Driven Objectivity
+
+The EP model is built entirely from historical data, making it an objective measure of situational value. It does not rely on subjective judgments about which situations are "good" or "bad" — the data speaks for itself.
+
+## Limitations
+
+### League-Average Baseline
+
+The EP model is based on league-average outcomes, meaning it does not account for the specific capabilities of the teams on the field. A team with Patrick Mahomes at quarterback likely has a higher actual EP in most situations than the league-average model suggests, while a team with a struggling quarterback may have a lower actual EP.
+
+### Era and Rule Sensitivity
+
+Changes in rules, playing styles, and offensive trends can shift the EP curve over time. Models built on data from the early 2000s may not fully capture the offensive explosion of the 2020s. Analysts address this by using rolling windows of data (typically the most recent 10 seasons) to keep the model current.
+
+### Situational Simplifications
+
+Most EP models use only down, distance, and field position as inputs. More advanced models may include time remaining, score differential, and timeouts, but adding variables increases complexity and reduces the sample size for each game state. The standard EP model sacrifices some situational nuance for simplicity and stability.
+
+## Level Differences
+
+### High School
+
+The EP model is not commonly applied at the high school level, but coaches can benefit from understanding its core insight: not all field positions and down-and-distance situations are created equal.
+
+### College (NCAA)
+
+College EP models are available through public analytics platforms and are calibrated to the college game's unique dynamics. The wider hash marks, different clock rules, and broader talent range create a different EP curve than the NFL model.
+
+### NFL
+
+The NFL EP model is the most refined and widely used version, built on the largest play-by-play dataset and applied across the full spectrum of football analysis.
+
+The Expected Points model is the bedrock of modern football analytics, providing the framework through which every play, decision, and strategy can be evaluated in terms of its true point value.

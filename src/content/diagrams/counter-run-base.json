@@ -1,0 +1,50 @@
+{
+  "id": "counter-run-base",
+  "name": "Counter Run (Shotgun)",
+  "formation": { "offense": "shotgun-2x2", "defense": "4-3-over" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 26, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 15, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 88, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 46, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 54, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 45, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 45, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 15, "y": 44, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 44, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "RB", "type": "run", "path": [[45,26],[48,28],[55,32],[42,37],[40,44]] },
+      { "playerId": "QB", "type": "run", "path": [[50,32],[55,32]], "style": "dashed" },
+      { "playerId": "RG", "type": "block", "path": [[56,37],[50,37],[42,37],[38,42]] },
+      { "playerId": "RT", "type": "block", "path": [[62,37],[55,37],[46,37],[40,40]] },
+      { "playerId": "LT", "type": "block", "path": [[38,37],[36,40]] },
+      { "playerId": "LG", "type": "block", "path": [[44,37],[44,42]] },
+      { "playerId": "C", "type": "block", "path": [[50,37],[50,42]] }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: RB takes counter step away, QB fakes away", "events": ["snap", "fake"] },
+    { "step": 2, "description": "Guard and tackle pull playside, RB redirects", "events": ["pull", "redirect"] },
+    { "step": 3, "description": "Pullers kick out and lead, RB hits the hole", "events": ["kickout", "run"] }
+  ],
+  "tags": ["run", "gap", "counter", "misdirection"]
+}

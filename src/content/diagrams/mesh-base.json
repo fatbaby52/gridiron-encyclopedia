@@ -1,0 +1,48 @@
+{
+  "id": "mesh-base",
+  "name": "Mesh Concept",
+  "formation": { "offense": "shotgun-2x2", "defense": "cover-1" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 55, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "H", "type": "route", "path": [[25,35],[30,38],[40,43],[50,43],[60,43],[70,43]] },
+      { "playerId": "Y", "type": "route", "path": [[75,35],[70,38],[60,42],[50,42],[40,42],[30,42]] },
+      { "playerId": "X", "type": "route", "path": [[10,37],[10,45],[10,52],[15,58],[22,62]] },
+      { "playerId": "Z", "type": "route", "path": [[90,37],[90,45],[90,52],[85,58],[78,62]] },
+      { "playerId": "RB", "type": "route", "path": [[45,28],[45,32],[42,36],[38,38]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: H and Y release toward each other on crossing routes at 5-6 yards, creating a rub point at the mesh", "events": ["snap", "release"] },
+    { "step": 2, "description": "X and Z run corner routes to clear out and provide deep options", "events": ["clear"] },
+    { "step": 3, "description": "QB reads the mesh point: man defenders get picked, throw to open crosser; zone coverage, find the void", "events": ["read", "throw"] }
+  ],
+  "tags": ["pass", "mesh", "man-beater", "crossing-routes", "air-raid"]
+}

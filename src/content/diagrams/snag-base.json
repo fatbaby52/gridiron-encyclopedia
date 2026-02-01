@@ -1,0 +1,48 @@
+{
+  "id": "snag-base",
+  "name": "Snag Concept",
+  "formation": { "offense": "shotgun-2x2", "defense": "cover-3" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 58, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "Z", "type": "route", "path": [[90,37],[90,44],[90,50],[84,55],[78,58]] },
+      { "playerId": "Y", "type": "route", "path": [[75,35],[76,40],[77,43],[77,42]] },
+      { "playerId": "RB", "type": "route", "path": [[45,28],[48,32],[55,36],[62,38],[70,39],[80,40]] },
+      { "playerId": "X", "type": "route", "path": [[10,37],[10,45],[10,55],[10,68]] },
+      { "playerId": "H", "type": "route", "path": [[25,35],[25,42],[25,49],[24,50]] }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: Z runs corner route, Y runs snag/spot route settling at 5-6 yards, RB releases to flat on the right", "events": ["snap", "release"] },
+    { "step": 2, "description": "Three receivers form a triangle on the right side: corner (high), snag (middle), flat (low)", "events": ["triangle"] },
+    { "step": 3, "description": "QB reads the flat defender: if he drops, throw flat; if he flies flat, throw snag; if snag is covered, throw corner", "events": ["read", "throw"] }
+  ],
+  "tags": ["pass", "snag", "triangle", "zone-beater"]
+}

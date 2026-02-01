@@ -1,0 +1,51 @@
+{
+  "id": "triple-option-base",
+  "name": "Triple Option (Flexbone)",
+  "formation": { "offense": "flexbone", "defense": "4-3-over" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 35, "label": "Q" },
+      { "id": "FB", "position": "FB", "x": 50, "y": 28, "label": "B" },
+      { "id": "LHB", "position": "RB", "x": 30, "y": 35, "label": "A" },
+      { "id": "RHB", "position": "RB", "x": 70, "y": 35, "label": "A" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 15, "y": 37, "label": "X" },
+      { "id": "Z", "position": "WR", "x": 88, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 46, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 54, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 45, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 45, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 15, "y": 44, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 44, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 65, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "FB", "type": "run", "path": [[50,28],[52,34],[54,37],[55,44]], "style": "solid" },
+      { "playerId": "QB", "type": "run", "path": [[50,35],[54,36],[60,37],[66,38],[70,40]], "style": "dashed" },
+      { "playerId": "RHB", "type": "run", "path": [[70,35],[72,36],[76,37],[80,38],[84,40]], "style": "dotted" },
+      { "playerId": "LT", "type": "block", "path": [[38,37],[36,40]] },
+      { "playerId": "LG", "type": "block", "path": [[44,37],[46,40]] },
+      { "playerId": "C", "type": "block", "path": [[50,37],[50,42]] },
+      { "playerId": "RG", "type": "block", "path": [[56,37],[56,42]] },
+      { "playerId": "RT", "type": "block", "path": [[62,37],[60,40],[60,45]] }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: QB reads dive key (DE1). If DE1 stays outside, QB gives to FB on dive up the middle (solid line)", "events": ["snap", "dive-read"] },
+    { "step": 2, "description": "If DE1 crashes on FB, QB pulls the ball and attacks off-tackle, reading pitch key (DE2) (dashed line)", "events": ["pull", "keep-read"] },
+    { "step": 3, "description": "If pitch key (DE2) attacks QB, QB pitches to trailing RHB outside (dotted line)", "events": ["pitch", "option"] }
+  ],
+  "tags": ["run", "option", "triple-option", "flexbone", "dive", "pitch"]
+}

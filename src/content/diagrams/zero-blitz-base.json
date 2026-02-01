@@ -1,0 +1,55 @@
+{
+  "id": "zero-blitz-base",
+  "name": "Zero Blitz (Cover 0)",
+  "formation": { "offense": "shotgun-2x2", "defense": "4-3-zero" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 43, "y": 44, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 53, "y": 44, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 40, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 40, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 45, "y": 52, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 62, "y": 45, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [],
+    "defense": [
+      { "playerId": "DE1", "type": "blitz", "path": [[36,40],[34,37],[33,34]], "style": "solid" },
+      { "playerId": "DT1", "type": "blitz", "path": [[47,40],[47,37],[47,34]], "style": "solid" },
+      { "playerId": "DT2", "type": "blitz", "path": [[55,40],[55,37],[55,34]], "style": "solid" },
+      { "playerId": "DE2", "type": "blitz", "path": [[64,40],[66,37],[67,34]], "style": "solid" },
+      { "playerId": "WLB", "type": "blitz", "path": [[43,44],[45,41],[47,38],[48,35],[49,32]], "style": "solid" },
+      { "playerId": "SS", "type": "blitz", "path": [[62,45],[64,42],[66,39],[67,36],[66,34],[63,32]], "style": "solid" },
+      { "playerId": "CB1", "type": "spy", "path": [[12,40],[11,39],[10,38]], "style": "solid" },
+      { "playerId": "CB2", "type": "spy", "path": [[88,40],[89,39],[90,38]], "style": "solid" },
+      { "playerId": "MLB", "type": "spy", "path": [[53,44],[50,42],[47,40]], "style": "solid" },
+      { "playerId": "SLB", "type": "spy", "path": [[60,46],[72,42]], "style": "solid" },
+      { "playerId": "FS", "type": "spy", "path": [[45,52],[30,48]], "style": "solid" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Pre-snap: 6 defenders showing blitz from various positions; CBs in press man", "events": ["alignment"] },
+    { "step": 2, "description": "Snap: 6 rush (4 DL + WLB + SS) from multiple angles; max aggression", "events": ["snap", "blitz"] },
+    { "step": 3, "description": "Cover 0 man behind: CB1 on X, CB2 on Z, FS on H, SLB on Y, MLB on RB; no safety help", "events": ["man-coverage"] }
+  ],
+  "tags": ["defense", "pressure", "zero-blitz", "cover-0", "man-coverage", "all-out"]
+}

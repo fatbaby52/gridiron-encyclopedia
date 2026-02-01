@@ -1,0 +1,50 @@
+{
+  "id": "cover-6-base",
+  "name": "Cover 6 (Quarter-Quarter-Half)",
+  "formation": { "offense": "shotgun-2x2", "defense": "4-3-cover-6" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 48, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 40, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 30, "y": 54, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 70, "y": 58, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [],
+    "defense": [
+      { "playerId": "CB1", "type": "zone", "path": [[12,48],[10,54],[8,62]], "style": "dashed" },
+      { "playerId": "FS", "type": "zone", "path": [[30,54],[28,58],[26,64]], "style": "dashed" },
+      { "playerId": "SS", "type": "zone", "path": [[70,58],[75,62],[80,66]], "style": "dashed" },
+      { "playerId": "CB2", "type": "zone", "path": [[88,40],[86,44],[84,48]], "style": "dashed" },
+      { "playerId": "WLB", "type": "zone", "path": [[40,46],[30,50]], "style": "dashed" },
+      { "playerId": "MLB", "type": "zone", "path": [[50,46],[55,52]], "style": "dashed" },
+      { "playerId": "SLB", "type": "zone", "path": [[60,46],[70,50]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Post-snap: Field side (left) plays Cover 4 - CB1 and FS read receivers and drop to deep quarters", "events": ["read", "drop"] },
+    { "step": 2, "description": "Boundary side (right) plays Cover 2 - CB2 sinks to flat zone, SS covers deep half; LBs fill underneath zones", "events": ["jam", "drop", "zone"] }
+  ],
+  "tags": ["defense", "coverage", "cover-6", "split-coverage", "zone", "two-high"]
+}

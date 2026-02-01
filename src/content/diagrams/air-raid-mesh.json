@@ -1,0 +1,62 @@
+{
+  "id": "air-raid-mesh",
+  "name": "Air Raid — Mesh Concept (4-Wide)",
+  "formation": { "offense": "spread-4wr", "defense": "nickel" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 42, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 55, "y": 46, "label": "M" },
+      { "id": "NB", "position": "DB", "x": 72, "y": 42, "label": "N" },
+      { "id": "CB1", "position": "DB", "x": 10, "y": 44, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 90, "y": 44, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 45, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 60, "y": 56, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "H", "type": "route", "path": [[25,35],[30,36],[40,37],[55,37],[68,36],[80,35]] },
+      { "playerId": "Y", "type": "route", "path": [[75,35],[70,36],[60,37],[45,37],[32,36],[20,35]] },
+      { "playerId": "X", "type": "route", "path": [[10,37],[10,42],[10,48],[8,54]] },
+      { "playerId": "Z", "type": "route", "path": [[90,37],[90,42],[90,48],[92,54]] },
+      { "playerId": "RB", "type": "route", "path": [[45,28],[42,30],[38,34],[34,38],[30,42]] },
+      { "playerId": "LT", "type": "block", "path": [[38,37],[37,40]] },
+      { "playerId": "LG", "type": "block", "path": [[44,37],[44,40]] },
+      { "playerId": "C", "type": "block", "path": [[50,37],[50,40]] },
+      { "playerId": "RG", "type": "block", "path": [[56,37],[56,40]] },
+      { "playerId": "RT", "type": "block", "path": [[62,37],[63,40]] }
+    ],
+    "defense": [
+      { "playerId": "CB1", "type": "zone", "path": [[10,44],[10,50]], "style": "dashed" },
+      { "playerId": "CB2", "type": "zone", "path": [[90,44],[90,50]], "style": "dashed" },
+      { "playerId": "NB", "type": "zone", "path": [[72,42],[68,46]], "style": "dashed" },
+      { "playerId": "WLB", "type": "zone", "path": [[42,46],[38,48]], "style": "dashed" },
+      { "playerId": "MLB", "type": "zone", "path": [[55,46],[52,48]], "style": "dashed" },
+      { "playerId": "FS", "type": "zone", "path": [[45,56],[42,58]], "style": "dashed" },
+      { "playerId": "SS", "type": "zone", "path": [[60,56],[58,58]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: H and Y release on shallow crossing routes in opposite directions (mesh)", "events": ["snap"] },
+    { "step": 2, "description": "H and Y cross at approximately 1 yard past LOS; X and Z run vertical clears", "events": ["mesh", "route"] },
+    { "step": 3, "description": "QB reads LBs — if they chase mesh, throw to RB in flat; if they widen, throw mesh to whichever crosser is open", "events": ["read", "throw"] }
+  ],
+  "tags": ["system", "air-raid", "passing", "mesh", "11-personnel"]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "play-action-base",
+  "name": "Play Action Pass",
+  "formation": { "offense": "under-center-2x1", "defense": "cover-3" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 34, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 50, "y": 27, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "TE", "position": "TE", "x": 68, "y": 37, "label": "Y" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 36, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 47, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 64, "y": 40, "label": "E" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "MLB", "position": "LB", "x": 50, "y": 46, "label": "M" },
+      { "id": "SLB", "position": "LB", "x": 60, "y": 46, "label": "S" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 58, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 70, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [
+      { "playerId": "RB", "type": "run", "path": [[50,27],[52,32],[56,36],[60,38]], "style": "dashed" },
+      { "playerId": "QB", "type": "route", "path": [[50,34],[48,33],[44,32],[38,32]] },
+      { "playerId": "TE", "type": "route", "path": [[68,37],[64,38],[55,39],[45,39],[35,39]] },
+      { "playerId": "X", "type": "route", "path": [[10,37],[10,45],[15,52],[25,58],[35,62]] },
+      { "playerId": "Z", "type": "route", "path": [[90,37],[90,45],[90,55],[90,68]] },
+      { "playerId": "H", "type": "route", "path": [[25,35],[22,38],[15,40],[10,42]], "style": "dashed" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Snap: QB reverse pivots, fakes handoff to RB on zone run path. OL fires out with run-blocking action", "events": ["snap", "fake"] },
+    { "step": 2, "description": "QB boots to the left. TE drags behind LOS. X runs deep post, Z clears vertically", "events": ["bootleg", "release"] },
+    { "step": 3, "description": "QB reads deep to short: post first, then TE drag underneath. H leaks to flat as checkdown", "events": ["read", "throw"] }
+  ],
+  "tags": ["pass", "play-action", "bootleg", "deep-passing"]
+}

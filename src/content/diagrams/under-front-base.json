@@ -1,0 +1,55 @@
+{
+  "id": "under-front-base",
+  "name": "Under Front (4-3 Weak Shift)",
+  "formation": { "offense": "shotgun-2x2", "defense": "4-3-under" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "SDE", "position": "DL", "x": 68, "y": 40, "label": "E" },
+      { "id": "3T", "position": "DL", "x": 43, "y": 40, "label": "T" },
+      { "id": "1T", "position": "DL", "x": 48, "y": 40, "label": "N" },
+      { "id": "WDE", "position": "DL", "x": 35, "y": 40, "label": "E" },
+      { "id": "SLB", "position": "LB", "x": 65, "y": 42, "label": "S" },
+      { "id": "MLB", "position": "LB", "x": 53, "y": 46, "label": "M" },
+      { "id": "WLB", "position": "LB", "x": 40, "y": 46, "label": "W" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "FS", "position": "DB", "x": 50, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 62, "y": 52, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [],
+    "defense": [
+      { "playerId": "SDE", "type": "zone", "path": [[68,40],[70,39]], "style": "dashed", "note": "7/9-tech strong, wide edge rush / contain" },
+      { "playerId": "3T", "type": "zone", "path": [[43,40],[42,39]], "style": "dashed", "note": "3-tech weak side, B-gap weak" },
+      { "playerId": "1T", "type": "zone", "path": [[48,40],[48,39]], "style": "dashed", "note": "1-tech shade weak, A-gap weak" },
+      { "playerId": "WDE", "type": "zone", "path": [[35,40],[33,39]], "style": "dashed", "note": "5-tech weak, C-gap weak" },
+      { "playerId": "SLB", "type": "zone", "path": [[65,42],[67,40]], "style": "dashed", "note": "Walk-up strong edge, C/D gap, rush or drop" },
+      { "playerId": "MLB", "type": "zone", "path": [[53,46],[55,42]], "style": "dashed", "note": "A-gap strong fill, scrape over" },
+      { "playerId": "WLB", "type": "zone", "path": [[40,46],[40,42]], "style": "dashed", "note": "B-gap weak fill, flow to ball" },
+      { "playerId": "CB1", "type": "zone", "path": [[12,42],[12,52]], "style": "dashed", "note": "Coverage on X" },
+      { "playerId": "CB2", "type": "zone", "path": [[88,42],[88,52]], "style": "dashed", "note": "Coverage on Z" },
+      { "playerId": "FS", "type": "zone", "path": [[50,56],[50,62]], "style": "dashed", "note": "Center field deep" },
+      { "playerId": "SS", "type": "zone", "path": [[62,52],[65,48]], "style": "dashed", "note": "Strong run support / curl-flat" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Pre-snap: DL shifted weak (left). 3-tech to weak side. Strong DE wide in 7/9-tech. Sam walks up to strong edge.", "events": ["alignment"] },
+    { "step": 2, "description": "Post-snap: 3 DL attack weak-side gaps. SDE rushes wide. Sam sets strong edge or drops.", "events": ["snap", "engage"] },
+    { "step": 3, "description": "MLB fills strong A-gap. WLB fills weak B-gap. Sam contains or covers strong flat.", "events": ["fill", "contain"] }
+  ],
+  "tags": ["defense", "front", "under", "4-3", "weak-shift"]
+}

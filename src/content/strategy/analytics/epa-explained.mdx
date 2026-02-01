@@ -1,0 +1,85 @@
+---
+title: "EPA Explained"
+slug: "epa-explained"
+category: "strategy/analytics"
+level: ["hs", "college", "nfl"]
+tags: ["analytics", "epa", "advanced-stats"]
+related: ["expected-points", "success-rate", "dvoa-explained", "win-probability"]
+status: "published"
+---
+
+## Overview
+
+Expected Points Added (EPA) is one of the most important and widely used advanced metrics in modern football analytics. EPA measures the value of each individual play by comparing the expected points before the play to the expected points after the play. If a team starts a play in a situation worth an expected 2.5 points and ends the play in a situation worth an expected 4.1 points, that play has an EPA of +1.6. If the play moves the team to a less valuable situation — for example, an incomplete pass on third down that leads to a punt — the EPA is negative. By assigning a point value to every play, EPA provides a context-rich measure of performance that goes far beyond traditional statistics like yards and touchdowns.
+
+## How EPA Is Calculated
+
+### The Expected Points Model
+
+EPA is built on the Expected Points (EP) model, which assigns a point value to every game situation based on down, distance, yard line, and sometimes additional variables like time remaining and score differential. The EP model is constructed from historical play-by-play data — millions of plays from past seasons — that establish the average number of points scored from each situation. For example, first-and-10 at the opponent's 20-yard line might have an expected points value of 4.0, meaning that teams in that situation historically score an average of 4.0 points on that drive (accounting for touchdowns, field goals, turnovers, and punts).
+
+### The EPA Calculation
+
+EPA is simply the difference between the EP after a play and the EP before a play:
+
+**EPA = EP(after) - EP(before)**
+
+A first-down run from midfield that gains 8 yards moves the offense from, say, first-and-10 at the 50 (EP = 2.0) to second-and-2 at the opponent's 42 (EP = 2.8). The EPA of that run is +0.8. A sack on the same play might move the offense to second-and-17 at their own 43 (EP = 0.9), giving the play an EPA of -1.1.
+
+### Turnover and Scoring Values
+
+Turnovers produce large negative EPA values because they transfer possession to the opponent, dramatically reducing the offensive team's expected points and increasing the opponent's expected points. A touchdown produces a large positive EPA because it adds 7 expected points (touchdown plus extra point) minus whatever the pre-play EP was. An interception might produce an EPA of -4 or -5 depending on the situation.
+
+## Applications of EPA
+
+### Evaluating Quarterbacks
+
+EPA per play and EPA per dropback have become the primary advanced metrics for evaluating quarterback performance. By measuring the value the quarterback adds on each play, EPA captures the total impact of completions, incompletions, interceptions, scrambles, and sacks. A quarterback with a high EPA per dropback consistently creates positive value on passing plays, while a quarterback with negative EPA per dropback is actively hurting his team. EPA is preferred over passer rating and raw yardage because it accounts for the context of each play — a 5-yard completion on third-and-3 is far more valuable than a 5-yard completion on third-and-15.
+
+### Evaluating Play-Calling
+
+EPA can assess the effectiveness of an offensive coordinator's play-calling. By comparing the EPA of run plays versus pass plays, analysts can determine whether a team is calling the right plays in the right situations. If a team's EPA per pass play is significantly higher than its EPA per run play (which is true for most teams), the data suggests the team should pass more often. EPA by formation, personnel grouping, and play type provides granular insight into which concepts are working and which are not.
+
+### Evaluating Defenses
+
+Defensive EPA measures how much value the defense prevents on each play. A defense that consistently holds the opponent to negative EPA is performing well, forcing the offense into less favorable situations on each play. Defensive EPA can be calculated for individual players (such as EPA allowed per coverage snap for a cornerback) to assess individual performance within a team context.
+
+### Fourth-Down Decision-Making
+
+EPA is central to fourth-down decision-making models. By comparing the expected points of going for it (accounting for the probability of conversion and the EP value of success and failure) versus punting or kicking a field goal, EPA models provide data-driven recommendations. These models consistently show that NFL teams should go for it on fourth down more often than they currently do.
+
+## Strengths and Limitations
+
+### Strengths
+
+EPA provides a single, intuitive measure of play value that accounts for game context. It allows meaningful comparison across situations — a 3-yard run on third-and-2 is valued differently than a 3-yard run on third-and-8, reflecting the true impact of each play. EPA is cumulative, meaning the total EPA of a drive equals the actual scoring result minus the initial expected points.
+
+### Limitations
+
+EPA has several known limitations. The model is sensitive to the underlying expected points curve, which is based on historical averages and may not reflect the specific capabilities of the teams on the field. A team with an elite quarterback may have a higher actual expected points in a given situation than the league-average model suggests. EPA also does not directly account for the strategic value of running the ball (such as clock consumption) or the long-term effects of play-calling balance. Small sample sizes can make individual player EPA volatile, particularly early in a season.
+
+## EPA in Practice
+
+### Media and Public Discourse
+
+EPA has become ubiquitous in football media and public analysis. Analysts, journalists, and fans use EPA charts, leaderboards, and game summaries to evaluate teams and players. The metric has made advanced analytics accessible to a broad audience and has fundamentally changed how football performance is discussed.
+
+### Team Analytics Departments
+
+NFL teams use EPA and related metrics internally to evaluate performance, inform play-calling, and guide roster decisions. While team-specific models may differ in their construction and inputs, the core EPA framework is used across the league.
+
+## Level Differences
+
+### High School
+
+EPA is rarely calculated at the high school level due to limited data availability, but the underlying concepts — understanding that context matters and that not all yards are created equal — are applicable to any level of coaching.
+
+### College (NCAA)
+
+College football EPA models are widely available through public analytics platforms. College EPA accounts for the different rules and gameplay dynamics of the college game, including the wider hash marks and different clock rules.
+
+### NFL
+
+NFL EPA is the most refined and widely used version of the metric, built on the largest and most detailed play-by-play dataset in football. NFL teams, media outlets, and analytics platforms all rely on EPA as a foundational metric.
+
+EPA has transformed football analysis by providing a rigorous, context-aware measure of value that captures what traditional statistics miss — the true impact of every play.

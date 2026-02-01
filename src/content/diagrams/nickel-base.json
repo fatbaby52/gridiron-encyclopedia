@@ -1,0 +1,55 @@
+{
+  "id": "nickel-base",
+  "name": "Nickel Defense",
+  "formation": { "offense": "shotgun-3x1", "defense": "nickel" },
+  "players": {
+    "offense": [
+      { "id": "QB", "position": "QB", "x": 50, "y": 32, "label": "Q" },
+      { "id": "RB", "position": "RB", "x": 45, "y": 28, "label": "R" },
+      { "id": "LT", "position": "OL", "x": 38, "y": 37, "label": "T" },
+      { "id": "LG", "position": "OL", "x": 44, "y": 37, "label": "G" },
+      { "id": "C", "position": "OL", "x": 50, "y": 37, "label": "C" },
+      { "id": "RG", "position": "OL", "x": 56, "y": 37, "label": "G" },
+      { "id": "RT", "position": "OL", "x": 62, "y": 37, "label": "T" },
+      { "id": "X", "position": "WR", "x": 10, "y": 37, "label": "X" },
+      { "id": "H", "position": "WR", "x": 25, "y": 35, "label": "H" },
+      { "id": "Y", "position": "WR", "x": 75, "y": 35, "label": "Y" },
+      { "id": "Z", "position": "WR", "x": 90, "y": 37, "label": "Z" }
+    ],
+    "defense": [
+      { "id": "DE1", "position": "DL", "x": 35, "y": 40, "label": "E" },
+      { "id": "DT1", "position": "DL", "x": 46, "y": 40, "label": "T" },
+      { "id": "DT2", "position": "DL", "x": 55, "y": 40, "label": "T" },
+      { "id": "DE2", "position": "DL", "x": 65, "y": 40, "label": "E" },
+      { "id": "MLB", "position": "LB", "x": 48, "y": 46, "label": "M" },
+      { "id": "WLB", "position": "LB", "x": 58, "y": 46, "label": "W" },
+      { "id": "CB1", "position": "DB", "x": 12, "y": 42, "label": "C" },
+      { "id": "CB2", "position": "DB", "x": 88, "y": 42, "label": "C" },
+      { "id": "NB", "position": "DB", "x": 27, "y": 43, "label": "N" },
+      { "id": "FS", "position": "DB", "x": 45, "y": 56, "label": "F" },
+      { "id": "SS", "position": "DB", "x": 60, "y": 56, "label": "S" }
+    ]
+  },
+  "assignments": {
+    "offense": [],
+    "defense": [
+      { "playerId": "DE1", "type": "zone", "path": [[35,40],[33,39]], "style": "dashed", "note": "C-gap, edge contain" },
+      { "playerId": "DT1", "type": "zone", "path": [[46,40],[44,39]], "style": "dashed", "note": "A-gap" },
+      { "playerId": "DT2", "type": "zone", "path": [[55,40],[57,39]], "style": "dashed", "note": "B-gap" },
+      { "playerId": "DE2", "type": "zone", "path": [[65,40],[67,39]], "style": "dashed", "note": "C-gap, edge contain" },
+      { "playerId": "MLB", "type": "zone", "path": [[48,46],[48,52]], "style": "dashed", "note": "Hook zone, A/B gap fill vs run" },
+      { "playerId": "WLB", "type": "zone", "path": [[58,46],[62,50]], "style": "dashed", "note": "Curl zone, B-gap fill vs run" },
+      { "playerId": "CB1", "type": "zone", "path": [[12,42],[12,52]], "style": "dashed", "note": "Outside coverage on X" },
+      { "playerId": "CB2", "type": "zone", "path": [[88,42],[88,52]], "style": "dashed", "note": "Outside coverage on Z" },
+      { "playerId": "NB", "type": "zone", "path": [[27,43],[27,50]], "style": "dashed", "note": "Slot coverage on H, replaces 3rd LB" },
+      { "playerId": "FS", "type": "zone", "path": [[45,56],[45,62]], "style": "dashed", "note": "Deep half / center field" },
+      { "playerId": "SS", "type": "zone", "path": [[60,56],[60,62]], "style": "dashed", "note": "Deep half / robber" }
+    ]
+  },
+  "timing": [
+    { "step": 1, "description": "Pre-snap: 4 DL, 2 LBs, 5 DBs. Nickel back replaces 3rd LB, aligned over slot receiver.", "events": ["alignment"] },
+    { "step": 2, "description": "Post-snap: DL attacks gaps. NB covers slot. LBs read and react.", "events": ["snap", "read"] },
+    { "step": 3, "description": "LBs fill gaps vs run or drop to underneath zones. Safeties provide deep support.", "events": ["fill", "drop"] }
+  ],
+  "tags": ["defense", "front", "nickel", "sub-package", "passing-downs"]
+}

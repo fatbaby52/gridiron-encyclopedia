@@ -1,0 +1,3847 @@
+[
+  {
+    "title": "Cover 0 (Zero Coverage)",
+    "slug": "cover-0",
+    "category": "defense/coverages",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "coverage",
+      "cover-0",
+      "man-coverage",
+      "blitz"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Cover 1 (Man Free)",
+    "slug": "cover-1",
+    "category": "defense/coverages",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "coverages",
+      "man",
+      "cover-1",
+      "blitz"
+    ],
+    "description": "Man-to-man coverage with a single high safety.",
+    "status": "published"
+  },
+  {
+    "title": "Cover 2 Man (2-Man Under)",
+    "slug": "cover-2-man",
+    "category": "defense/coverages",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "coverage",
+      "cover-2",
+      "man-coverage"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Cover 2 Zone",
+    "slug": "cover-2",
+    "category": "defense/coverages",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "coverages",
+      "zone",
+      "cover-2",
+      "tampa-2"
+    ],
+    "description": "Two-deep safety zone coverage with five underneath defenders.",
+    "status": "published"
+  },
+  {
+    "title": "Cover 3 Zone",
+    "slug": "cover-3",
+    "category": "defense/coverages",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "coverages",
+      "zone",
+      "cover-3",
+      "single-high"
+    ],
+    "description": "Three-deep zone coverage dividing the field into thirds.",
+    "status": "published"
+  },
+  {
+    "title": "Cover 4 (Quarters)",
+    "slug": "cover-4",
+    "category": "defense/coverages",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "coverages",
+      "zone",
+      "cover-4",
+      "quarters",
+      "pattern-match"
+    ],
+    "description": "Four-deep zone coverage with pattern-matching principles.",
+    "status": "published"
+  },
+  {
+    "title": "Cover 6",
+    "slug": "cover-6",
+    "category": "defense/coverages",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "coverage",
+      "cover-6",
+      "split-coverage"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Coverage Overview",
+    "slug": "overview",
+    "category": "defense/coverages",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "coverages",
+      "zone",
+      "man",
+      "defense"
+    ],
+    "description": "An introduction to defensive coverage families.",
+    "status": "published"
+  },
+  {
+    "title": "Pattern Match Principles",
+    "slug": "pattern-match",
+    "category": "defense/coverages",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "coverage",
+      "pattern-match",
+      "zone"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Quarters Match Coverage",
+    "slug": "quarters-match",
+    "category": "defense/coverages",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "coverage",
+      "quarters",
+      "pattern-match"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Robber Coverage",
+    "slug": "robber",
+    "category": "defense/coverages",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "coverage",
+      "robber",
+      "hybrid"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Tampa 2",
+    "slug": "tampa-2",
+    "category": "defense/coverages",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "coverage",
+      "tampa-2",
+      "cover-2",
+      "zone"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "3-3-5 Stack Defense",
+    "slug": "3-3-5",
+    "category": "defense/fronts",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "front",
+      "3-3-5",
+      "spread-defense"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "3-4 Defense",
+    "slug": "3-4",
+    "category": "defense/fronts",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "fronts",
+      "3-4",
+      "defense",
+      "two-gap"
+    ],
+    "description": "A three-down-lineman front with versatile outside linebackers.",
+    "status": "published"
+  },
+  {
+    "title": "4-2-5 Defense",
+    "slug": "4-2-5",
+    "category": "defense/fronts",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "front",
+      "4-2-5",
+      "nickel"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "4-3 Defense",
+    "slug": "4-3",
+    "category": "defense/fronts",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "fronts",
+      "4-3",
+      "defense",
+      "alignment"
+    ],
+    "description": "The foundational four-down-lineman defensive front.",
+    "status": "published"
+  },
+  {
+    "title": "Bear Front (46 Defense)",
+    "slug": "bear-front",
+    "category": "defense/fronts",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "front",
+      "bear",
+      "46-defense"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Nickel Defense",
+    "slug": "nickel",
+    "category": "defense/fronts",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "fronts",
+      "nickel",
+      "sub-package",
+      "passing-downs"
+    ],
+    "description": "The five-defensive-back sub-package that dominates modern football.",
+    "status": "published"
+  },
+  {
+    "title": "Odd Stack Front",
+    "slug": "odd-stack",
+    "category": "defense/fronts",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "front",
+      "odd-stack",
+      "3-4"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Over Front",
+    "slug": "over-front",
+    "category": "defense/fronts",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "front",
+      "over",
+      "4-3"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Under Front",
+    "slug": "under-front",
+    "category": "defense/fronts",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "front",
+      "under",
+      "4-3"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Wide 9 Alignment",
+    "slug": "wide-9",
+    "category": "defense/fronts",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "front",
+      "wide-9",
+      "pass-rush"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "A-Gap Pressure",
+    "slug": "a-gap-blitz",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressure",
+      "a-gap",
+      "interior-pressure"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Corner Blitz",
+    "slug": "corner-blitz",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressure",
+      "corner",
+      "edge-pressure"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Delayed Blitz",
+    "slug": "delayed-blitz",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressure",
+      "delayed",
+      "timing"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Edge Rush Principles",
+    "slug": "edge-rush",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressure",
+      "edge-rush",
+      "pass-rush"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Fire Zone Blitz",
+    "slug": "fire-zone",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressure",
+      "fire-zone",
+      "zone-blitz"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Interior Pressure",
+    "slug": "interior-pressure",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressure",
+      "interior",
+      "defensive-tackle"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Overload Blitz",
+    "slug": "overload-blitz",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressure",
+      "overload",
+      "blitz"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Pressure Overview",
+    "slug": "overview",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressures",
+      "blitz",
+      "defense",
+      "pass-rush"
+    ],
+    "description": "Introduction to defensive pressure concepts.",
+    "status": "published"
+  },
+  {
+    "title": "Safety Blitz",
+    "slug": "safety-blitz",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressure",
+      "safety",
+      "secondary-pressure"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Simulated Pressure",
+    "slug": "simulated-pressure",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressure",
+      "simulated",
+      "deception"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Stunts and Line Games",
+    "slug": "stunt-games",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressure",
+      "stunts",
+      "defensive-line"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Zero Blitz",
+    "slug": "zero-blitz",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressure",
+      "zero-blitz",
+      "cover-0"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Zone Blitz",
+    "slug": "zone-blitz",
+    "category": "defense/pressures",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pressures",
+      "zone-blitz",
+      "blitz",
+      "dick-lebeau"
+    ],
+    "description": "Dick LeBeau's innovative pressure concept that combines blitzing with zone coverage behind it.",
+    "status": "published"
+  },
+  {
+    "title": "Saban-Belichick Defensive System",
+    "slug": "saban-defense",
+    "category": "defense/schemes",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "scheme",
+      "saban",
+      "belichick",
+      "pattern-match"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Backpedal and Break",
+    "slug": "backpedal-break",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-back",
+      "footwork"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Bail Technique",
+    "slug": "bail-technique",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-back",
+      "coverage"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Ball Skills and Interceptions",
+    "slug": "ball-skills",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-back",
+      "turnovers"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Blitz Timing and Execution",
+    "slug": "blitz-timing",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "linebacker",
+      "blitz"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Bull Rush",
+    "slug": "bull-rush",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-line",
+      "pass-rush"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Edge Containment",
+    "slug": "containment",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-line",
+      "run-defense"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Linebacker Man Coverage",
+    "slug": "man-coverage-lb",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "linebacker",
+      "man-coverage"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Off-Man Coverage Technique",
+    "slug": "off-man-technique",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-back",
+      "man-coverage"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "One-Gap Technique",
+    "slug": "one-gap-technique",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-line",
+      "run-defense"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Pass Rush Moves",
+    "slug": "pass-rush-moves",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-line",
+      "pass-rush"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Pattern Recognition",
+    "slug": "pattern-recognition",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-back",
+      "reads"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Press Coverage Technique",
+    "slug": "press-technique",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-back",
+      "press-coverage"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Pursuit Angles",
+    "slug": "pursuit-angles",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "linebacker",
+      "tackling"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Rip Move",
+    "slug": "rip-move",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-line",
+      "pass-rush"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Run Fit and Fill",
+    "slug": "run-fit-fill",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "linebacker",
+      "run-defense"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Defensive Line Run Fits",
+    "slug": "run-fits-dl",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-line",
+      "run-defense"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Safety Run Support",
+    "slug": "safety-run-support",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "safety",
+      "run-defense"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Spin Move",
+    "slug": "spin-move",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-line",
+      "pass-rush"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Swim Move",
+    "slug": "swim-move",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-line",
+      "pass-rush"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Tackling Fundamentals",
+    "slug": "tackling-fundamentals",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "fundamentals",
+      "tackling"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Tackling in Space",
+    "slug": "tackling-in-space",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-back",
+      "tackling"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Two-Gap Technique",
+    "slug": "two-gap-technique",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-line",
+      "run-defense"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Defensive Back Zone Drops",
+    "slug": "zone-drops-db",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "defensive-back",
+      "zone-coverage"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Linebacker Zone Drops",
+    "slug": "zone-drops-lb",
+    "category": "defense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "linebacker",
+      "zone-coverage"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Defensive Positions",
+    "slug": "defensive-positions",
+    "category": "fundamentals",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "defense",
+      "defensive line",
+      "linebacker",
+      "defensive back",
+      "secondary"
+    ],
+    "description": "A comprehensive guide to all defensive positions in football, covering the defensive line, linebacker corps, and secondary, including specialized roles at each level.",
+    "status": "published"
+  },
+  {
+    "title": "Downs and Distance",
+    "slug": "downs-and-distance",
+    "category": "fundamentals",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "downs",
+      "first down",
+      "fourth down",
+      "punting",
+      "conversion"
+    ],
+    "description": "An in-depth explanation of the down-and-distance system, including how first downs are achieved, fourth-down decisions, and conversion strategies.",
+    "status": "published"
+  },
+  {
+    "title": "Field and Equipment",
+    "slug": "field-and-equipment",
+    "category": "fundamentals",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "field",
+      "equipment",
+      "helmet",
+      "pads",
+      "football",
+      "goal posts",
+      "end zone"
+    ],
+    "description": "A detailed guide to the football field's dimensions, markings, and zones, along with an overview of essential player equipment and the football itself.",
+    "status": "published"
+  },
+  {
+    "title": "Game Structure",
+    "slug": "game-structure",
+    "category": "fundamentals",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "game flow",
+      "quarters",
+      "halftime",
+      "overtime",
+      "clock management"
+    ],
+    "description": "A comprehensive overview of how a football game is organized, including quarters, halftime, overtime procedures, and the basics of clock management.",
+    "status": "published"
+  },
+  {
+    "title": "Offensive Positions",
+    "slug": "offensive-positions",
+    "category": "fundamentals",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "offense",
+      "quarterback",
+      "running back",
+      "wide receiver",
+      "tight end",
+      "offensive line"
+    ],
+    "description": "A detailed guide to every offensive position in football, including the quarterback, running backs, receivers, tight ends, and all five offensive line positions.",
+    "status": "published"
+  },
+  {
+    "title": "Overtime Rules",
+    "slug": "overtime-rules",
+    "category": "fundamentals",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "fundamentals",
+      "overtime",
+      "rules"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Penalties",
+    "slug": "penalties",
+    "category": "fundamentals",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "penalties",
+      "fouls",
+      "flags",
+      "officiating",
+      "rules"
+    ],
+    "description": "A thorough overview of common football penalties, including pre-snap infractions, blocking and holding fouls, passing penalties, and personal fouls, with details on enforcement and yardage.",
+    "status": "published"
+  },
+  {
+    "title": "Replay and Challenges",
+    "slug": "replay-and-challenges",
+    "category": "fundamentals",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "fundamentals",
+      "replay",
+      "challenges",
+      "rules"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Scoring in Football",
+    "slug": "scoring",
+    "category": "fundamentals",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "fundamentals",
+      "scoring",
+      "rules"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Special Game Situations",
+    "slug": "special-situations",
+    "category": "fundamentals",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "fundamentals",
+      "situations",
+      "rules"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Timeout Strategy",
+    "slug": "timeout-strategy",
+    "category": "fundamentals",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "fundamentals",
+      "timeouts",
+      "strategy"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Turnovers",
+    "slug": "turnovers",
+    "category": "fundamentals",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "fundamentals",
+      "turnovers",
+      "fumble",
+      "interception"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Coaching Trees",
+    "slug": "coaching-trees",
+    "category": "history",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "history",
+      "coaching",
+      "coaching-trees",
+      "legacy"
+    ],
+    "description": "How football ideas spread through coaching lineages.",
+    "status": "published"
+  },
+  {
+    "title": "Defensive Evolution",
+    "slug": "defensive-evolution",
+    "category": "history",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "history",
+      "defense",
+      "evolution"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "History of the Forward Pass",
+    "slug": "forward-pass-history",
+    "category": "history",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "history",
+      "forward-pass",
+      "passing"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Greatest Offensive Innovations",
+    "slug": "greatest-innovations",
+    "category": "history",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "history",
+      "innovation",
+      "offense"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Bill Parcells Coaching Tree",
+    "slug": "parcells-coaching-tree",
+    "category": "history",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "history",
+      "coaching-tree",
+      "parcells"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Evolution of the Passing Game",
+    "slug": "passing-game-evolution",
+    "category": "history",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "history",
+      "passing",
+      "evolution"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "How Rule Changes Shaped Football",
+    "slug": "rules-impact",
+    "category": "history",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "history",
+      "rules",
+      "evolution"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Evolution of the Run Game",
+    "slug": "run-game-evolution",
+    "category": "history",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "history",
+      "run-game",
+      "evolution"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Evolution of the Spread Offense",
+    "slug": "spread-evolution",
+    "category": "history",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "history",
+      "spread",
+      "evolution",
+      "innovation"
+    ],
+    "description": "How the spread offense transformed football at every level.",
+    "status": "published"
+  },
+  {
+    "title": "Notable Super Bowl Strategies",
+    "slug": "super-bowl-strategies",
+    "category": "history",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "history",
+      "super-bowl",
+      "strategy"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "The T-Formation Revolution",
+    "slug": "t-formation-revolution",
+    "category": "history",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "history",
+      "t-formation",
+      "revolution"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Bill Walsh Coaching Tree",
+    "slug": "walsh-coaching-tree",
+    "category": "history",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "history",
+      "coaching-tree",
+      "walsh",
+      "west-coast"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Curl-Flat Concept",
+    "slug": "curl-flat",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "curl-flat",
+      "zone-beater"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Dagger Concept",
+    "slug": "dagger",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "dagger",
+      "deep-passing"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Drive Concept",
+    "slug": "drive-concept",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "drive",
+      "crossing-routes"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Four Verticals",
+    "slug": "four-verticals",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "vertical",
+      "deep",
+      "passing",
+      "air-raid"
+    ],
+    "description": "A deep passing concept that stretches the field vertically.",
+    "status": "published"
+  },
+  {
+    "title": "Levels Concept",
+    "slug": "levels",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "levels",
+      "zone-beater"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Mesh Concept",
+    "slug": "mesh",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "passing",
+      "mesh",
+      "crossing",
+      "man-beater"
+    ],
+    "description": "Crossing routes that create natural picks against man coverage.",
+    "status": "published"
+  },
+  {
+    "title": "Pass Concepts Overview",
+    "slug": "overview",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "passing",
+      "concepts",
+      "quick-game",
+      "dropback"
+    ],
+    "description": "Introduction to pass concept families.",
+    "status": "published"
+  },
+  {
+    "title": "Play Action Passing",
+    "slug": "play-action-passing",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "play-action",
+      "deep-passing"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Post-Wheel Concept",
+    "slug": "post-wheel",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "post-wheel",
+      "deep-passing"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Quick Game Overview",
+    "slug": "quick-game",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "quick-game",
+      "timing"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Run-Pass Options (RPO)",
+    "slug": "rpo-overview",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "rpo",
+      "option"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Sail Concept",
+    "slug": "sail",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "sail",
+      "flood"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Screen Game",
+    "slug": "screen-game",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "screen",
+      "misdirection"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Slant-Flat Concept",
+    "slug": "slant-flat",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "quick-game",
+      "slant",
+      "flat",
+      "high-low"
+    ],
+    "description": "A quick-game high-low read on the flat defender.",
+    "status": "published"
+  },
+  {
+    "title": "Smash Concept",
+    "slug": "smash",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "passing",
+      "smash",
+      "corner",
+      "high-low"
+    ],
+    "description": "A two-man high-low concept attacking the corner defender.",
+    "status": "published"
+  },
+  {
+    "title": "Snag Concept",
+    "slug": "snag",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "snag",
+      "triangle"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Spacing Concept",
+    "slug": "spacing",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "spacing",
+      "quick-game"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Y-Cross (Shallow Cross)",
+    "slug": "y-cross",
+    "category": "offense/concepts/pass",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "pass-concept",
+      "crossing-routes",
+      "man-beater"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Bunch Formation",
+    "slug": "bunch-formation",
+    "category": "offense/formations",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "formation",
+      "bunch",
+      "passing"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Empty Formation",
+    "slug": "empty-formation",
+    "category": "offense/formations",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "formation",
+      "empty",
+      "passing"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "The I-Formation",
+    "slug": "i-formation",
+    "category": "offense/formations",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "i-formation",
+      "power running",
+      "play-action",
+      "under center",
+      "fullback",
+      "tailback"
+    ],
+    "description": "A comprehensive look at the I-Formation, one of football's most iconic alignments featuring a quarterback under center, a fullback, and a tailback aligned in a straight line.",
+    "status": "published"
+  },
+  {
+    "title": "Personnel Groupings Explained",
+    "slug": "personnel-groupings",
+    "category": "offense/formations",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "personnel",
+      "11 personnel",
+      "12 personnel",
+      "21 personnel",
+      "22 personnel",
+      "10 personnel",
+      "00 personnel",
+      "formation",
+      "strategy"
+    ],
+    "description": "A complete guide to offensive personnel groupings in football, explaining how the numbering system works, what each grouping looks like on the field, and the strategic implications of choosing one over another.",
+    "status": "published"
+  },
+  {
+    "title": "Pistol Formation",
+    "slug": "pistol-formation",
+    "category": "offense/formations",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "formation",
+      "pistol",
+      "shotgun"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "The Shotgun Formation",
+    "slug": "shotgun",
+    "category": "offense/formations",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "shotgun",
+      "passing game",
+      "spread offense",
+      "quarterback",
+      "snap",
+      "formation"
+    ],
+    "description": "An in-depth guide to the Shotgun formation, covering its history, alignment variations, passing game advantages, and role in modern spread concepts.",
+    "status": "published"
+  },
+  {
+    "title": "The Spread Offense Formation",
+    "slug": "spread",
+    "category": "offense/formations",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "spread offense",
+      "spacing",
+      "10 personnel",
+      "11 personnel",
+      "empty set",
+      "formation",
+      "horizontal stretch"
+    ],
+    "description": "A detailed examination of the spread offense formation philosophy, including how it uses spacing to attack the entire width of the field, common personnel packages, and empty set variations.",
+    "status": "published"
+  },
+  {
+    "title": "Trips Formation",
+    "slug": "trips-formation",
+    "category": "offense/formations",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "formation",
+      "trips",
+      "passing"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Unbalanced Line Formations",
+    "slug": "unbalanced-line-formations",
+    "category": "offense/formations",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "formation",
+      "unbalanced",
+      "trick-plays"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Wing-T Formation",
+    "slug": "wing-t-formation",
+    "category": "offense/formations",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "formation",
+      "wing-t",
+      "misdirection"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Counter Run",
+    "slug": "counter",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "gap",
+      "run-game",
+      "counter",
+      "misdirection"
+    ],
+    "description": "A misdirection gap run with two pulling linemen.",
+    "status": "published"
+  },
+  {
+    "title": "Draw Play",
+    "slug": "draw",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-scheme",
+      "draw",
+      "misdirection"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Duo",
+    "slug": "duo",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-scheme",
+      "duo",
+      "gap-scheme"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Inside Zone",
+    "slug": "inside-zone",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "zone",
+      "run-game",
+      "inside-zone",
+      "blocking"
+    ],
+    "description": "The most popular run play in modern football.",
+    "status": "published"
+  },
+  {
+    "title": "Isolation (ISO)",
+    "slug": "iso",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-scheme",
+      "iso",
+      "gap-scheme"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Jet Sweep",
+    "slug": "jet-sweep",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-scheme",
+      "jet-sweep",
+      "speed"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Lead Zone",
+    "slug": "lead-zone",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-scheme",
+      "lead-zone",
+      "zone-scheme"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Outside Zone",
+    "slug": "outside-zone",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "zone",
+      "run-game",
+      "outside-zone",
+      "stretch"
+    ],
+    "description": "A lateral stretch run that attacks the edge.",
+    "status": "published"
+  },
+  {
+    "title": "Run Schemes Overview",
+    "slug": "overview",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-game",
+      "schemes",
+      "zone",
+      "gap"
+    ],
+    "description": "An introduction to the major families of run schemes in football.",
+    "status": "published"
+  },
+  {
+    "title": "Power Run",
+    "slug": "power",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "gap",
+      "run-game",
+      "power",
+      "pulling"
+    ],
+    "description": "A gap-scheme run with a pulling guard and lead blocker.",
+    "status": "published"
+  },
+  {
+    "title": "QB Power Read (Inverted Veer)",
+    "slug": "qb-power-read",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-scheme",
+      "qb-run",
+      "option"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Read Option",
+    "slug": "read-option",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-scheme",
+      "read-option",
+      "option"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Speed Option",
+    "slug": "speed-option",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-scheme",
+      "speed-option",
+      "option"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Sweep",
+    "slug": "sweep",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-scheme",
+      "sweep",
+      "outside-run"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Toss",
+    "slug": "toss",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-scheme",
+      "toss",
+      "outside-run"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Trap",
+    "slug": "trap",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-scheme",
+      "trap",
+      "gap-scheme"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Triple Option",
+    "slug": "triple-option",
+    "category": "offense/schemes/run",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "run-scheme",
+      "triple-option",
+      "option"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Air Raid Offense",
+    "slug": "air-raid",
+    "category": "offense/systems",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "systems",
+      "air-raid",
+      "spread",
+      "tempo"
+    ],
+    "description": "A spread passing system built on simplicity and tempo.",
+    "status": "published"
+  },
+  {
+    "title": "Coryell Vertical Passing System",
+    "slug": "coryell-system",
+    "category": "offense/systems",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "system",
+      "coryell",
+      "vertical-passing"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Erhardt-Perkins System",
+    "slug": "erhardt-perkins",
+    "category": "offense/systems",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "system",
+      "erhardt-perkins",
+      "patriots"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Run and Shoot Offense",
+    "slug": "run-and-shoot",
+    "category": "offense/systems",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "system",
+      "run-and-shoot",
+      "passing"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Shanahan Outside Zone System",
+    "slug": "shanahan-system",
+    "category": "offense/systems",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "system",
+      "shanahan",
+      "outside-zone",
+      "play-action"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "West Coast Offense",
+    "slug": "west-coast-offense",
+    "category": "offense/systems",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "systems",
+      "west-coast",
+      "bill-walsh",
+      "passing"
+    ],
+    "description": "Bill Walsh's revolutionary short passing system.",
+    "status": "published"
+  },
+  {
+    "title": "Ball Security Fundamentals",
+    "slug": "ball-security-fundamentals",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "running-back",
+      "ball-security"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Blocking for Wide Receivers",
+    "slug": "blocking-for-wide-receivers",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "wide-receiver",
+      "blocking"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Catching Mechanics",
+    "slug": "catching-mechanics",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "wide-receiver",
+      "catching"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Dropback Passing Mechanics",
+    "slug": "dropback-passing-mechanics",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "quarterback",
+      "passing"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Man Blocking Scheme",
+    "slug": "man-blocking-scheme",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "offensive-line",
+      "man-blocking"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Running Back Pass Protection",
+    "slug": "running-back-pass-protection",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "running-back",
+      "pass-protection"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Pass Protection Fundamentals",
+    "slug": "pass-protection-fundamentals",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "offensive-line",
+      "pass-protection"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Play Action Technique",
+    "slug": "play-action-technique",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "quarterback",
+      "play-action"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Pocket Movement and Awareness",
+    "slug": "pocket-movement-and-awareness",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "quarterback",
+      "pocket"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Pre-Snap Reads",
+    "slug": "pre-snap-reads",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "quarterback",
+      "reads"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Pulling Technique",
+    "slug": "pulling-technique",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "offensive-line",
+      "pulling"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Receiving Out of the Backfield",
+    "slug": "receiving-out-of-the-backfield",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "running-back",
+      "receiving"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Release Techniques",
+    "slug": "release-techniques",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "wide-receiver",
+      "release"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Route Running Fundamentals",
+    "slug": "route-running-fundamentals",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "wide-receiver",
+      "routes"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "The Route Tree",
+    "slug": "the-route-tree",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "wide-receiver",
+      "routes",
+      "route-tree"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Scramble Drill",
+    "slug": "scramble-drill",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "quarterback",
+      "scramble"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Tight End Techniques",
+    "slug": "tight-end-techniques",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "tight-end",
+      "blocking",
+      "receiving"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Running Back Vision and Patience",
+    "slug": "running-back-vision-and-patience",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "running-back",
+      "vision"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Zone Blocking Scheme",
+    "slug": "zone-blocking-scheme",
+    "category": "offense/techniques",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "technique",
+      "offensive-line",
+      "zone-blocking"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Alignment and Technique Numbering",
+    "slug": "alignment-numbering",
+    "category": "reference",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "reference",
+      "alignment",
+      "techniques"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Coverage Nomenclature",
+    "slug": "coverage-nomenclature",
+    "category": "reference",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "reference",
+      "coverage",
+      "terminology"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Gap and Hole Terminology",
+    "slug": "gap-terminology",
+    "category": "reference",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "reference",
+      "gaps",
+      "terminology"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Football Glossary",
+    "slug": "glossary",
+    "category": "reference",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "reference",
+      "glossary",
+      "terminology",
+      "definitions"
+    ],
+    "description": "A comprehensive glossary of American football terms.",
+    "status": "published"
+  },
+  {
+    "title": "Personnel Packages",
+    "slug": "personnel-packages",
+    "category": "reference",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "reference",
+      "personnel",
+      "formations"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Play Diagramming Key",
+    "slug": "play-diagramming-key",
+    "category": "reference",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "reference",
+      "diagrams",
+      "symbols"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Fake Field Goal",
+    "slug": "fake-field-goal",
+    "category": "special-teams",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "special-teams",
+      "fake",
+      "trick-plays"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Fake Punt",
+    "slug": "fake-punt",
+    "category": "special-teams",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "special-teams",
+      "fake",
+      "trick-plays"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Field Goal and PAT",
+    "slug": "field-goal",
+    "category": "special-teams",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "special-teams",
+      "field-goal",
+      "kicking"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Gunner and Vise Techniques",
+    "slug": "gunner-techniques",
+    "category": "special-teams",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "special-teams",
+      "gunner",
+      "technique"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Kick Return",
+    "slug": "kick-return",
+    "category": "special-teams",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "special-teams",
+      "kick-return",
+      "return-game"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Kickoff Coverage",
+    "slug": "kickoff-coverage",
+    "category": "special-teams",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "special-teams",
+      "kickoff",
+      "coverage"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Kickoff",
+    "slug": "kickoff",
+    "category": "special-teams",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "special-teams",
+      "kickoff",
+      "return",
+      "coverage"
+    ],
+    "description": "The kickoff unit and return game.",
+    "status": "published"
+  },
+  {
+    "title": "Onside Kick",
+    "slug": "onside-kick",
+    "category": "special-teams",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "special-teams",
+      "onside",
+      "trick-plays"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Punt Coverage",
+    "slug": "punt-coverage",
+    "category": "special-teams",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "special-teams",
+      "punt",
+      "coverage"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Punt Return",
+    "slug": "punt-return",
+    "category": "special-teams",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "special-teams",
+      "punt-return",
+      "return-game"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Punt",
+    "slug": "punt",
+    "category": "special-teams",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "special-teams",
+      "punt",
+      "return",
+      "coverage"
+    ],
+    "description": "The punt unit, coverage, and return game.",
+    "status": "published"
+  },
+  {
+    "title": "Return Blocking Schemes",
+    "slug": "return-blocking",
+    "category": "special-teams",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "special-teams",
+      "blocking",
+      "return-game"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Fourth Down Decisions",
+    "slug": "4th-down-decisions",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "analytics",
+      "4th-down",
+      "decision-making"
+    ],
+    "description": "The analytics revolution in fourth down decision-making.",
+    "status": "published"
+  },
+  {
+    "title": "In-Game Adjustments",
+    "slug": "adjustment-philosophy",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "adjustments",
+      "coaching"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "DVOA Explained",
+    "slug": "dvoa-explained",
+    "category": "strategy/analytics",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "analytics",
+      "dvoa",
+      "advanced-stats"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "EPA Explained",
+    "slug": "epa-explained",
+    "category": "strategy/analytics",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "analytics",
+      "epa",
+      "advanced-stats"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Expected Points Model",
+    "slug": "expected-points",
+    "category": "strategy/analytics",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "analytics",
+      "expected-points",
+      "advanced-stats"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Success Rate",
+    "slug": "success-rate",
+    "category": "strategy/analytics",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "analytics",
+      "success-rate",
+      "advanced-stats"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Win Probability",
+    "slug": "win-probability",
+    "category": "strategy/analytics",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "analytics",
+      "win-probability",
+      "advanced-stats"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Clock Management",
+    "slug": "clock-management",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "clock",
+      "game-management"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Game Planning",
+    "slug": "game-planning",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "game-plan",
+      "coaching"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Goal Line Defense",
+    "slug": "goal-line-defense",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "goal-line",
+      "defense"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Goal Line Offense",
+    "slug": "goal-line-offense",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "goal-line",
+      "short-yardage"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Hurry-Up and Tempo Offense",
+    "slug": "hurry-up-offense",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "tempo",
+      "no-huddle"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "No-Huddle Offense",
+    "slug": "no-huddle",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "no-huddle",
+      "tempo"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Red Zone Strategy",
+    "slug": "red-zone",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "red-zone",
+      "scoring",
+      "goal-line"
+    ],
+    "description": "Offensive and defensive strategy inside the 20-yard line.",
+    "status": "published"
+  },
+  {
+    "title": "Self-Scouting",
+    "slug": "self-scouting",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "self-scout",
+      "tendencies"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Short Yardage",
+    "slug": "short-yardage",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "short-yardage",
+      "situational"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Tendency Analysis",
+    "slug": "tendency-analysis",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "tendencies",
+      "analytics"
+    ],
+    "description": "",
+    "status": "published"
+  },
+  {
+    "title": "Two-Minute Drill",
+    "slug": "two-minute-drill",
+    "category": "strategy",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "strategy",
+      "clock-management",
+      "hurry-up",
+      "tempo"
+    ],
+    "description": "Managing the clock and scoring in the final two minutes.",
+    "status": "published"
+  },
+  {
+    "title": "Conditioning & Endurance for Football",
+    "slug": "conditioning-endurance",
+    "category": "training/athletic-development",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "conditioning",
+      "endurance",
+      "energy-systems",
+      "gassers",
+      "tempo-runs",
+      "heat-acclimation"
+    ],
+    "description": "An in-depth guide to football-specific conditioning, covering energy system development, position-specific protocols, heat acclimation, and strategies to avoid overtraining.",
+    "status": "published"
+  },
+  {
+    "title": "Flexibility & Mobility for Football Players",
+    "slug": "flexibility-mobility",
+    "category": "training/athletic-development",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "flexibility",
+      "mobility",
+      "warm-up",
+      "stretching",
+      "foam-rolling",
+      "hip-mobility",
+      "injury-prevention"
+    ],
+    "description": "A detailed guide to flexibility and mobility training for football players, including dynamic warm-up protocols, joint-specific mobility work, and activation strategies.",
+    "status": "published"
+  },
+  {
+    "title": "Recovery & Injury Prevention",
+    "slug": "recovery-injury-prevention",
+    "category": "training/athletic-development",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "recovery",
+      "injury-prevention",
+      "sleep",
+      "nutrition",
+      "prehab",
+      "ACL",
+      "concussion",
+      "return-to-play"
+    ],
+    "description": "A thorough guide to recovery science and injury prevention strategies for football players, covering sleep, nutrition, prehab protocols, common injuries, and return-to-play guidelines.",
+    "status": "published"
+  },
+  {
+    "title": "Speed & Agility Training for Football",
+    "slug": "speed-agility",
+    "category": "training/athletic-development",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "speed",
+      "agility",
+      "change-of-direction",
+      "plyometrics",
+      "40-yard-dash",
+      "cone-drills"
+    ],
+    "description": "A comprehensive guide to developing straight-line speed, acceleration, and multi-directional agility for football players at every level.",
+    "status": "published"
+  },
+  {
+    "title": "Strength Training Programs for Football",
+    "slug": "strength-programs",
+    "category": "training/athletic-development",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "strength",
+      "weightlifting",
+      "periodization",
+      "power-clean",
+      "squat",
+      "bench-press",
+      "deadlift"
+    ],
+    "description": "A complete guide to strength training for football players, covering foundational lifts, periodization, position-specific programming, and safety protocols.",
+    "status": "published"
+  },
+  {
+    "title": "3-Cone Drill (L-Drill) Training",
+    "slug": "3-cone-drill",
+    "category": "training/combine-prep",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "combine",
+      "3-cone-drill",
+      "agility",
+      "change-of-direction",
+      "L-drill",
+      "pro-day"
+    ],
+    "description": "A comprehensive breakdown of the 3-cone drill setup, execution mechanics, training protocols, and position-specific benchmarks for NFL Combine and Pro Day preparation.",
+    "status": "published"
+  },
+  {
+    "title": "40-Yard Dash Training & Technique",
+    "slug": "40-yard-dash",
+    "category": "training/combine-prep",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "combine",
+      "speed",
+      "40-yard-dash",
+      "sprinting",
+      "acceleration",
+      "pro-day"
+    ],
+    "description": "A comprehensive breakdown of 40-yard dash mechanics, training protocols, and technique optimization for football athletes preparing for the NFL Combine and Pro Days.",
+    "status": "published"
+  },
+  {
+    "title": "Broad Jump Training & Technique",
+    "slug": "broad-jump",
+    "category": "training/combine-prep",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "combine",
+      "broad-jump",
+      "explosiveness",
+      "power",
+      "horizontal-force",
+      "pro-day"
+    ],
+    "description": "A detailed guide to broad jump mechanics, horizontal power development, and training progressions for football athletes preparing for the NFL Combine and Pro Days.",
+    "status": "published"
+  },
+  {
+    "title": "NFL Combine Position-Specific Drills",
+    "slug": "combine-position-drills",
+    "category": "training/combine-prep",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "combine",
+      "position-drills",
+      "quarterback",
+      "receiver",
+      "running-back",
+      "offensive-line",
+      "defensive-line",
+      "linebacker",
+      "defensive-back",
+      "pro-day"
+    ],
+    "description": "A comprehensive guide to NFL Combine position-specific drills, covering what scouts evaluate and how athletes at every position can prepare for their on-field workout.",
+    "status": "published"
+  },
+  {
+    "title": "20-Yard Shuttle (5-10-5) Training",
+    "slug": "shuttle-run",
+    "category": "training/combine-prep",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "combine",
+      "shuttle-run",
+      "5-10-5",
+      "agility",
+      "change-of-direction",
+      "lateral-movement",
+      "pro-day"
+    ],
+    "description": "A comprehensive guide to the 20-yard shuttle (5-10-5) drill mechanics, change-of-direction training, and performance optimization for NFL Combine and Pro Day preparation.",
+    "status": "published"
+  },
+  {
+    "title": "Vertical Jump Training for Football",
+    "slug": "vertical-jump",
+    "category": "training/combine-prep",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "combine",
+      "vertical-jump",
+      "plyometrics",
+      "explosiveness",
+      "power",
+      "pro-day"
+    ],
+    "description": "An in-depth guide to vertical jump mechanics, training progressions, and performance optimization for football athletes preparing for the NFL Combine and Pro Days.",
+    "status": "published"
+  },
+  {
+    "title": "Football Cleats Guide",
+    "slug": "football-cleats",
+    "category": "training/equipment",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "equipment",
+      "cleats",
+      "footwear",
+      "position-specific"
+    ],
+    "description": "An in-depth guide to football cleats covering cleat types, position-specific recommendations, surface considerations, fit, sizing, top brands, and rule compliance at every level.",
+    "status": "published"
+  },
+  {
+    "title": "Football Gloves & Accessories",
+    "slug": "gloves-accessories",
+    "category": "training/equipment",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "equipment",
+      "gloves",
+      "accessories",
+      "receivers",
+      "linemen"
+    ],
+    "description": "A detailed guide to football gloves and accessories including receiver gloves, lineman gloves, visors, chin straps, mouthguards, arm sleeves, and other game-day essentials.",
+    "status": "published"
+  },
+  {
+    "title": "Football Protective Gear & Equipment",
+    "slug": "protective-gear",
+    "category": "training/equipment",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "equipment",
+      "helmets",
+      "shoulder-pads",
+      "safety",
+      "protective"
+    ],
+    "description": "A comprehensive guide to football protective gear including helmet technology, shoulder pads, rib protectors, padded compression, knee and thigh pads, ankle support, and safety standards at every level.",
+    "status": "published"
+  },
+  {
+    "title": "Recovery Tools & Equipment",
+    "slug": "recovery-tools",
+    "category": "training/equipment",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "equipment",
+      "recovery",
+      "therapy",
+      "injury-prevention",
+      "wellness"
+    ],
+    "description": "A thorough guide to recovery tools and equipment for football players including foam rollers, massage guns, compression boots, cold therapy, EMS devices, and sleep and hydration optimization.",
+    "status": "published"
+  },
+  {
+    "title": "Football Training Equipment Guide",
+    "slug": "training-equipment",
+    "category": "training/equipment",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "equipment",
+      "agility",
+      "speed",
+      "strength",
+      "conditioning"
+    ],
+    "description": "A comprehensive guide to football training equipment including agility ladders, resistance tools, blocking pads, passing machines, and home gym setup options for every level of play.",
+    "status": "published"
+  },
+  {
+    "title": "College Off-Season Training Program",
+    "slug": "college-offseason",
+    "category": "training/off-season",
+    "level": [
+      "college"
+    ],
+    "tags": [
+      "training",
+      "off-season",
+      "college",
+      "NCAA",
+      "strength",
+      "conditioning",
+      "nutrition",
+      "testing",
+      "CARA"
+    ],
+    "description": "An in-depth guide to college football off-season programming, covering NCAA-regulated training periods, winter conditioning, spring ball preparation, summer voluntary workouts, positional benchmarks, and evaluation protocols.",
+    "status": "published"
+  },
+  {
+    "title": "High School Off-Season Training Program",
+    "slug": "high-school-offseason",
+    "category": "training/off-season",
+    "level": [
+      "hs"
+    ],
+    "tags": [
+      "training",
+      "off-season",
+      "high-school",
+      "strength",
+      "hypertrophy",
+      "power",
+      "speed-agility",
+      "bodyweight",
+      "progressive-overload"
+    ],
+    "description": "A comprehensive 12-16 week off-season training framework for high school football players, covering phased programming, bodyweight foundations, progressive overload, multi-sport considerations, and summer preparation.",
+    "status": "published"
+  },
+  {
+    "title": "In-Season Training & Maintenance",
+    "slug": "in-season-maintenance",
+    "category": "training/off-season",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "in-season",
+      "maintenance",
+      "recovery",
+      "game-day-minus",
+      "fatigue-management",
+      "nutrition",
+      "mental-wellness",
+      "bye-week"
+    ],
+    "description": "A thorough guide to maintaining strength, power, and conditioning during the football season, covering the game-day-minus scheduling system, recovery protocols, fatigue management, nutrition periodization, mental wellness, and bye-week training strategies across all levels of play.",
+    "status": "published"
+  },
+  {
+    "title": "Professional Off-Season Training Program",
+    "slug": "pro-offseason",
+    "category": "training/off-season",
+    "level": [
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "off-season",
+      "NFL",
+      "professional",
+      "recovery",
+      "OTAs",
+      "minicamp",
+      "training-camp",
+      "elite-development"
+    ],
+    "description": "A detailed exploration of NFL off-season training, covering the league's structured timeline, private trainer partnerships, position-specific elite development, veteran and contract-year strategies, and the mental preparation required at the highest level.",
+    "status": "published"
+  },
+  {
+    "title": "Defensive Back Training & Workouts",
+    "slug": "db-workouts",
+    "category": "training/position-specific",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "workouts",
+      "defensive-back"
+    ],
+    "description": "A detailed guide to defensive back training covering backpedal technique, hip turns, break drills, ball skills, press coverage, off coverage reads, and tackling in space.",
+    "status": "published"
+  },
+  {
+    "title": "Defensive Line Training & Workouts",
+    "slug": "dl-workouts",
+    "category": "training/position-specific",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "workouts",
+      "defensive-line"
+    ],
+    "description": "An in-depth guide to defensive line training covering pass rush moves, hand fighting, run-stopping technique, gap discipline, get-off drills, pursuit angles, and stunts.",
+    "status": "published"
+  },
+  {
+    "title": "Linebacker Training & Workouts",
+    "slug": "lb-workouts",
+    "category": "training/position-specific",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "workouts",
+      "linebacker"
+    ],
+    "description": "A comprehensive guide to linebacker training covering tackling technique, read keys, blitz technique, coverage drops, agility development, block shedding, and pursuit drills.",
+    "status": "published"
+  },
+  {
+    "title": "Offensive Line Training & Workouts",
+    "slug": "ol-workouts",
+    "category": "training/position-specific",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "workouts",
+      "offensive-line"
+    ],
+    "description": "A thorough guide to offensive line training covering strength benchmarks, footwork technique, hand placement, leverage, combination blocks, pass protection, and unit communication.",
+    "status": "published"
+  },
+  {
+    "title": "Quarterback Training & Workouts",
+    "slug": "qb-workouts",
+    "category": "training/position-specific",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "workouts",
+      "quarterback"
+    ],
+    "description": "A comprehensive guide to quarterback-specific training covering arm strength, footwork mechanics, pocket movement, throwing accuracy, mobility, film study, and pre-snap read development.",
+    "status": "published"
+  },
+  {
+    "title": "Running Back Training & Workouts",
+    "slug": "rb-workouts",
+    "category": "training/position-specific",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "workouts",
+      "running-back"
+    ],
+    "description": "A complete guide to running back training covering explosiveness, vision development, cone work, pass protection, receiving skills, ball security, and contact balance.",
+    "status": "published"
+  },
+  {
+    "title": "Wide Receiver Training & Workouts",
+    "slug": "wr-workouts",
+    "category": "training/position-specific",
+    "level": [
+      "hs",
+      "college",
+      "nfl"
+    ],
+    "tags": [
+      "training",
+      "workouts",
+      "wide-receiver"
+    ],
+    "description": "A detailed guide to wide receiver training including route running technique, release packages, hand-eye coordination, contested catches, route tree mastery, separation drills, and run-game blocking.",
+    "status": "published"
+  }
+]
