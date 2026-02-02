@@ -45,15 +45,38 @@ export function getAllArticles(): ArticleListItem[] {
 
 export function getArticleBySlug(slugParts: string[]): Article | null {
   // slugParts like ['offense', 'schemes', 'run', 'inside-zone']
+  // First try direct file path match (filename === slug)
   const filePath = path.join(CONTENT_DIR, ...slugParts) + '.mdx'
-  if (!fs.existsSync(filePath)) return null
-  const raw = fs.readFileSync(filePath, 'utf-8')
-  const { data, content } = matter(raw)
-  return {
-    frontmatter: data as ArticleFrontmatter,
-    content,
-    slug: slugParts.join('/'),
+  if (fs.existsSync(filePath)) {
+    const raw = fs.readFileSync(filePath, 'utf-8')
+    const { data, content } = matter(raw)
+    return {
+      frontmatter: data as ArticleFrontmatter,
+      content,
+      slug: slugParts.join('/'),
+    }
   }
+
+  // Fallback: search by frontmatter slug in the expected category directory
+  const articleSlug = slugParts[slugParts.length - 1]
+  const categoryParts = slugParts.slice(0, -1)
+  const categoryDir = path.join(CONTENT_DIR, ...categoryParts)
+  if (!fs.existsSync(categoryDir)) return null
+
+  for (const file of getMdxFiles(categoryDir)) {
+    const raw = fs.readFileSync(file, 'utf-8')
+    const { data, content } = matter(raw)
+    const fm = data as ArticleFrontmatter
+    if (fm.slug === articleSlug && fm.status === 'published') {
+      return {
+        frontmatter: fm,
+        content,
+        slug: slugParts.join('/'),
+      }
+    }
+  }
+
+  return null
 }
 
 export function getArticlesByCategory(category: string): ArticleListItem[] {
