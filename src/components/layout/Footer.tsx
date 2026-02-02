@@ -27,6 +27,7 @@ export function Footer() {
               <li><Link href="/designer" className="hover:text-gold transition-colors">Play Designer</Link></li>
               <li><Link href="/reference/glossary" className="hover:text-gold transition-colors">Glossary</Link></li>
               <li><Link href="/history" className="hover:text-gold transition-colors">History</Link></li>
+              <li><Link href="/resources" className="hover:text-gold transition-colors">Free Downloads</Link></li>
               <li><Link href="/favorites" className="hover:text-gold transition-colors">Favorites</Link></li>
             </ul>
           </div>

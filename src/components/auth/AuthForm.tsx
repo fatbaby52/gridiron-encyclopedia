@@ -28,7 +28,8 @@ export function AuthForm({ mode }: AuthFormProps) {
         if (result.error) {
           setError(result.error)
         } else {
-          window.location.href = '/'
+          const returnTo = new URLSearchParams(window.location.search).get('returnTo') || '/'
+          window.location.href = returnTo
         }
       } else {
         const result = await signUpWithEmail(email, password)
