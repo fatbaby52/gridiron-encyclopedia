@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { SITE_NAME } from '@/lib/constants'
 import { ReadingHistoryList } from '@/components/ui/ReadingHistoryList'
 
 export const metadata: Metadata = {
-  title: `Reading History | ${SITE_NAME}`,
+  title: 'Reading History',
+  alternates: { canonical: '/reading-history' },
+  robots: { index: false, follow: false },
 }
 
 export default function ReadingHistoryPage() {

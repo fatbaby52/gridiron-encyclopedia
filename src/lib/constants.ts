@@ -1,3 +1,4 @@
+export const SITE_URL = 'https://gridiron-encyclopedia.netlify.app'
 export const SITE_NAME = 'Gridiron Encyclopedia'
 export const SITE_DESCRIPTION =
   'The comprehensive American football knowledge base. Learn plays, formations, strategies, and coaching concepts from high school to the NFL.'
@@ -11,6 +12,7 @@ export const NAV_ITEMS = [
   { label: 'Strategy', href: '/strategy' },
   { label: 'History', href: '/history' },
   { label: 'Training', href: '/training' },
+  { label: 'Downloads', href: '/resources' },
   { label: 'Reference', href: '/reference' },
   { label: 'Community', href: '/community' },
 ] as const

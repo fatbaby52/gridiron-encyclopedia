@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { AuthForm } from '@/components/auth/AuthForm'
-import { SITE_NAME } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: `Create Account | ${SITE_NAME}`,
+  title: 'Create Account',
+  alternates: { canonical: '/auth/signup' },
+  robots: { index: false, follow: false },
 }
 
 export default function SignupPage() {

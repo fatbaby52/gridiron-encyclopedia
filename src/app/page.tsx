@@ -1,10 +1,16 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllArticles } from '@/lib/mdx'
-import { CATEGORIES, type CategoryKey } from '@/lib/constants'
+import { CATEGORIES, SITE_DESCRIPTION, type CategoryKey } from '@/lib/constants'
 import { CategoryCard } from '@/components/ui/CategoryCard'
 import { ArticleCard } from '@/components/ui/ArticleCard'
 import { SearchModal } from '@/components/ui/SearchModal'
 import { ChatPanel } from '@/components/ai/ChatPanel'
+
+export const metadata: Metadata = {
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: '/' },
+}
 
 export default function HomePage() {
   const articles = getAllArticles()
@@ -110,6 +116,25 @@ export default function HomePage() {
               <polyline points="140,68 160,55" fill="none" stroke="white" strokeWidth="1.5" />
             </svg>
           </div>
+        </div>
+      </section>
+
+      {/* Downloads CTA */}
+      <section className="bg-chalk">
+        <div className="max-w-7xl mx-auto px-4 py-12 text-center">
+          <h2 className="text-2xl font-bold text-grass-dark mb-3">
+            Free Playbooks &amp; Workout Templates
+          </h2>
+          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+            Download printable playbooks and training logs for your program. Spread offense,
+            Wing-T, defensive schemes, and position-specific workouts.
+          </p>
+          <Link
+            href="/resources"
+            className="inline-block px-6 py-3 bg-grass text-white font-semibold rounded-lg hover:bg-grass-dark transition-colors"
+          >
+            Browse Downloads
+          </Link>
         </div>
       </section>
 

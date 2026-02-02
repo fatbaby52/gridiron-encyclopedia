@@ -1,4 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
 import { ArticleHeader } from './ArticleHeader'
 import { TableOfContents } from './TableOfContents'
 import { RelatedArticles } from './RelatedArticles'
@@ -67,7 +68,7 @@ export function ArticlePage({ article }: ArticlePageProps) {
           <PlayDiagram diagramId={article.frontmatter.diagram} animated />
         )}
         <div className="prose max-w-none">
-          <MDXRemote source={article.content} components={mdxComponents} />
+          <MDXRemote source={article.content} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
         </div>
         <RelatedArticles articles={relatedArticles} />
       </article>

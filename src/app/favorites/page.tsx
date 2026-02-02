@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { SITE_NAME } from '@/lib/constants'
 import { FavoritesList } from '@/components/ui/FavoritesList'
 
 export const metadata: Metadata = {
-  title: `Favorites | ${SITE_NAME}`,
+  title: 'Favorites',
+  alternates: { canonical: '/favorites' },
+  robots: { index: false, follow: false },
 }
 
 export default function FavoritesPage() {

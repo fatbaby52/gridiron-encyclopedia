@@ -4,7 +4,8 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { MobileMenu } from '@/components/layout/MobileMenu'
 import { AuthInitializer } from '@/components/auth/AuthInitializer'
-import { SITE_NAME, SITE_DESCRIPTION } from '@/lib/constants'
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants'
+import { organizationJsonLd } from '@/lib/seo'
 import './globals.css'
 
 const inter = Inter({
@@ -18,11 +19,24 @@ const caveat = Caveat({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({
@@ -35,6 +49,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${caveat.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+        />
         <AuthInitializer />
         <Header />
         <MobileMenu />
