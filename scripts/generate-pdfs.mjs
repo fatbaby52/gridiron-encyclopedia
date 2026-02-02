@@ -94,9 +94,65 @@ function addParagraph(doc, y, text, maxWidth) {
   return y + lines.length * 4.5 + 3
 }
 
-function addPlayDiagram(doc, y, playName, positions, notes) {
+// ---------------------------------------------------------------------------
+// Standard formation presets (x, y in 0-100 normalized coords)
+// y=53 is LOS for players on the line, y increases toward backfield
+// ---------------------------------------------------------------------------
+const F = {
+  SHOTGUN_2x2: [
+    {l:'X',x:8,y:53},{l:'H',x:25,y:53},
+    {l:'LT',x:35,y:53},{l:'LG',x:42,y:53},{l:'C',x:50,y:53},{l:'RG',x:58,y:53},{l:'RT',x:65,y:53},
+    {l:'Y',x:75,y:53},{l:'Z',x:92,y:53},
+    {l:'QB',x:50,y:65},{l:'RB',x:56,y:72},
+  ],
+  SHOTGUN_TRIPS: [
+    {l:'X',x:8,y:53},
+    {l:'LT',x:35,y:53},{l:'LG',x:42,y:53},{l:'C',x:50,y:53},{l:'RG',x:58,y:53},{l:'RT',x:65,y:53},
+    {l:'H',x:75,y:53},{l:'Y',x:82,y:50},{l:'Z',x:92,y:53},
+    {l:'QB',x:50,y:65},{l:'RB',x:44,y:72},
+  ],
+  PISTOL: [
+    {l:'X',x:8,y:53},{l:'H',x:25,y:53},
+    {l:'LT',x:35,y:53},{l:'LG',x:42,y:53},{l:'C',x:50,y:53},{l:'RG',x:58,y:53},{l:'RT',x:65,y:53},
+    {l:'Y',x:75,y:53},{l:'Z',x:92,y:53},
+    {l:'QB',x:50,y:61},{l:'RB',x:50,y:72},
+  ],
+  WING_T: [
+    {l:'SE',x:8,y:53},
+    {l:'LT',x:35,y:53},{l:'LG',x:42,y:53},{l:'C',x:50,y:53},{l:'RG',x:58,y:53},{l:'RT',x:65,y:53},
+    {l:'TE',x:72,y:53},
+    {l:'WB',x:69,y:60},{l:'FB',x:50,y:63},{l:'HB',x:40,y:67},
+    {l:'QB',x:50,y:56},
+  ],
+  DEF_43: [
+    {l:'DE',x:32,y:50},{l:'DT',x:44,y:50},{l:'DT',x:56,y:50},{l:'DE',x:68,y:50},
+    {l:'S',x:28,y:42},{l:'M',x:50,y:42},{l:'W',x:64,y:42},
+    {l:'CB',x:10,y:38},{l:'CB',x:90,y:38},
+    {l:'SS',x:68,y:30},{l:'FS',x:38,y:28},
+  ],
+  DEF_34: [
+    {l:'NT',x:50,y:50},{l:'DE',x:36,y:50},{l:'DE',x:64,y:50},
+    {l:'J',x:25,y:48},{l:'B',x:75,y:48},
+    {l:'M',x:44,y:42},{l:'W',x:56,y:42},
+    {l:'CB',x:10,y:38},{l:'CB',x:90,y:38},
+    {l:'SS',x:68,y:30},{l:'FS',x:38,y:28},
+  ],
+  KICK: [
+    {l:'K',x:50,y:80},
+    {l:'L1',x:35,y:72},{l:'L2',x:42,y:72},{l:'L3',x:48,y:72},{l:'L4',x:52,y:72},{l:'L5',x:58,y:72},{l:'L6',x:65,y:72},
+    {l:'R1',x:20,y:68},{l:'R2',x:38,y:68},{l:'R3',x:62,y:68},{l:'R4',x:80,y:68},
+  ],
+  PUNT: [
+    {l:'C',x:50,y:53},{l:'LG',x:42,y:53},{l:'RG',x:58,y:53},{l:'LT',x:35,y:53},{l:'RT',x:65,y:53},
+    {l:'LW',x:28,y:53},{l:'RW',x:72,y:53},
+    {l:'PP',x:42,y:60},{l:'UP',x:58,y:60},
+    {l:'GL',x:20,y:57},{l:'P',x:50,y:72},
+  ],
+}
+
+function addPlayDiagram(doc, y, playName, players, routes, blocks, notes) {
   const boxW = CONTENT_WIDTH
-  const boxH = 55
+  const boxH = 65
 
   // Field rectangle
   doc.setFillColor(...COLORS.fieldGreen)
@@ -104,32 +160,100 @@ function addPlayDiagram(doc, y, playName, positions, notes) {
   doc.setLineWidth(0.5)
   doc.rect(MARGIN, y, boxW, boxH, 'FD')
 
-  // Yard-line markings (subtle)
-  doc.setDrawColor(255, 255, 255)
-  doc.setLineWidth(0.15)
+  // Subtle yard lines
+  doc.setDrawColor(80, 130, 72)
+  doc.setLineWidth(0.2)
   for (let i = 1; i < 5; i++) {
-    const lx = MARGIN + (boxW / 5) * i
-    doc.line(lx, y + 2, lx, y + boxH - 2)
+    const ly = y + (boxH / 5) * i
+    doc.line(MARGIN + 2, ly, MARGIN + boxW - 2, ly)
   }
 
-  // Play name in gold at top-left of box
+  // LOS — gold dashed line at ~53% of box height
+  const losY = y + boxH * 0.53
+  doc.setDrawColor(...COLORS.gold)
+  doc.setLineWidth(0.7)
+  for (let lx = MARGIN + 3; lx < MARGIN + boxW - 3; lx += 5) {
+    doc.line(lx, losY, Math.min(lx + 2.5, MARGIN + boxW - 3), losY)
+  }
+
+  // Helper: convert normalized (0-100) coords to page coords
+  const px = (nx) => MARGIN + (nx / 100) * boxW
+  const py = (ny) => y + (ny / 100) * boxH
+
+  // Draw blocking assignments first (behind everything)
+  if (blocks && blocks.length > 0) {
+    doc.setDrawColor(...COLORS.gold)
+    doc.setLineWidth(1.2)
+    for (const blk of blocks) {
+      if (blk.length >= 2) {
+        const [x1, y1] = [px(blk[0][0]), py(blk[0][1])]
+        const [x2, y2] = [px(blk[1][0]), py(blk[1][1])]
+        doc.line(x1, y1, x2, y2)
+        // block terminator — short perpendicular line
+        const dx = x2 - x1, dy = y2 - y1
+        const len = Math.sqrt(dx * dx + dy * dy) || 1
+        const nx = -dy / len * 1.5, ny = dx / len * 1.5
+        doc.line(x2 - nx, y2 - ny, x2 + nx, y2 + ny)
+      }
+    }
+  }
+
+  // Draw routes
+  if (routes && routes.length > 0) {
+    doc.setDrawColor(255, 255, 255)
+    doc.setLineWidth(0.7)
+    for (const route of routes) {
+      if (route.length < 2) continue
+      for (let i = 0; i < route.length - 1; i++) {
+        doc.line(px(route[i][0]), py(route[i][1]), px(route[i + 1][0]), py(route[i + 1][1]))
+      }
+      // Arrowhead at end
+      const last = route[route.length - 1]
+      const prev = route[route.length - 2]
+      const ex = px(last[0]), ey = py(last[1])
+      const sx = px(prev[0]), sy = py(prev[1])
+      const dx = ex - sx, dy = ey - sy
+      const len = Math.sqrt(dx * dx + dy * dy) || 1
+      const ux = dx / len, uy = dy / len
+      const aw = 1.8 // arrow width
+      const al = 2.5 // arrow length
+      doc.setFillColor(255, 255, 255)
+      doc.triangle(
+        ex, ey,
+        ex - ux * al + uy * aw, ey - uy * al - ux * aw,
+        ex - ux * al - uy * aw, ey - uy * al + ux * aw,
+        'F'
+      )
+    }
+  }
+
+  // Draw players as circles with labels
+  const playerR = 3.5
+  for (const p of players) {
+    const cx = px(p.l === undefined ? p.x : p.x)
+    const cy = py(p.y)
+    doc.setFillColor(255, 255, 255)
+    doc.setDrawColor(...COLORS.grassDark)
+    doc.setLineWidth(0.5)
+    doc.circle(cx, cy, playerR, 'FD')
+    // Label inside circle
+    const label = p.l || ''
+    const fontSize = label.length > 2 ? 5 : label.length > 1 ? 5.5 : 7
+    doc.setFont('helvetica', 'bold')
+    doc.setFontSize(fontSize)
+    doc.setTextColor(...COLORS.grassDark)
+    doc.text(label, cx, cy + fontSize * 0.16, { align: 'center' })
+  }
+
+  // Play name below diagram
   doc.setFont('helvetica', 'bold')
-  doc.setFontSize(11)
-  doc.setTextColor(...COLORS.gold)
-  doc.text(playName, MARGIN + 4, y + 7)
-
-  // Positions as white text lines centered inside the box
-  doc.setFont('courier', 'normal')
   doc.setFontSize(9)
-  doc.setTextColor(...COLORS.white)
-  const startY = y + 16
-  positions.forEach((pos, i) => {
-    doc.text(pos, PAGE_WIDTH / 2, startY + i * 5, { align: 'center' })
-  })
+  doc.setTextColor(...COLORS.gold)
+  doc.text(playName, MARGIN + boxW / 2, y + boxH + 5, { align: 'center' })
 
-  let newY = y + boxH + 4
+  let newY = y + boxH + 9
 
-  // Notes as bullet points below the box
+  // Notes as bullet points below
   if (notes && notes.length > 0) {
     doc.setFont('helvetica', 'normal')
     doc.setFontSize(9)
@@ -363,13 +487,13 @@ function buildPlaybook(title, subtitle, philosophy, plays, tocItems, glossary) {
 
   // 4) Plays
   plays.forEach((play) => {
-    y = checkPageBreak(doc, y, 85)
+    y = checkPageBreak(doc, y, 100)
     if (y === MARGIN) {
       y += 5
     }
     y = addSectionHeader(doc, y, play.name)
     y = addParagraph(doc, y + 1, play.desc)
-    y = addPlayDiagram(doc, y, play.name, play.positions, play.notes)
+    y = addPlayDiagram(doc, y, play.name, play.players, play.routes, play.blocks, play.notes)
   })
   addPageFooter(doc, currentPageCount)
 
@@ -387,73 +511,161 @@ function generateSpreadOffensePlaybook() {
     {
       name: 'Inside Zone (Shotgun)',
       desc: 'The foundation of the spread run game. The offensive line steps in unison toward the play-side, creating a horizontal push. The running back reads the first down lineman past the center and cuts to daylight. The QB executes a mesh-point ride to hold the backside end.',
-      positions: ['X --- T  G  C  G  T --- Z', '          QB (gun)', '        RB (offset right)', 'H (slot left)        Y (slot right)'],
+      players: [...F.SHOTGUN_2x2],
+      routes: [
+        [[56,72],[48,58],[45,45]],
+      ],
+      blocks: [
+        [[35,53],[32,48]], [[42,53],[39,48]], [[50,53],[47,48]], [[58,53],[55,48]], [[65,53],[62,48]],
+      ],
       notes: ['OL: Zone step play-side, combo to LB level.', 'RB: Aiming point is play-side A-gap; read the first DL past center.', 'QB: Ride the mesh, pull on "give" read, hand off on "keep" read.', 'Backside WR: Stalk block or run bubble route as RPO tag.'],
     },
     {
       name: 'Outside Zone (Pistol)',
       desc: 'A stretch concept that forces the defense to run sideline to sideline. The RB aims for the outside leg of the offensive tackle and reads the first defender to show outside leverage. If the defense over-pursues, the RB cuts back into the vacated lane.',
-      positions: ['X --- T  G  C  G  T --- Z', '          QB (pistol)', '          RB (behind QB)', 'H (slot)            Y (slot)'],
+      players: [...F.PISTOL],
+      routes: [
+        [[50,72],[70,53],[75,45]],
+      ],
+      blocks: [
+        [[35,53],[38,48]], [[42,53],[45,48]], [[50,53],[53,48]], [[58,53],[61,48]], [[65,53],[68,48]],
+      ],
       notes: ['OL: Reach step, sustain blocks to the sideline.', 'RB: Aiming point is OT outside leg; press the edge then cut back.', 'QB: Reverse pivot, hand off deep. Can pull on zone-read tag.', 'Cutback lane is the money — patience is key.'],
     },
     {
       name: 'Zone Read',
       desc: 'The QB reads the backside defensive end after the snap. If the DE crashes down on the RB, the QB keeps and runs off the edge. If the DE stays home or widens, the QB gives to the RB on inside zone. This removes one defender from the box without blocking him.',
-      positions: ['X --- T  G  C  G  T --- Z', '          QB (gun)', '        RB (offset)', '     READ KEY: Backside DE'],
+      players: [...F.SHOTGUN_2x2],
+      routes: [
+        [[56,72],[48,53],[45,45]],
+        [[50,65],[60,58],[68,50]],
+      ],
+      blocks: [
+        [[35,53],[32,48]], [[42,53],[39,48]], [[50,53],[47,48]], [[58,53],[55,48]], [[65,53],[62,48]],
+      ],
       notes: ['QB: Eyes on the backside DE through the mesh.', 'RB: Run inside zone track regardless of give/keep.', 'Backside OT: Skip the DE — he is the read key.', 'If DE squeezes: QB keeps. If DE sits or widens: QB gives.'],
     },
     {
       name: 'Mesh Concept',
       desc: 'Two receivers run shallow crossing routes from opposite sides, creating a natural pick. A third receiver runs a choice or sit route over the top. The QB reads high-to-low: choice route first, then the two crossers underneath. Effective against both man and zone coverage.',
-      positions: ['X (shallow cross -->)     Z (<-- shallow cross)', '           Choice Route (over top)', '     QB reads high to low', '        RB check-release flat'],
+      players: [...F.SHOTGUN_2x2],
+      routes: [
+        [[25,53],[50,48],[75,45]],
+        [[75,53],[50,48],[25,45]],
+        [[92,53],[88,40],[85,30]],
+        [[8,53],[8,35]],
+        [[56,72],[70,68]],
+      ],
+      blocks: [],
       notes: ['Slot WRs: Cross at 5-6 yards, run full speed through traffic.', 'Outside WR: Sit or choice route at 10-12 yards.', 'QB: High-low read. If choice is covered, find the crosser in the window.', 'Hot route if blitz: throw to the crosser coming toward pressure.'],
     },
     {
       name: 'Spacing Concept',
       desc: 'Five receivers distribute across three levels of the field in the short-to-intermediate range. The spacing stretches zone defenders by placing receivers in every window. The QB works a simple left-to-right or triangle read.',
-      positions: ['X (hitch)   H (middle sit)   Z (hitch)', '  Y (flat)                RB (flat)', '              QB'],
+      players: [...F.SHOTGUN_2x2],
+      routes: [
+        [[8,53],[15,46]],
+        [[25,53],[35,44]],
+        [[92,53],[85,46]],
+        [[75,53],[82,48],[88,55]],
+        [[56,72],[30,65],[15,60]],
+      ],
+      blocks: [],
       notes: ['Receivers settle in the open windows of zone coverage.', 'QB: Identify the triangle — work high-to-low, inside-to-outside.', 'Against man coverage, receivers create natural separation with spacing.', 'Great answer to heavy blitz packages.'],
     },
     {
       name: 'Four Verticals',
       desc: 'All four wide receivers push vertical, stretching the secondary deep. The running back check-releases into the flat as a safety valve. Designed to attack Cover 2 by splitting the safeties and Cover 3 by overloading the deep thirds.',
-      positions: ['X (go)   H (seam)   Y (seam)   Z (go)', '               QB (gun)', '         RB (check-release flat)', '    Beat Cover 2 / Cover 3 deep'],
+      players: [...F.SHOTGUN_2x2],
+      routes: [
+        [[8,53],[8,20]],
+        [[25,53],[30,20]],
+        [[75,53],[70,20]],
+        [[92,53],[92,20]],
+        [[56,72],[70,65]],
+      ],
+      blocks: [],
       notes: ['Outside WRs: Win vertical on the outside, threaten the deep third.', 'Slot WRs: Push the seam, read safeties — sit if Cover 2, run by if Cover 3.', 'QB: Read the safeties post-snap. Two-high: throw the seam. One-high: throw the post.', 'RB: Block first, release to flat if clean.'],
     },
     {
       name: 'Smash Concept',
       desc: 'A hitch-corner combination that attacks Cover 2 by putting the flat defender in conflict. The outside receiver runs a 5-yard hitch while the slot runs a 12-yard corner route behind the dropping CB. The QB reads the flat defender.',
-      positions: ['X (hitch at 5)          Z (hitch at 5)', '  H (corner route)    Y (corner route)', '              QB', '       RB (check-release)'],
+      players: [...F.SHOTGUN_2x2],
+      routes: [
+        [[8,53],[12,46]],
+        [[25,53],[22,42],[15,32]],
+        [[92,53],[88,46]],
+        [[75,53],[78,42],[85,32]],
+        [[56,72],[56,65]],
+      ],
+      blocks: [],
       notes: ['Outside WR: Hitch at 5 yards, show your numbers to the QB.', 'Slot WR: Stem inside, break on the corner route at 12 yards.', 'QB: Read the flat defender. If he squats on the hitch, throw the corner.', 'Deadly against Cover 2 shells.'],
     },
     {
       name: 'Bubble RPO',
       desc: 'An inside zone run paired with a bubble screen read. The QB reads the flat defender or overhang player pre-snap and post-snap. If the defender is in the box, throw the bubble. If he is wide, hand off inside zone.',
-      positions: ['X --- T  G  C  G  T --- Z', '          QB (gun)', '        RB (inside zone)', 'H (bubble route) <-- READ: flat defender'],
+      players: [...F.SHOTGUN_2x2],
+      routes: [
+        [[56,72],[48,53],[45,45]],
+        [[25,53],[18,53],[12,50]],
+      ],
+      blocks: [
+        [[35,53],[32,48]], [[42,53],[39,48]], [[50,53],[47,48]], [[58,53],[55,48]], [[65,53],[62,48]],
+      ],
       notes: ['QB: Pre-snap count box defenders vs. blockers.', 'If box is loaded (6+ in box): throw the bubble.', 'If overhang player is wide: hand off inside zone.', 'Slot WR: Be ready for the quick bubble — catch and get upfield.'],
     },
     {
       name: 'Glance RPO',
       desc: 'An inside zone run combined with a glance route by the slot receiver. The QB reads the linebacker. If the LB steps up to play the run, the QB pulls and throws the glance to the vacated area. If the LB drops, the QB gives the handoff.',
-      positions: ['X --- T  G  C  G  T --- Z', '          QB (gun)', '        RB (inside zone)', 'Y (glance route) <-- READ: LB'],
+      players: [...F.SHOTGUN_2x2],
+      routes: [
+        [[56,72],[48,53],[45,45]],
+        [[75,53],[68,48]],
+      ],
+      blocks: [
+        [[35,53],[32,48]], [[42,53],[39,48]], [[50,53],[47,48]], [[58,53],[55,48]], [[65,53],[62,48]],
+      ],
       notes: ['Slot WR: Run the glance (1-step slant) at the snap.', 'QB: Mesh with RB; eyes on the LB. Pull and throw if LB fills.', 'OL: Block inside zone — do not tip the RPO.', 'Timing must be quick — this is a 1-step throw.'],
     },
     {
       name: 'Tunnel Screen',
       desc: 'A quick perimeter screen designed to get the ball in space. The slot receiver catches a short throw behind the LOS while the outside WR and the pulling lineman create a wall of blockers. Best called against aggressive pass rushes.',
-      positions: ['X (block down)    Z (block down)', '  H (catch) <-- WR blockers set wall', '     OL releases to screen side', '          QB (quick throw)'],
+      players: [...F.SHOTGUN_TRIPS],
+      routes: [
+        [[75,53],[68,55]],
+        [[92,53],[85,48]],
+        [[82,50],[75,48]],
+      ],
+      blocks: [
+        [[35,53],[42,50]], [[42,53],[50,50]], [[50,53],[58,50]], [[58,53],[65,50]], [[65,53],[72,50]],
+      ],
       notes: ['Slot WR: Settle behind the LOS, catch and follow the wall.', 'Outside WR: Block the nearest DB aggressively.', 'OL: Sell pass block for 1 count, then release to screen side.', 'QB: Quick 1-step throw. Ball must come out fast.'],
     },
     {
       name: 'Jailbreak Screen',
       desc: 'A delayed screen to the running back. The OL initially pass sets, allowing defenders upfield, then releases into space as blockers. The RB fakes a block, then leaks to the flat for the catch. Creates a numbers advantage at the second level.',
-      positions: ['         OL pass set, then release', '          QB (sell deep throw)', '        RB (fake block, leak to flat)', '   WRs sell routes deep to clear out'],
+      players: [...F.SHOTGUN_2x2],
+      routes: [
+        [[56,72],[56,65],[70,60]],
+        [[8,53],[8,30]],
+        [[92,53],[92,30]],
+      ],
+      blocks: [
+        [[35,53],[42,50]], [[42,53],[50,50]], [[50,53],[58,50]], [[58,53],[65,50]], [[65,53],[72,50]],
+      ],
       notes: ['OL: Pass set for 2 counts, let rush go, then get downfield.', 'RB: Fake blitz pickup, slip to the flat. Expect the ball at the LOS.', 'QB: Sell the deep look, then dump to RB.', 'WRs: Run deep routes to pull DBs out of the screen area.'],
     },
     {
       name: 'Quick Slant-Flat',
       desc: 'A 2-man combination on either side. The outside WR runs a quick slant at 3-5 yards while the slot or RB runs to the flat. The QB reads the flat defender — if he drops, throw the flat; if he drives on the flat, throw the slant behind him.',
-      positions: ['X (slant)              Z (slant)', '  H (flat)           Y (flat)', '              QB', '         Quick 1-step drop'],
+      players: [...F.SHOTGUN_2x2],
+      routes: [
+        [[8,53],[20,45]],
+        [[25,53],[15,56]],
+        [[92,53],[80,45]],
+        [[75,53],[85,56]],
+      ],
+      blocks: [],
       notes: ['Outside WR: Quick slant, 3 steps and break inside. Catch in stride.', 'Slot/RB: Push to the flat immediately. Be a clear target.', 'QB: Pre-snap identify the flat defender. React to his movement post-snap.', 'Great answer to man and zone blitzes.'],
     },
   ]
@@ -486,74 +698,123 @@ function generateWingTOffensePlaybook() {
     {
       name: 'Buck Sweep',
       desc: 'The bread-and-butter play of the Wing-T. Both guards pull to the play-side. The fullback kicks out the end man on the line of scrimmage, and the halfback takes the handoff around the edge behind a wall of blockers. The center, backside tackle, and backside guard handle backside responsibilities.',
-      positions: ['SE --- T  G  C  G  T --- TE', '     WB          FB          WB', '              QB (under center)', ' Guards pull play-side, FB kick-out'],
+      players: [...F.WING_T],
+      routes: [
+        [[40,67],[30,60],[22,53],[18,45]],
+      ],
+      blocks: [
+        [[50,63],[35,56]],
+        [[42,53],[30,50]],
+        [[58,53],[28,48]],
+      ],
       notes: ['Both guards pull — lead guard kicks out EMOL, second guard turns up.', 'FB: Fake first, then execute kick-out block on the contain player.', 'HB: Take the handoff, follow the pulling guards, get to the edge.', 'QBs ball fake to the dive back is critical to freeze the LBs.'],
     },
     {
       name: 'Buck Sweep Pass (Waggle)',
       desc: 'A play-action pass off buck sweep action. The QB fakes the buck sweep, then bootlegs to the opposite side. The tight end runs a drag route across the formation, and the split end runs a deep post. This play punishes defenses that over-pursue the buck sweep.',
-      positions: ['SE (post) --- T  G  C  G  T --- TE (drag)', '     Fake buck sweep action', '              QB boots opposite', '   WB (flat route)'],
+      players: [...F.WING_T],
+      routes: [
+        [[50,56],[25,60],[20,56]],
+        [[72,53],[50,48],[25,45]],
+        [[8,53],[15,40],[25,28]],
+        [[69,60],[80,55],[85,50]],
+      ],
+      blocks: [],
       notes: ['QB: Sell the sweep fake with your eyes and body, then boot.', 'TE: Drag across the formation at 6-8 yards. Be the primary read.', 'SE: Run a post route to clear the deep middle. Secondary read.', 'WB: Release to the flat as the checkdown option.'],
     },
     {
       name: 'Guard Trap',
       desc: 'A quick-hitting interior run through the A-gap. The play-side linemen down block, and the backside guard pulls to trap (kick out) the first defender past the center. The fullback hits the hole fast and downhill. This play is designed to break the will of interior defenders.',
-      positions: ['SE --- T  G  C  G  T --- TE', '              FB (A-gap dive)', '              QB', ' Backside guard pulls to trap DT'],
+      players: [...F.WING_T],
+      routes: [
+        [[50,63],[50,53],[50,42]],
+      ],
+      blocks: [
+        [[58,53],[48,50]],
+        [[35,53],[35,48]], [[42,53],[42,48]], [[50,53],[50,48]], [[65,53],[65,48]],
+      ],
       notes: ['Backside guard: Pull flat, trap the first DT past center.', 'Play-side linemen: Down block — seal everything inside.', 'FB: Fast downhill through the A-gap. No dancing.', 'QB: Quick reverse pivot, hand off deep to the FB.'],
-    },
-    {
-      name: 'Tackle Trap',
-      desc: 'Similar concept to the guard trap but with the tackle pulling instead. This puts a larger body at the point of attack, ideal for situations where the defense has a dominant nose guard. The trap block from the tackle creates a wider lane.',
-      positions: ['SE --- T  G  C  G  T --- TE', '              FB (dive)', '              QB', ' Backside tackle pulls to trap'],
-      notes: ['Backside tackle: Pull and trap the first defender in the gap.', 'Guard: Hinge block to protect the backside.', 'FB: Expect a wider lane than the guard trap.', 'Use this when the nose guard is dominating the guard trap.'],
     },
     {
       name: 'Counter Criss-Cross',
       desc: 'The fullback and halfback cross paths behind the QB, creating misdirection chaos. The guard and tackle pull to the play-side to create a wall. The ball carrier gets the handoff going opposite the initial flow, catching the linebackers flowing the wrong direction.',
-      positions: ['SE --- T  G  C  G  T --- TE', '     WB  (cross)  FB  (cross)  WB', '              QB', ' Guard + Tackle pull to play-side'],
+      players: [...F.WING_T],
+      routes: [
+        [[40,67],[55,60],[60,53],[62,45]],
+        [[50,63],[42,58]],
+      ],
+      blocks: [
+        [[58,53],[62,48]],
+        [[72,53],[72,48]],
+      ],
       notes: ['FB and HB: Cross behind the QB — sell the misdirection.', 'QB: Open to the first back, fake, then hand to the second back.', 'Pulling guard: Kick out EMOL.', 'Pulling tackle: Turn up inside the kick-out for the LB.'],
     },
     {
-      name: 'Counter Boot',
-      desc: 'A play-action bootleg pass off the counter criss-cross action. The QB fakes the counter, then boots to the weak side. The TE runs a drag, and the split end runs a comeback. The defense, having committed to the counter action, leaves the bootleg side vulnerable.',
-      positions: ['SE (comeback) --- T  G  C  G  T --- TE (drag)', '     Fake counter action', '              QB boots weak', '   WB (flat)'],
-      notes: ['QB: Complete the full counter fake, then boot to the weak side.', 'TE: Run the drag — be ready for the ball quickly.', 'SE: Comeback at 12-15 yards on the backside.', 'This is devastating when the counter is working.'],
+      name: 'Waggle Pass',
+      desc: 'A play-action bootleg pass off the Wing-T run action. The QB fakes to the backs, then rolls out to the weak side. The tight end drags across the formation as the primary target, the split end runs a deep post, and the wingback releases to the flat as a safety valve.',
+      players: [...F.WING_T],
+      routes: [
+        [[50,56],[30,60],[22,55]],
+        [[72,53],[50,47],[28,42]],
+        [[8,53],[12,40],[20,28]],
+        [[69,60],[78,55]],
+      ],
+      blocks: [],
+      notes: ['QB: Sell the run fake, then boot to the weak side. Eyes downfield.', 'TE: Drag across the formation at 6-8 yards. Be the primary read.', 'SE: Run a post route to clear the deep middle. Secondary read.', 'WB: Release to the flat as the checkdown safety valve.'],
     },
     {
       name: 'Jet Sweep',
       desc: 'A quick-hitting perimeter play using a flanker in jet motion. The motion back takes the handoff from the QB on a direct path to the edge. The wingback and tight end block on the perimeter, creating a lane. The jet sweep forces the defense to widen their alignments.',
-      positions: ['SE --- T  G  C  G  T --- TE (block edge)', '     WB (block)     FB (fake dive)', '     <<< Jet Motion WR takes handoff', '              QB (hands off)'],
+      players: [...F.WING_T],
+      routes: [
+        [[69,60],[50,55],[30,53],[15,48]],
+      ],
+      blocks: [
+        [[35,53],[32,48]], [[42,53],[39,48]], [[50,53],[47,48]], [[58,53],[55,48]], [[65,53],[62,48]],
+      ],
       notes: ['Motion WR: Full speed through the mesh — no slowing down.', 'QB: Catch the snap, extend the ball to the jet motion WR.', 'TE: Block the force player on the edge.', 'Timing the snap with the motion is everything.'],
     },
     {
       name: 'Jet Pass',
       desc: 'A play-action pass that uses the jet motion fake to freeze the defense. The QB fakes the jet handoff, then drops back to throw. The split end runs a go route with the defense pulled up by the jet fake. The WR in motion continues to the flat as a checkdown.',
-      positions: ['SE (go route deep)', '     <<< Jet motion WR (fake, then flat)', '              QB (fake jet, drop back)', '   TE (post route)'],
+      players: [...F.WING_T],
+      routes: [
+        [[69,60],[50,55]],
+        [[8,53],[8,35]],
+        [[72,53],[65,45],[58,38]],
+        [[50,56],[50,60]],
+      ],
+      blocks: [],
       notes: ['QB: Sell the jet fake, pull the ball back, drop and throw.', 'SE: Go route — win on the deep ball. The fake creates a window.', 'Jet WR: Continue to the flat as an outlet after the fake.', 'TE: Run a post across the middle. Secondary read.'],
     },
     {
-      name: 'Jet Dive',
-      desc: 'A companion play to the jet sweep. The motion WR fakes taking the jet handoff while the fullback dives directly up the A-gap. When the defense flows hard to stop the jet sweep, the fullback finds open daylight inside.',
-      positions: ['SE --- T  G  C  G  T --- TE', '     <<< Jet motion (fake)', '              FB (A-gap dive)', '              QB (fakes jet, hands to FB)'],
-      notes: ['Motion WR: Sell the jet sweep fake — run at full speed.', 'FB: Take the handoff and hit the A-gap hard. LBs will be flowing.', 'QB: Fake to the jet motion, reverse pivot, hand to the FB.', 'The better the jet sweep works, the better this play becomes.'],
+      name: 'Power',
+      desc: 'A downhill run play with a lead blocker through the B-gap. The fullback leads through the hole as a kick-out blocker, and the halfback follows behind with a downhill track to the play-side. The backside guard pulls to the play-side to seal the linebacker. Physical, north-south football.',
+      players: [...F.WING_T],
+      routes: [
+        [[40,67],[50,60],[58,53],[60,42]],
+      ],
+      blocks: [
+        [[50,63],[58,56]],
+        [[58,53],[60,48]],
+        [[35,53],[35,48]], [[42,53],[42,48]], [[50,53],[50,48]], [[65,53],[65,48]], [[72,53],[72,48]],
+      ],
+      notes: ['FB: Lead block through the hole — kick out the first defender to show.', 'HB: Follow the FB downhill. Read his block and cut accordingly.', 'RG: Pull to the play-side and seal the linebacker.', 'OL: Drive blocks to the play-side — move the line of scrimmage.'],
     },
     {
-      name: 'Fullback Down (Belly)',
-      desc: 'An off-tackle play where the fullback runs behind down blocks from the play-side linemen. The tight end and wingback create the edge with seal and kick-out blocks. The fullback gets downhill fast with a direct path behind the wall.',
-      positions: ['SE --- T  G  C  G  T --- TE (down block)', '     WB (kick out)     FB (off-tackle)', '              QB', ' Down blocks create the lane'],
-      notes: ['TE: Down block on the DE — seal him inside.', 'WB: Kick out the force player on the edge.', 'FB: Aim for the outside hip of the TE. Get downhill immediately.', 'OL: Down block scheme — everyone blocks down to the play-side.'],
-    },
-    {
-      name: 'Power Sweep',
-      desc: 'Different from the buck sweep — the play-side tackle pulls instead of both guards. This creates a different blocking scheme at the point of attack with a bigger body leading the way. The halfback follows the pulling tackle to the edge.',
-      positions: ['SE --- T  G  C  G  T --- TE', '     WB          FB (kick out)', '              QB', '     HB follows pulling tackle'],
-      notes: ['Play-side tackle: Pull and lead through the hole.', 'FB: Kick out the EMOL on the edge.', 'HB: Follow the tackle, read his block, and cut accordingly.', 'Differs from buck sweep — one big puller instead of two guards.'],
-    },
-    {
-      name: 'Reverse',
-      desc: 'Uses jet motion fake to pull the defense one direction, then hands the ball back to the backside WR going the other way. Maximum misdirection. Must be set up by establishing the jet sweep earlier in the game.',
-      positions: ['SE (takes reverse handoff >>>)', '     <<< Jet motion WR (fake)', '              QB (fakes jet, hands to SE)', '   WB/TE seal backside'],
-      notes: ['Jet WR: Sell the sweep fake at full speed.', 'SE: Come across the formation, take the handoff from QB.', 'QB: Fake jet, then hand to the SE coming back the other way.', 'Only works if the defense has committed to stopping the jet sweep.'],
+      name: 'Down G (Belly)',
+      desc: 'A misdirection belly play where the fullback dives straight ahead through the A-gap while the QB fakes to the halfback on a sweep path. The backside guard pulls to kick out the first defender at the point of attack. Down blocks from the play-side linemen create the lane.',
+      players: [...F.WING_T],
+      routes: [
+        [[50,63],[50,53],[50,42]],
+        [[50,56],[45,60]],
+        [[40,67],[35,63]],
+      ],
+      blocks: [
+        [[58,53],[50,48]],
+        [[35,53],[35,48]], [[42,53],[42,48]], [[50,53],[50,48]], [[65,53],[65,48]], [[72,53],[72,48]],
+      ],
+      notes: ['FB: Dive straight ahead through the A-gap. Fast and downhill.', 'QB: Fake to the HB on the sweep path, then hand to the FB.', 'RG: Pull and kick out the first defender past the center.', 'OL: Down block scheme — seal the play-side gaps.'],
     },
   ]
 
@@ -579,60 +840,244 @@ function generateWingTOffensePlaybook() {
 function generate43DefensePlaybook() {
   const philosophy = 'The 4-3 defense is the most versatile base defense in football, featuring 4 down linemen, 3 linebackers, and 4 defensive backs. Its strength lies in the ability to present multiple fronts (over, under, even) while maintaining sound run fits and flexible coverage shells. The front four generates consistent pressure, allowing linebackers to flow freely to the ball. The secondary can operate in Cover 1, Cover 2, Cover 3, or quarters to match any offensive formation. Every defender must know their gap responsibility, their coverage assignment, and their run-fit key.'
 
+  // Basic offensive reference players for defensive diagrams
+  const offRef = [
+    {l:'O',x:42,y:48},{l:'O',x:46,y:48},{l:'O',x:50,y:48},{l:'O',x:54,y:48},{l:'O',x:58,y:48},
+    {l:'QB',x:50,y:40},{l:'RB',x:50,y:34},
+  ]
+  // 4-3 base defensive positions
+  const def43 = [
+    {l:'DE',x:34,y:56},{l:'DT',x:44,y:56},{l:'DT',x:56,y:56},{l:'DE',x:66,y:56},
+    {l:'S',x:28,y:63},{l:'M',x:50,y:63},{l:'W',x:64,y:63},
+    {l:'CB',x:10,y:60},{l:'CB',x:90,y:60},
+    {l:'SS',x:70,y:72},{l:'FS',x:40,y:72},
+  ]
+
   const plays = [
     {
       name: 'Over Front Alignment',
       desc: 'The strong-side shade alignment places the defensive line strength to the tight end side. The nose aligns in a 1-technique (shade on the center to the strong side), the 3-technique DT is to the strong side, the 5-technique DE is on the strong-side OT, and the weak DE aligns in a 9-technique (wide).',
-      positions: ['    DE(9)   DT(1)  DT(3)  DE(5)', '  WLB        MLB        SLB', '   CB    FS       SS    CB', '      STRONG SIDE = TE side >>>'],
+      players: [
+        ...offRef,
+        // Over-shifted DL
+        {l:'DE',x:30,y:56},{l:'DT',x:42,y:56},{l:'DT',x:54,y:56},{l:'DE',x:66,y:56},
+        {l:'S',x:28,y:63},{l:'M',x:50,y:63},{l:'W',x:64,y:63},
+        {l:'CB',x:10,y:60},{l:'CB',x:90,y:60},
+        {l:'SS',x:70,y:72},{l:'FS',x:40,y:72},
+      ],
+      routes: [],
+      blocks: [
+        // Gap assignments for each DL
+        [[30,56],[34,52]],  // DE -> C-gap strong
+        [[42,56],[44,52]],  // DT -> B-gap strong
+        [[54,56],[52,52]],  // DT -> A-gap
+        [[66,56],[62,52]],  // DE -> C-gap weak
+      ],
       notes: ['1-tech Nose: Control the A-gap to the strong side. 2-gap vs. zone.', '3-tech DT: Penetrate the B-gap. This is your primary pass rusher inside.', '5-tech DE: Set the edge, contain. Squeeze down on runs toward you.', '9-tech DE: Wide alignment. Speed rush and containment.'],
     },
     {
       name: 'Under Front Alignment',
       desc: 'The under front shifts the DL strength to the weak side. The 3-technique moves to the weak side, the nose aligns head-up on the center (0-tech), and the strong DE plays a 5-technique. This front is designed to create confusion about gap responsibilities for the offense.',
-      positions: ['    DE(5)   DT(0)  DT(3)  DE(9)', '  SLB        MLB        WLB', '   CB    SS       FS    CB', '      <<< Weak-side 3-tech shift'],
+      players: [
+        ...offRef,
+        // Under-shifted DL
+        {l:'DE',x:34,y:56},{l:'DT',x:48,y:56},{l:'DT',x:58,y:56},{l:'DE',x:70,y:56},
+        {l:'S',x:28,y:63},{l:'M',x:50,y:63},{l:'W',x:64,y:63},
+        {l:'CB',x:10,y:60},{l:'CB',x:90,y:60},
+        {l:'SS',x:70,y:72},{l:'FS',x:40,y:72},
+      ],
+      routes: [],
+      blocks: [
+        // Gap assignments
+        [[34,56],[38,52]],  // DE -> B-gap strong
+        [[48,56],[48,52]],  // DT(0) -> A-gap
+        [[58,56],[56,52]],  // DT(3) -> B-gap weak
+        [[70,56],[66,52]],  // DE -> C-gap weak
+      ],
       notes: ['0-tech Nose: Two-gap the center. Control both A-gaps.', '3-tech (weak): Penetrate the weak B-gap on pass downs.', '5-tech DE: Play the strong C-gap, set the edge on runs.', 'Shifts allow the defense to present different looks from the same personnel.'],
     },
     {
       name: 'Cover 3 (Base)',
       desc: 'The base coverage shell. Three deep defenders (2 CBs and FS) each cover a deep third of the field. Four underneath defenders (3 LBs and SS) handle the short zones. The free safety is the center-field player. Corners play with outside leverage and funnel receivers inside.',
-      positions: ['  CB(deep 1/3)   FS(deep middle)   CB(deep 1/3)', '  SS(flat)  WLB(curl)  MLB(hook)  SLB(curl)', '         4 DL rush', '    3 deep / 4 under zones'],
+      players: [
+        ...offRef, ...def43,
+      ],
+      routes: [
+        // FS deep middle drop
+        [[40,72],[50,88]],
+        // CB left deep 1/3
+        [[10,60],[15,85]],
+        // CB right deep 1/3
+        [[90,60],[85,85]],
+        // SS rolls to flat
+        [[70,72],[78,64]],
+        // Sam drops to curl zone
+        [[28,63],[22,68]],
+        // Mike drops to hook zone
+        [[50,63],[50,70]],
+        // Will drops to curl zone
+        [[64,63],[72,68]],
+      ],
+      blocks: [],
       notes: ['FS: Align at 12-14 yards. Read the QB, break on the throw. You are the center fielder.', 'CBs: Jam at the line, sink to your deep third. Keep everything in front.', 'SS: Flat responsibility — match any #2 receiver to the flat.', 'LBs: Drop to curl/hook zones. Read QB eyes and break on the ball.'],
     },
     {
       name: 'Cover 1 (Robber)',
       desc: 'Man-free coverage with a twist. The free safety plays a "robber" role in the middle of the field, looking to undercut crossing routes and post routes. Corners play man coverage on the outside WRs, and LBs have man responsibilities on the RB and TE. The SS is man-to-man on the slot.',
-      positions: ['  CB(man #1)         CB(man #1)', '         FS (robber - middle)', '  SS(man slot)  LBs(man RB/TE)', '         4 DL rush'],
+      players: [
+        ...offRef, ...def43,
+      ],
+      routes: [
+        // FS deep center-field
+        [[40,72],[50,92]],
+        // CB left man on WR (follow toward receiver area)
+        [[10,60],[8,55]],
+        // CB right man on WR
+        [[90,60],[92,55]],
+        // SS man on slot
+        [[70,72],[68,62]],
+        // Sam man on TE/RB
+        [[28,63],[35,55]],
+        // Mike man on RB
+        [[50,63],[50,55]],
+        // Will man on TE
+        [[64,63],[58,55]],
+      ],
+      blocks: [],
       notes: ['FS: Play 10-12 yards deep, read the QB. Jump any crossers or post routes.', 'CBs: Press or off-man technique. Win your matchup on the outside.', 'LBs: Know your man assignment pre-snap. Carry vertical, pass off crossers.', 'The robber technique creates turnovers — the FS must be aggressive.'],
     },
     {
-      name: 'Mike Fire Zone',
-      desc: 'The middle linebacker (Mike) blitzes through the A-gap while the defensive end on his side drops into coverage to replace the vacated underneath zone. This is a 3-under, 3-deep fire zone concept that brings 5 rushers while maintaining 6 in coverage.',
-      positions: ['   DE(drop)  DT  DT  DE(rush)', '  WLB(under)  MLB>>>BLITZ  SLB(under)', '  CB(deep 1/3) FS(deep mid) CB(deep 1/3)', '    5 rush / 3 deep / 3 under'],
-      notes: ['MLB: Attack the A-gap at the snap. Get there fast.', 'DE (drop side): Drop to the curl/flat zone vacated by the blitzing LB.', '3-deep behind the blitz: FS middle, CBs deep thirds.', 'The key is disguise — do not tip the blitz pre-snap.'],
-    },
-    {
-      name: 'Will Blitz',
-      desc: 'The weak-side linebacker (Will) blitzes off the edge from the weak side. The strong safety rotates down to fill the coverage void left by the blitzing LB. The coverage behind it adjusts accordingly.',
-      positions: ['   DE  DT  DT  DE', ' WLB>>>BLITZ   MLB   SLB', '  CB     SS(rotate down)  FS   CB', '    WLB off the weak-side edge'],
-      notes: ['WLB: Time the snap, attack the outside shoulder of the OT.', 'SS: Rotate down to replace the WLBs zone responsibility.', 'FS: Shift to cover the middle of the field alone.', 'CB (weak side): May need to play more aggressive technique.'],
-    },
-    {
-      name: 'Sam Blitz',
+      name: 'Sam Fire',
       desc: 'The strong-side linebacker (Sam) walks up to the line pre-snap and blitzes through the C-gap on the strong side. The corner presses, and the free safety plays over the top. Designed to disrupt strong-side runs and pressure the QB off the edge.',
-      positions: ['   DE  DT  DT  DE', '  WLB   MLB   SLB>>>BLITZ', '  CB(press)     FS(over top)   CB', '    SLB attacks the C-gap'],
+      players: [
+        ...offRef, ...def43,
+      ],
+      routes: [
+        // FS covers deep middle
+        [[40,72],[50,90]],
+        // CB left deep 1/3
+        [[10,60],[15,85]],
+        // CB right deep 1/3
+        [[90,60],[85,85]],
+        // SS fills Sam's vacated zone
+        [[70,72],[60,65]],
+        // Mike adjusts to strong hook
+        [[50,63],[42,68]],
+        // Will drops to curl zone
+        [[64,63],[70,68]],
+      ],
+      blocks: [
+        // Sam blitz off edge through C-gap
+        [[28,63],[26,53]],
+      ],
       notes: ['SLB: Walk up pre-snap, attack the C-gap outside the TE.', 'CB (strong): Press coverage. No safety help to your side — play tough.', 'FS: Shift to provide deep help over the strong-side CB.', 'DE (strong): Squeeze inside to create a lane for the SLB.'],
     },
     {
-      name: 'Safety Blitz',
-      desc: 'The strong safety fires off the edge from a walked-up position. The corner on the blitz side rotates to deep half, and the free safety rotates to the other deep half, creating a 2-deep shell behind the blitz. A surprise pressure look from secondary.',
-      positions: ['   DE  DT  DT  DE', '  WLB   MLB   SLB', ' CB(deep half)  SS>>>BLITZ  CB', '    FS(deep half)'],
-      notes: ['SS: Creep up late. Time the snap and attack.', 'CB (blitz side): At the snap, bail to your deep half.', 'FS: Rotate to the opposite deep half.', 'LBs: Play your zone responsibilities — no one else is blitzing.'],
+      name: 'Will Blitz',
+      desc: 'The weak-side linebacker (Will) blitzes through the A-gap from the weak side. The strong safety rotates down to fill the coverage void left by the blitzing LB. The coverage behind it adjusts accordingly.',
+      players: [
+        ...offRef, ...def43,
+      ],
+      routes: [
+        // FS shifts to deep middle alone
+        [[40,72],[50,90]],
+        // CB left deep 1/3
+        [[10,60],[15,85]],
+        // CB right deep 1/3
+        [[90,60],[85,85]],
+        // SS rotates down to replace Will
+        [[70,72],[64,65]],
+        // Mike shifts weak to cover
+        [[50,63],[56,68]],
+        // Sam drops to curl zone
+        [[28,63],[22,68]],
+      ],
+      blocks: [
+        // Will blitzes A-gap
+        [[64,63],[52,53]],
+      ],
+      notes: ['WLB: Time the snap, attack the outside shoulder of the OT.', 'SS: Rotate down to replace the WLBs zone responsibility.', 'FS: Shift to cover the middle of the field alone.', 'CB (weak side): May need to play more aggressive technique.'],
+    },
+    {
+      name: 'Mike Blitz',
+      desc: 'The middle linebacker (Mike) blitzes through the A-gap while the defensive end on his side drops into coverage to replace the vacated underneath zone. This is a 3-under, 3-deep fire zone concept that brings 5 rushers while maintaining 6 in coverage.',
+      players: [
+        ...offRef, ...def43,
+      ],
+      routes: [
+        // FS deep middle
+        [[40,72],[50,90]],
+        // CB left deep 1/3
+        [[10,60],[15,85]],
+        // CB right deep 1/3
+        [[90,60],[85,85]],
+        // DE drops into underneath zone
+        [[66,56],[70,65]],
+        // Sam drops underneath
+        [[28,63],[22,68]],
+        // Will drops underneath
+        [[64,63],[72,68]],
+      ],
+      blocks: [
+        // Mike blitz A-gap
+        [[50,63],[50,53]],
+      ],
+      notes: ['MLB: Attack the A-gap at the snap. Get there fast.', 'DE (drop side): Drop to the curl/flat zone vacated by the blitzing LB.', '3-deep behind the blitz: FS middle, CBs deep thirds.', 'The key is disguise — do not tip the blitz pre-snap.'],
     },
     {
       name: 'Zone Dog (Simulated Pressure)',
       desc: 'Four rushers come, but they are not the expected four. A defensive lineman drops into coverage while a linebacker replaces him in the rush. The offense sees 4-man pressure but cannot predict which 4 are coming. This confuses pass protection schemes.',
-      positions: ['   DE(drop)  DT(rush)  DT(rush)  DE(rush)', '  WLB(rush)   MLB(drop)   SLB(drop)', '  CB(deep)     FS(deep)     CB(deep)', '    Different 4 rush, rest cover'],
+      players: [
+        ...offRef, ...def43,
+      ],
+      routes: [
+        // DE drops into flat zone
+        [[66,56],[70,65]],
+        // Mike drops to hook zone
+        [[50,63],[50,70]],
+        // Sam drops underneath
+        [[28,63],[22,68]],
+        // FS deep middle
+        [[40,72],[50,90]],
+        // CB left deep 1/3
+        [[10,60],[15,85]],
+        // CB right deep 1/3
+        [[90,60],[85,85]],
+      ],
+      blocks: [
+        // Will replaces DE in rush
+        [[64,63],[62,53]],
+      ],
       notes: ['DE (drop): At the snap, drop into the flat zone. Sell the rush first.', 'WLB: Replace the dropping DE in the pass rush. Attack his gap.', 'The offense cannot slide or combo block effectively against unknown rushers.', 'Excellent on 3rd-and-medium. Confuse the QB reads.'],
+    },
+    {
+      name: 'Run Fit vs Inside Zone',
+      desc: 'Gap assignments for all front-seven defenders against an inside zone run. Each defender is responsible for a specific gap, maintaining the integrity of the defensive front. The safeties serve as force and alley players behind the fit.',
+      players: [
+        ...offRef, ...def43,
+      ],
+      routes: [],
+      blocks: [
+        // DE left -> C-gap
+        [[34,56],[30,52]],
+        // DT left -> B-gap
+        [[44,56],[44,52]],
+        // DT right -> A-gap
+        [[56,56],[52,52]],
+        // DE right -> C-gap
+        [[66,56],[62,52]],
+        // Sam -> D-gap (contain)
+        [[28,63],[22,56]],
+        // Mike -> A-gap
+        [[50,63],[48,56]],
+        // Will -> B-gap
+        [[64,63],[60,56]],
+        // SS -> alley
+        [[70,72],[74,64]],
+        // FS -> deep middle run support
+        [[40,72],[44,64]],
+      ],
+      notes: ['DE: C-gap responsibility. Squeeze the OT and set the edge.', 'DTs: Control your gap. Do not get driven off the ball.', 'Sam: Force / D-gap. Contain anything bouncing outside.', 'Mike and Will: Fill downhill into their gaps. Read guard pull keys.'],
     },
   ]
 
@@ -656,60 +1101,216 @@ function generate43DefensePlaybook() {
 function generate34DefensePlaybook() {
   const philosophy = 'The 3-4 defense uses 3 down linemen (a nose tackle and 2 defensive ends), 4 linebackers (2 inside and 2 outside), and 4 defensive backs. Its greatest asset is the ability to disguise who is rushing the passer. The nose tackle two-gaps the center, controlling both A-gaps and freeing the inside linebackers to flow to the ball. Outside linebackers are hybrid players — they can rush, drop into coverage, or play the run on any given snap. The defense thrives on deception: showing one look pre-snap, executing another post-snap.'
 
+  // Basic offensive reference players for defensive diagrams
+  const offRef = [
+    {l:'O',x:42,y:48},{l:'O',x:46,y:48},{l:'O',x:50,y:48},{l:'O',x:54,y:48},{l:'O',x:58,y:48},
+    {l:'QB',x:50,y:40},{l:'RB',x:50,y:34},
+  ]
+  // 3-4 base defensive positions
+  const def34 = [
+    {l:'NT',x:50,y:56},{l:'DE',x:38,y:56},{l:'DE',x:62,y:56},
+    {l:'J',x:26,y:58},{l:'B',x:74,y:58},
+    {l:'M',x:44,y:63},{l:'W',x:56,y:63},
+    {l:'CB',x:10,y:60},{l:'CB',x:90,y:60},
+    {l:'SS',x:70,y:72},{l:'FS',x:40,y:72},
+  ]
+
   const plays = [
     {
       name: 'Base 3-4 Alignment',
       desc: 'The foundation of the defense. The nose tackle aligns in a 0-technique (head-up on center) and two-gaps. The two defensive ends play 5-techniques (outside shoulder of the offensive tackles). The OLBs align on the edge, and the ILBs stack behind the DL, reading their keys.',
-      positions: ['         DE(5)   NT(0)   DE(5)', '  OLB              ILB  ILB              OLB', '   CB      SS        FS      CB', '      0-tech nose anchors the front'],
+      players: [
+        ...offRef, ...def34,
+      ],
+      routes: [],
+      blocks: [
+        // Gap responsibility arrows for each front-7 player
+        [[50,56],[48,52]],  // NT -> A-gap left
+        [[50,56],[52,52]],  // NT -> A-gap right (two-gap)
+        [[38,56],[36,52]],  // DE left -> B-gap
+        [[62,56],[64,52]],  // DE right -> B-gap
+        [[26,58],[28,53]],  // Jack -> C-gap
+        [[74,58],[72,53]],  // Buck -> C-gap
+      ],
       notes: ['NT: Head-up on the center. Two-gap technique — control the blocker and play both A-gaps.', 'DEs: 5-technique on the OTs. Set the edge and squeeze down on runs.', 'OLBs: Stand up on the edge. Walk up or drop based on the call.', 'ILBs: Stacked behind the DL. Read guards for run/pass keys.'],
+    },
+    {
+      name: 'Two-Gap Technique',
+      desc: 'The nose tackle demonstrates two-gap control by engaging the center and playing both A-gaps. The NT controls the blocker with his hands, reads the play flow, and sheds to the ball side. This is the anchor of the 3-4 front — if the NT loses, both A-gaps open.',
+      players: [
+        ...offRef, ...def34,
+      ],
+      routes: [],
+      blocks: [
+        // NT two-gap arrows — both A-gaps emphasized
+        [[50,56],[46,51]],  // NT -> left A-gap
+        [[50,56],[54,51]],  // NT -> right A-gap
+        // DEs hold their gaps
+        [[38,56],[36,52]],  // DE left -> B-gap
+        [[62,56],[64,52]],  // DE right -> B-gap
+      ],
+      notes: ['NT: Hands inside the center\'s pads. Lock out, read the flow, shed to the ball.', 'Two-gap NT must not get driven off the ball — anchor is everything.', 'DEs: Hold your gap. The NT controls the middle so you can set edges.', 'ILBs: Free to flow to the ball because the NT occupies the center.'],
     },
     {
       name: 'Cover 2 Zone',
       desc: 'Two deep safeties each cover a deep half of the field. Five defenders handle the underneath zones. The OLBs drop to the flat zones, ILBs handle the curl/hook areas, and the remaining underneath player (often the strong-side DE or a LB) covers the middle.',
-      positions: ['  CB(flat/squat)         CB(flat/squat)', '    SS(deep half)     FS(deep half)', '  OLB(flat) ILB(curl) ILB(curl) OLB(flat)', '         3 DL rush'],
+      players: [
+        ...offRef, ...def34,
+      ],
+      routes: [
+        // SS deep half right
+        [[70,72],[75,88]],
+        // FS deep half left
+        [[40,72],[25,88]],
+        // CB left squat/flat
+        [[10,60],[14,65]],
+        // CB right squat/flat
+        [[90,60],[86,65]],
+        // Jack drops to flat
+        [[26,58],[18,64]],
+        // Buck drops to flat
+        [[74,58],[82,64]],
+        // Mike drops to curl
+        [[44,63],[38,69]],
+        // Will drops to curl
+        [[56,63],[62,69]],
+      ],
+      blocks: [],
       notes: ['Safeties: Align at 12 yards. Cover your deep half, break downhill on throws.', 'CBs: Squat on short routes. Re-route the #1 receiver, then sink.', 'OLBs: Drop to the flat. Match any receiver who enters your zone.', 'Vulnerable to deep middle throws — need the DL to pressure quickly.'],
     },
     {
       name: 'Cover 3 Sky',
       desc: 'The strong safety rolls down into the flat to become an underneath defender, while the free safety shifts to deep center field. The two corners each play a deep third. This gives the defense an extra defender near the LOS while maintaining three-deep coverage.',
-      positions: ['  CB(deep 1/3)    FS(deep mid)    CB(deep 1/3)', '     SS(roll to flat)  ILBs(curl/hook)', '  OLB(contain)   DL rush   OLB(rush/drop)', '    SS plays like an extra LB'],
+      players: [
+        ...offRef, ...def34,
+      ],
+      routes: [
+        // FS deep center field
+        [[40,72],[50,90]],
+        // CB left deep 1/3
+        [[10,60],[15,85]],
+        // CB right deep 1/3
+        [[90,60],[85,85]],
+        // SS rolls down to flat
+        [[70,72],[78,63]],
+        // Mike drops to curl/hook
+        [[44,63],[38,69]],
+        // Will drops to curl/hook
+        [[56,63],[62,69]],
+        // Jack contains
+        [[26,58],[22,55]],
+      ],
+      blocks: [],
       notes: ['SS: Roll down to the flat pre-snap or at the snap. Be aggressive against the run.', 'FS: You are the center fielder. Align at 14 yards, read QB, break on the throw.', 'CBs: Deep third. Keep everything in front of you.', 'This gives you an 8-man box against the run while staying in 3-deep.'],
+    },
+    {
+      name: 'Cover 4 (Quarters)',
+      desc: 'All four defensive backs drop to a deep quarter of the field. Each safety and corner is responsible for one vertical quarter. The linebackers handle all underneath zones. This is a conservative coverage that takes away deep shots and is effective against 4-vertical concepts.',
+      players: [
+        ...offRef, ...def34,
+      ],
+      routes: [
+        // CB left deep quarter (far left)
+        [[10,60],[10,88]],
+        // FS deep quarter (left-center)
+        [[40,72],[30,88]],
+        // SS deep quarter (right-center)
+        [[70,72],[70,88]],
+        // CB right deep quarter (far right)
+        [[90,60],[90,88]],
+        // Jack underneath zone
+        [[26,58],[20,65]],
+        // Buck underneath zone
+        [[74,58],[80,65]],
+        // Mike hook zone
+        [[44,63],[44,70]],
+        // Will hook zone
+        [[56,63],[56,70]],
+      ],
+      blocks: [],
+      notes: ['CBs: Align at 7-8 yards. Bail to your deep quarter at the snap.', 'Safeties: Read #2 receiver to your side. If vertical, carry him. If not, look to help.', 'LBs: Wall off underneath routes. You have no deep help in the middle — rally to the ball.', 'Excellent against 4 verticals and deep passing concepts.'],
     },
     {
       name: 'OLB Edge Rush',
       desc: 'Both outside linebackers rush off the edge at the snap, turning the 3-4 front into a simulated 5-man pressure look. The DL occupies blockers while the speed of the OLBs creates pressure from the outside. Coverage behind it adjusts to 3-under, 3-deep.',
-      positions: ['  OLB>>>RUSH   DE   NT   DE   OLB>>>RUSH', '         ILB(drop)  ILB(drop)', '  CB(deep 1/3) FS(deep mid) CB(deep 1/3)', '    Both OLBs attack edges'],
+      players: [
+        ...offRef, ...def34,
+      ],
+      routes: [
+        // Mike drops to hook/curl
+        [[44,63],[38,69]],
+        // Will drops to hook/curl
+        [[56,63],[62,69]],
+        // FS deep middle
+        [[40,72],[50,90]],
+        // CB left deep 1/3
+        [[10,60],[15,85]],
+        // CB right deep 1/3
+        [[90,60],[85,85]],
+      ],
+      blocks: [
+        // Jack edge rush
+        [[26,58],[24,52]],
+        // Buck edge rush
+        [[74,58],[76,52]],
+      ],
       notes: ['OLBs: Attack outside shoulder of the OT. Use speed-to-power or dip-and-rip.', 'ILBs: Both drop to underneath zones — curl/hook areas.', 'DL: Occupy blockers. Do not let the OL slide to help on the edges.', 'This is the base 5-man pressure look. Everyone must know it.'],
     },
     {
       name: 'Double A-Gap Blitz',
       desc: 'Both inside linebackers creep toward the A-gaps before the snap and fire through them at the snap. This creates immediate interior pressure and chaos for the center and guards. The OLBs drop into coverage to maintain zone integrity behind the pressure.',
-      positions: ['         DE   NT   DE', '  OLB(drop)  ILB>>A  A<<ILB  OLB(drop)', '  CB(man)     SS(deep)  FS(deep)     CB(man)', '    Both ILBs fire through A-gaps'],
+      players: [
+        ...offRef, ...def34,
+      ],
+      routes: [
+        // Jack drops to flat zone
+        [[26,58],[18,64]],
+        // Buck drops to flat zone
+        [[74,58],[82,64]],
+        // SS deep half
+        [[70,72],[75,88]],
+        // FS deep half
+        [[40,72],[25,88]],
+        // CB left man
+        [[10,60],[8,55]],
+        // CB right man
+        [[90,60],[92,55]],
+      ],
+      blocks: [
+        // Mike fires A-gap left
+        [[44,63],[48,53]],
+        // Will fires A-gap right
+        [[56,63],[52,53]],
+      ],
       notes: ['ILBs: Walk up to the LOS pre-snap. Fire through the A-gaps at the snap.', 'NT: Slant to one side to create a lane for one of the ILBs.', 'OLBs: Drop to flat zones. You must cover what the ILBs left behind.', 'This puts extreme pressure on the center — he cannot block both.'],
     },
     {
-      name: 'Safety Insert Blitz',
-      desc: 'The free safety comes on a delayed blitz off the edge, attacking a gap vacated by the offensive line. The corner on that side rotates to deep coverage. This is an A-gap creeper look — the FS walks down late and inserts into the rush.',
-      positions: ['         DE   NT   DE', '  OLB   ILB   ILB   OLB', '  CB(deep)  SS(deep)  FS>>>BLITZ  CB', '    FS inserts late from depth'],
-      notes: ['FS: Creep up late. Time the snap count. Attack the open gap.', 'CB (blitz side): Rotate to deep responsibility at the snap.', 'SS: Shift to cover deep middle alone.', 'The late movement makes this nearly impossible to pick up pre-snap.'],
-    },
-    {
-      name: 'Corner Blitz',
-      desc: 'The cornerback blitzes from the slot side, attacking off the edge. The safety rotates to replace the corner in deep coverage. Man coverage is played behind the blitz. This is a highly aggressive call designed for passing downs.',
-      positions: ['         DE   NT   DE', '  OLB   ILB   ILB   OLB', ' CB>>>BLITZ   SS(rotate deep)  FS  CB(man)', '    CB attacks from the slot side'],
-      notes: ['CB: Time the snap, attack off the edge at full speed. Unblocked rusher.', 'SS: Rotate to deep coverage on the blitz side immediately.', 'FS: Cover the deep middle.', 'Man coverage behind it — everyone locks up their man.'],
-    },
-    {
-      name: 'Overload Blitz',
-      desc: 'Stack three rushers to one side of the formation: the OLB, an ILB, and the safety all attack from the same side. The offense cannot account for the extra rusher. The other ILB and OLB handle coverage responsibilities on the opposite side.',
-      positions: ['         DE   NT   DE', '  OLB(drop)  ILB(drop)  ILB>>>  OLB>>>', '  CB          FS     SS>>>RUSH  CB', '    3 rushers from same side'],
-      notes: ['OLB (rush side): Outside rush. Force the OT to commit.', 'ILB: Attack the B-gap on the overload side.', 'SS: Insert as the third rusher. Attack the open gap.', 'The offense must account for 3 from one side — slide protection breaks.'],
-    },
-    {
-      name: 'Delayed ILB Blitz',
-      desc: 'Both ILBs show blitz pre-snap by walking toward the LOS. At the snap, one drops into coverage while the other fires through on a delayed rush. The offensive line prepares for both, but one is a fake. This catches the QB off guard as the delayed rusher arrives late.',
-      positions: ['         DE   NT   DE', '  OLB  ILB(show, drop)  ILB(show, rush late)  OLB', '  CB     SS     FS     CB', '    Show 2 blitzers, send 1 late'],
-      notes: ['Both ILBs: Show blitz pre-snap. Sell the look.', 'Drop ILB: At the snap, bail to the hook/curl zone. Cover.', 'Rush ILB: Delay one count, then fire. The delayed timing gets home.', 'QB thinks the blitz was a fake, then the delayed rusher arrives.'],
+      name: 'Zone Fire (Fire Zone)',
+      desc: 'A fire zone blitz bringing 5 rushers while playing 3-deep, 3-under zone coverage behind the pressure. The Buck OLB and an ILB blitz, the Jack OLB drops into a flat zone, and the secondary rotates to cover the deep thirds. Disguise is everything.',
+      players: [
+        ...offRef, ...def34,
+      ],
+      routes: [
+        // Jack drops to flat zone
+        [[26,58],[18,65]],
+        // Mike drops to hook zone
+        [[44,63],[44,70]],
+        // FS deep middle
+        [[40,72],[50,90]],
+        // CB left deep 1/3
+        [[10,60],[15,85]],
+        // CB right deep 1/3
+        [[90,60],[85,85]],
+        // SS underneath zone (seam/curl)
+        [[70,72],[65,66]],
+      ],
+      blocks: [
+        // Buck OLB edge blitz
+        [[74,58],[72,52]],
+        // Will ILB A-gap blitz
+        [[56,63],[54,53]],
+      ],
+      notes: ['Buck: Attack the edge at the snap. You are the primary pass rusher.', 'Will: Fire through the A-gap. Timing with the snap is critical.', 'Jack: Drop to the flat zone — replace the coverage left by the blitzers.', '3-deep, 3-under behind 5 rushers. The key is disguising who is coming.'],
     },
   ]
 
@@ -737,50 +1338,222 @@ function generateSpecialTeamsPlaybook() {
     {
       name: 'Kickoff Cover (5-Lane)',
       desc: 'The cover team is organized into 5 lanes across the field. Two safeties hang back as the last line of defense. The contain players on each edge force the return inside, while the lane runners squeeze the return to the middle. The wedge buster attacks the return team wedge up the middle.',
-      positions: ['K', 'L5  L4  L3  L2  L1  L1  L2  L3  L4  L5', '         S             S', '    Lanes squeeze return inside'],
+      players: [
+        {l:'K',x:50,y:80},
+        // Cover team spread across the field
+        {l:'L5',x:10,y:72},{l:'L4',x:22,y:72},{l:'L3',x:34,y:72},{l:'L2',x:42,y:72},{l:'L1',x:48,y:72},
+        {l:'L1',x:52,y:72},{l:'L2',x:58,y:72},{l:'L3',x:66,y:72},{l:'L4',x:78,y:72},{l:'L5',x:90,y:72},
+        // Safeties trail
+        {l:'S',x:38,y:84},{l:'S',x:62,y:84},
+      ],
+      routes: [
+        // Each cover player runs downfield in their lane
+        [[10,72],[10,20]],   // L5 left contain
+        [[22,72],[22,20]],   // L4 left
+        [[34,72],[34,20]],   // L3 left
+        [[42,72],[42,20]],   // L2 left
+        [[48,72],[48,20]],   // L1 left
+        [[52,72],[52,20]],   // L1 right
+        [[58,72],[58,20]],   // L2 right
+        [[66,72],[66,20]],   // L3 right
+        [[78,72],[78,20]],   // L4 right
+        [[90,72],[90,20]],   // L5 right contain
+      ],
+      blocks: [],
       notes: ['L1 (contain): Force the return inside. Do not get hooked or sealed.', 'L2-L4 (lane runners): Stay in your lane. Squeeze laterally, tackle inside-out.', 'L3 (wedge buster): Attack the wedge. Disrupt the blocking scheme.', 'Safeties: Hang 15 yards behind the front. Clean up anything that breaks through.'],
     },
     {
       name: 'Kickoff Return (Wedge)',
       desc: 'A double-wedge formation at the 30-yard line creates a wall of blockers. The front wedge sets up 5 yards ahead of the rear wedge. The return man catches the kick and hits the seam between the two wedge lines, following the blockers upfield.',
-      positions: ['          Return Man', '     W  W  W  (back wedge)', '   W  W  W  W  (front wedge)', 'Front line: block lanes outside'],
+      players: [
+        // Return man deep
+        {l:'R',x:50,y:15},
+        // Back wedge (3 blockers)
+        {l:'W',x:42,y:30},{l:'W',x:50,y:30},{l:'W',x:58,y:30},
+        // Front wedge (4 blockers)
+        {l:'W',x:36,y:38},{l:'W',x:44,y:38},{l:'W',x:56,y:38},{l:'W',x:64,y:38},
+        // Front line blockers
+        {l:'B',x:20,y:50},{l:'B',x:35,y:50},{l:'B',x:65,y:50},{l:'B',x:80,y:50},
+      ],
+      routes: [
+        // Return man hits the seam upfield
+        [[50,15],[50,38],[50,60]],
+        // Front wedge pushes upfield
+        [[36,38],[36,50]],
+        [[44,38],[44,50]],
+        [[56,38],[56,50]],
+        [[64,38],[64,50]],
+      ],
+      blocks: [
+        // Front line blockers engage cover men
+        [[20,50],[20,55]],
+        [[35,50],[35,55]],
+        [[65,50],[65,55]],
+        [[80,50],[80,55]],
+      ],
       notes: ['Front wedge: Set up at the 35. Block the first cover man in your lane.', 'Back wedge: Set up at the 30. Seal inside-out, create the crease.', 'Return man: Catch the ball, hit the seam at full speed. Trust the wedge.', 'Front line: Attack cover men aggressively. Do not let them get to your lane.'],
-    },
-    {
-      name: 'Sideline Return (Wall)',
-      desc: 'A wall of blockers forms along the boundary sideline. The return man catches the kick and follows the wall to the sideline, using the wall as a convoy of blockers. The wall sets at the 25-yard line and extends toward the numbers.',
-      positions: ['          Return Man', '                    WALL >>>>', '   B  B  B  B  |  W  W  W  W', '    Blockers set the wall to the boundary'],
-      notes: ['Wall blockers: Set the wall 5 yards from the sideline. Stay in front of the returner.', 'Return man: Catch, get to the wall, and run behind it.', 'Front-line blockers: Seal your man to the field side. Push them away from the wall.', 'The sideline is the extra defender — use it to your advantage.'],
     },
     {
       name: 'Punt Protection (Spread)',
       desc: 'The personal protector reads the defensive alignment and calls the protection. The wings on each side block the edge rushers. The interior linemen step to protect their gaps. The cover team releases after the punt to cover their lanes downfield.',
-      positions: ['          Punter (15 yards deep)', '       PP (personal protector)', '  W  G  G  C  G  G  W', '  Cover team releases on the kick'],
+      players: [
+        // Punt formation using F.PUNT positions
+        {l:'C',x:50,y:53},{l:'LG',x:42,y:53},{l:'RG',x:58,y:53},{l:'LT',x:35,y:53},{l:'RT',x:65,y:53},
+        {l:'LW',x:28,y:53},{l:'RW',x:72,y:53},
+        {l:'PP',x:42,y:60},{l:'UP',x:58,y:60},
+        {l:'GL',x:20,y:57},
+        {l:'P',x:50,y:72},
+      ],
+      routes: [
+        // Cover lanes after punt is away
+        [[28,53],[22,20]],   // LW covers left
+        [[72,53],[78,20]],   // RW covers right
+        [[35,53],[30,20]],   // LT lane
+        [[65,53],[70,20]],   // RT lane
+        [[42,53],[40,20]],   // LG lane
+        [[58,53],[60,20]],   // RG lane
+        [[20,57],[12,20]],   // Gunner left
+      ],
+      blocks: [],
       notes: ['PP: Read the rush. Identify any overloads and adjust protection.', 'Wings: Block the edge rusher. Do not let anyone clean off the edge.', 'Interior OL: Step to your gap, absorb the rush, then release to cover.', 'Punter: Catch, 2 steps, punt. Get the ball off in 2.0 seconds or less.'],
     },
     {
       name: 'Punt Return (Wall Return)',
       desc: 'Four blockers set a wall on the return side of the field. The return man catches the punt and hits the wall at full speed. The wall blockers maintain their blocks and run in front of the return man. The non-wall players hold up gunners and slow the coverage.',
-      positions: ['          Return Man (catches punt)', '   W  W  W  W  <-- wall of 4 blockers', '  Jammers slow the coverage team', '    Return man follows the wall'],
+      players: [
+        // Return man catches punt deep
+        {l:'R',x:50,y:15},
+        // Wall blockers on the right side
+        {l:'W',x:72,y:30},{l:'W',x:72,y:36},{l:'W',x:72,y:42},{l:'W',x:72,y:48},
+        // Jammers at the LOS to slow coverage
+        {l:'J',x:20,y:53},{l:'J',x:35,y:53},{l:'J',x:50,y:53},{l:'J',x:65,y:53},{l:'J',x:80,y:53},
+        // Extra blocker
+        {l:'B',x:60,y:25},
+      ],
+      routes: [
+        // Return man catches and runs to wall
+        [[50,15],[65,25],[72,35],[75,55]],
+        // Wall blockers maintain their blocks moving upfield
+        [[72,30],[75,50]],
+        [[72,36],[75,55]],
+        [[72,42],[75,60]],
+        [[72,48],[75,65]],
+      ],
+      blocks: [
+        // Jammers hold up coverage at the LOS
+        [[20,53],[20,50]],
+        [[35,53],[35,50]],
+        [[50,53],[50,50]],
+        [[65,53],[65,50]],
+        [[80,53],[80,50]],
+      ],
       notes: ['Wall blockers: Set 10 yards from the sideline on the return side. Stay in front.', 'Return man: Catch the punt, get to the wall. Be decisive — hit it at speed.', 'Jammers: Hold up the gunners at the line. Give the wall time to set.', 'The first 10 yards of return determine the success. Quick decisions.'],
     },
     {
       name: 'Punt Block (Overload)',
       desc: 'Overload one side of the punt shield with extra rushers. The edge rusher on the overload side has a clean lane to block the punt. Interior players hold their gaps to prevent a fake. The block point is 5-7 yards in front of the punter.',
-      positions: ['          Punter', '       PP', '  W  G  G  C  G  G  W', '  R  R  R  R  <-- overload rush', '    Edge rusher gets clean lane'],
+      players: [
+        // Punt team (opposition)
+        {l:'P',x:50,y:72},{l:'PP',x:42,y:60},
+        {l:'C',x:50,y:53},{l:'G',x:42,y:53},{l:'G',x:58,y:53},{l:'T',x:35,y:53},{l:'T',x:65,y:53},
+        {l:'W',x:28,y:53},{l:'W',x:72,y:53},
+        // Overload rushers on the left side
+        {l:'R',x:14,y:50},{l:'R',x:22,y:50},{l:'R',x:30,y:50},{l:'R',x:38,y:50},
+        // Interior defenders
+        {l:'D',x:52,y:50},{l:'D',x:60,y:50},{l:'D',x:68,y:50},
+        // Safety stays back
+        {l:'S',x:50,y:35},
+      ],
+      routes: [],
+      blocks: [
+        // Overload edge rusher targets block point
+        [[14,50],[30,65]],
+        [[22,50],[35,62]],
+        [[30,50],[38,58]],
+        [[38,50],[42,56]],
+      ],
       notes: ['Edge rusher: Full speed. Aim for the block point 7 yards in front of the punter.', 'Interior rushers: Attack your gap to create chaos and prevent a fake.', 'Safety: Stay back in case of a fake punt pass or run.', 'DO NOT rough the punter. Block the ball, not the kicker.'],
     },
     {
       name: 'FG / PAT Protection',
       desc: 'Standard 7-man front protection with the center, holder, and kicker in the backfield. The wings and guards form a pocket, blocking from the inside out. The operation must be completed in 1.3 seconds from snap to kick (HS timing).',
-      positions: ['          Kicker', '        Holder (7 yards)', '          Center', '  W  G  G  C  G  G  W', '    Inside-out protection'],
+      players: [
+        // FG formation
+        {l:'C',x:50,y:53},
+        {l:'LG',x:42,y:53},{l:'RG',x:58,y:53},
+        {l:'LT',x:35,y:53},{l:'RT',x:65,y:53},
+        {l:'LW',x:28,y:53},{l:'RW',x:72,y:53},
+        {l:'H',x:50,y:63},   // Holder 7 yards back
+        {l:'K',x:50,y:70},   // Kicker behind holder
+        // Two upbacks for extra protection
+        {l:'U',x:42,y:58},{l:'U',x:58,y:58},
+      ],
+      routes: [],
+      blocks: [
+        // Inside-out protection blocks
+        [[42,53],[40,50]],   // LG blocks inside-out
+        [[58,53],[60,50]],   // RG blocks inside-out
+        [[35,53],[33,50]],   // LT blocks outside
+        [[65,53],[67,50]],   // RT blocks outside
+        [[28,53],[26,50]],   // LW blocks edge
+        [[72,53],[74,50]],   // RW blocks edge
+      ],
       notes: ['Center: Clean snap to the holder. Hit him in the hands every time.', 'Holder: Catch, spot, and spin the laces forward. Quick hands.', 'Wings: Block the edge. Do not let anyone come clean off the outside.', 'Timing target: 1.3 seconds from snap to kick for field goals.'],
     },
     {
       name: 'FG Block (Edge Rush)',
       desc: 'Align wide outside the wing and attack the edge at the snap. The goal is to get penetration past the wing blocker and get your hands up in the kick lane. The interior defenders occupy blockers to prevent a slide to the edge.',
-      positions: ['          Kicker', '        Holder', '  W  G  G  C  G  G  W', 'R >>>>                   <<<< R', '    Edge rushers get hands up'],
+      players: [
+        // FG team (opposition)
+        {l:'C',x:50,y:53},
+        {l:'G',x:42,y:53},{l:'G',x:58,y:53},
+        {l:'T',x:35,y:53},{l:'T',x:65,y:53},
+        {l:'W',x:28,y:53},{l:'W',x:72,y:53},
+        {l:'H',x:50,y:63},{l:'K',x:50,y:70},
+        // Defensive edge rushers wide
+        {l:'R',x:18,y:50},{l:'R',x:82,y:50},
+        // Interior defenders
+        {l:'D',x:38,y:50},{l:'D',x:46,y:50},{l:'D',x:54,y:50},{l:'D',x:62,y:50},
+      ],
+      routes: [],
+      blocks: [
+        // Edge rushers attack toward kicker
+        [[18,50],[35,62]],
+        [[82,50],[65,62]],
+        // Interior occupies blockers
+        [[38,50],[40,53]],
+        [[46,50],[46,53]],
+        [[54,50],[54,53]],
+        [[62,50],[60,53]],
+      ],
       notes: ['Edge rushers: Wide alignment. Attack outside the wing at full speed.', 'Get your hands up at the block point. Do not leave your feet.', 'Interior: Occupy blockers so they cannot help on the edge.', 'If the kick is up, rally to the ball in case of a miss or short kick.'],
+    },
+    {
+      name: 'Onside Kick',
+      desc: 'Players are bunched to one side of the field for a surprise short kick. The kicker aims for the ball to travel just past 10 yards. The hands team is positioned to recover the ball immediately. Timing and ball placement are critical for success.',
+      players: [
+        // Kicker
+        {l:'K',x:50,y:80},
+        // Hands team bunched to the right
+        {l:'H',x:60,y:72},{l:'H',x:66,y:72},{l:'H',x:72,y:72},{l:'H',x:78,y:72},{l:'H',x:84,y:72},
+        // A few players spread left as decoys
+        {l:'D',x:20,y:72},{l:'D',x:30,y:72},{l:'D',x:40,y:72},
+        // Recovery target area
+        {l:'T',x:72,y:58},{l:'T',x:80,y:58},
+      ],
+      routes: [
+        // Hands team converges on recovery zone
+        [[60,72],[66,58]],
+        [[66,72],[70,58]],
+        [[72,72],[74,58]],
+        [[78,72],[78,58]],
+        [[84,72],[82,58]],
+      ],
+      blocks: [
+        // Kick trajectory
+        [[50,80],[72,62]],
+      ],
+      notes: ['K: Drive the ball into the ground at the right hash. Ball must travel 10 yards.', 'Hands team: Sprint to the ball. First priority is recovery, not advance.', 'Decoy players: Sprint downfield to sell a normal kickoff look.', 'Only call this when the element of surprise is intact.'],
     },
   ]
 
