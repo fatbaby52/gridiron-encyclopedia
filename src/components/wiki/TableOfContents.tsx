@@ -59,10 +59,10 @@ export function TableOfContents({ content }: TableOfContentsProps) {
   return (
     <nav className="hidden xl:block w-56 shrink-0">
       <div className="sticky top-20">
-        <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+        <h4 className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
           On this page
         </h4>
-        <ul className="space-y-1.5 text-sm border-l border-gray-200">
+        <ul className="space-y-1.5 text-sm border-l border-gray-200 dark:border-slate-700">
           {headings.map((h) => (
             <li key={h.id}>
               <a
@@ -70,7 +70,7 @@ export function TableOfContents({ content }: TableOfContentsProps) {
                 className={`block pl-3 py-0.5 transition-colors border-l-2 -ml-px ${
                   activeId === h.id
                     ? 'border-grass text-grass-dark font-medium'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
+                    : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                 } ${h.level === 3 ? 'pl-6' : ''}`}
               >
                 {h.text}

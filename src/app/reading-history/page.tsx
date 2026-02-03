@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 export default function ReadingHistoryPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold text-grass-dark mb-2">Reading History</h1>
-      <p className="text-gray-500 mb-8">Articles you&apos;ve recently visited.</p>
+      <h1 className="text-3xl font-bold text-grass-dark dark:text-grass-light mb-2">Reading History</h1>
+      <p className="text-gray-500 dark:text-gray-400 mb-8">Articles you&apos;ve recently visited.</p>
       <ReadingHistoryList />
     </div>
   )

@@ -16,7 +16,7 @@ export function Breadcrumb({ category, title }: BreadcrumbProps) {
   }))
 
   return (
-    <nav className="flex items-center gap-1.5 text-sm text-gray-500 mb-4 flex-wrap">
+    <nav className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 mb-4 flex-wrap">
       <Link href="/" className="hover:text-grass-dark transition-colors">
         Home
       </Link>
@@ -29,7 +29,7 @@ export function Breadcrumb({ category, title }: BreadcrumbProps) {
         </span>
       ))}
       <span>/</span>
-      <span className="text-gray-700 font-medium">{title}</span>
+      <span className="text-gray-700 dark:text-gray-300 font-medium">{title}</span>
     </nav>
   )
 }

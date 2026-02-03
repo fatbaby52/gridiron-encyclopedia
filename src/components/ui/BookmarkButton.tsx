@@ -34,7 +34,7 @@ export function BookmarkButton({ slug, title, category }: BookmarkButtonProps) {
       className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md border transition-colors ${
         favorited
           ? 'bg-gold/10 border-gold text-gold hover:bg-gold/20'
-          : 'bg-white border-gray-200 text-gray-500 hover:border-gold hover:text-gold'
+          : 'bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-700 text-gray-500 dark:text-gray-400 hover:border-gold hover:text-gold'
       }`}
       aria-label={favorited ? 'Remove from favorites' : 'Add to favorites'}
     >

@@ -11,13 +11,13 @@ export function CategoryCard({ label, description, href, icon }: CategoryCardPro
   return (
     <Link
       href={href}
-      className="block p-6 rounded-xl border border-gray-200 hover:border-grass/50 hover:shadow-lg transition-all group"
+      className="block p-6 rounded-xl border border-gray-200 dark:border-slate-700 hover:border-grass/50 hover:shadow-lg transition-all group"
     >
       <div className="text-3xl mb-3">{icon}</div>
-      <h3 className="text-lg font-bold text-gray-900 group-hover:text-grass-dark transition-colors">
+      <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 group-hover:text-grass-dark dark:group-hover:text-grass-light transition-colors">
         {label}
       </h3>
-      <p className="text-sm text-gray-500 mt-1">{description}</p>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{description}</p>
     </Link>
   )
 }

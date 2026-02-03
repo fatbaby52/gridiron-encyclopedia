@@ -36,7 +36,7 @@ export function Sidebar() {
                 className={`block px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
                   isActive
                     ? 'bg-grass/10 text-grass-dark'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800'
                 }`}
               >
                 {cat.label}
@@ -50,7 +50,7 @@ export function Sidebar() {
                         className={`block px-3 py-1.5 text-sm rounded transition-colors ${
                           pathname.startsWith(sub.href)
                             ? 'text-grass-dark font-medium'
-                            : 'text-gray-500 hover:text-gray-700'
+                            : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
                         }`}
                       >
                         {sub.label}

@@ -7,7 +7,7 @@ const colors = {
   grass: 'bg-grass/10 text-grass-dark',
   gold: 'bg-gold/10 text-gold',
   leather: 'bg-leather/10 text-leather',
-  gray: 'bg-gray-100 text-gray-600',
+  gray: 'bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-400',
 }
 
 export function Badge({ children, color = 'gray' }: BadgeProps) {

@@ -20,12 +20,12 @@ interface TierInfo {
 }
 
 export const REPUTATION_TIERS: TierInfo[] = [
-  { tier: 'hall-of-fame', label: 'Hall of Fame', minPoints: 5000, color: 'text-yellow-700', bgColor: 'bg-yellow-100' },
-  { tier: 'all-pro', label: 'All-Pro', minPoints: 2000, color: 'text-purple-700', bgColor: 'bg-purple-100' },
-  { tier: 'pro-bowl', label: 'Pro Bowl', minPoints: 750, color: 'text-blue-700', bgColor: 'bg-blue-100' },
-  { tier: 'all-star', label: 'All-Star', minPoints: 250, color: 'text-green-700', bgColor: 'bg-green-100' },
-  { tier: 'starter', label: 'Starter', minPoints: 50, color: 'text-gray-700', bgColor: 'bg-gray-100' },
-  { tier: 'rookie', label: 'Rookie', minPoints: 0, color: 'text-gray-500', bgColor: 'bg-gray-50' },
+  { tier: 'hall-of-fame', label: 'Hall of Fame', minPoints: 5000, color: 'text-yellow-700 dark:text-yellow-300', bgColor: 'bg-yellow-100 dark:bg-yellow-900/30' },
+  { tier: 'all-pro', label: 'All-Pro', minPoints: 2000, color: 'text-purple-700 dark:text-purple-300', bgColor: 'bg-purple-100 dark:bg-purple-900/30' },
+  { tier: 'pro-bowl', label: 'Pro Bowl', minPoints: 750, color: 'text-blue-700 dark:text-blue-300', bgColor: 'bg-blue-100 dark:bg-blue-900/30' },
+  { tier: 'all-star', label: 'All-Star', minPoints: 250, color: 'text-green-700 dark:text-green-300', bgColor: 'bg-green-100 dark:bg-green-900/30' },
+  { tier: 'starter', label: 'Starter', minPoints: 50, color: 'text-gray-700 dark:text-gray-300', bgColor: 'bg-gray-100 dark:bg-slate-800' },
+  { tier: 'rookie', label: 'Rookie', minPoints: 0, color: 'text-gray-500 dark:text-gray-400', bgColor: 'bg-gray-50 dark:bg-slate-800' },
 ]
 
 export function getTierForPoints(points: number): TierInfo {

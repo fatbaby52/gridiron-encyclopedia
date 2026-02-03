@@ -150,3 +150,36 @@ body {
   background: var(--color-chalk);
   font-weight: 600;
 }
+
+/* Dark mode overrides for prose */
+@media (prefers-color-scheme: dark) {
+  .prose h1,
+  .prose h2 {
+    color: var(--color-grass-light);
+  }
+
+  .prose h2 {
+    border-bottom-color: var(--color-gold-light);
+  }
+
+  .prose a:hover {
+    color: var(--color-grass-light);
+  }
+
+  .prose blockquote {
+    color: #aaa;
+  }
+
+  .prose code {
+    background: #1e293b;
+  }
+
+  .prose th,
+  .prose td {
+    border-color: #334155;
+  }
+
+  .prose th {
+    background: #1e293b;
+  }
+}

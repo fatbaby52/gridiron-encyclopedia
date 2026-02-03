@@ -18,16 +18,16 @@ export function ResourceCard({
   onDownload,
 }: ResourceCardProps) {
   return (
-    <div className="p-5 rounded-xl border border-gray-200 hover:border-grass/50 hover:shadow-md transition-all flex flex-col bg-white">
+    <div className="p-5 rounded-xl border border-gray-200 dark:border-slate-700 hover:border-grass/50 hover:shadow-md transition-all flex flex-col bg-white dark:bg-slate-900">
       <div className="flex items-start gap-3 mb-3">
         <span className="text-2xl flex-shrink-0">{icon}</span>
         <div>
-          <h3 className="font-semibold text-gray-900">{title}</h3>
-          <span className="text-xs text-gray-400">PDF &middot; {pageCount} pages</span>
+          <h3 className="font-semibold text-gray-900 dark:text-gray-100">{title}</h3>
+          <span className="text-xs text-gray-400 dark:text-gray-500">PDF &middot; {pageCount} pages</span>
         </div>
       </div>
 
-      <p className="text-sm text-gray-500 mb-4 line-clamp-3 flex-1">{description}</p>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-3 flex-1">{description}</p>
 
       <div className="flex flex-wrap gap-1.5 mb-4">
         {tags.slice(0, 3).map((tag) => (

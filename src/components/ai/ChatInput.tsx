@@ -20,7 +20,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2 p-3 border-t border-gray-200">
+    <form onSubmit={handleSubmit} className="flex items-center gap-2 p-3 border-t border-gray-200 dark:border-slate-700">
       <input
         ref={inputRef}
         type="text"
@@ -28,7 +28,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
         onChange={(e) => setValue(e.target.value)}
         placeholder="Ask about football..."
         disabled={disabled}
-        className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-grass/50 focus:border-grass disabled:opacity-50"
+        className="flex-1 px-3 py-2 text-sm border border-gray-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-grass/50 focus:border-grass disabled:opacity-50 dark:bg-slate-800 dark:text-gray-100"
       />
       <button
         type="submit"

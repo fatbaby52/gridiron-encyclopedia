@@ -15,9 +15,9 @@ export default function GlobalError({ error, reset }: ErrorProps) {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-24 text-center">
-      <h1 className="text-6xl font-bold text-grass-dark mb-4">Fumble!</h1>
-      <h2 className="text-2xl font-semibold text-gray-700 mb-4">Play Blown Dead</h2>
-      <p className="text-gray-500 mb-8">
+      <h1 className="text-6xl font-bold text-grass-dark dark:text-grass-light mb-4">Fumble!</h1>
+      <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-4">Play Blown Dead</h2>
+      <p className="text-gray-500 dark:text-gray-400 mb-8">
         Something went wrong on our end. The play has been whistled dead &mdash; but
         you can always line up and try again.
       </p>

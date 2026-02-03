@@ -97,10 +97,10 @@ export function DesignerSidebar() {
     : 'defense'
 
   return (
-    <div className="w-56 bg-white border-r border-gray-200 flex flex-col overflow-y-auto">
+    <div className="w-56 bg-white dark:bg-slate-900 border-r border-gray-200 dark:border-slate-700 flex flex-col overflow-y-auto">
       {/* Tools */}
-      <div className="p-3 border-b border-gray-100">
-        <h3 className="text-xs font-semibold text-gray-500 uppercase mb-2">Tools</h3>
+      <div className="p-3 border-b border-gray-100 dark:border-slate-800">
+        <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">Tools</h3>
         <div className="grid grid-cols-3 gap-1">
           {TOOLS.map((tool) => (
             <button
@@ -109,7 +109,7 @@ export function DesignerSidebar() {
               className={`flex flex-col items-center gap-0.5 p-2 rounded-md text-xs transition-colors ${
                 activeTool === tool.id
                   ? 'bg-grass/10 text-grass-dark border border-grass/30'
-                  : 'hover:bg-gray-50 text-gray-600 border border-transparent'
+                  : 'hover:bg-gray-50 dark:hover:bg-slate-800 text-gray-600 dark:text-gray-400 border border-transparent'
               }`}
               title={tool.description}
             >
@@ -121,13 +121,13 @@ export function DesignerSidebar() {
       </div>
 
       {/* View options */}
-      <div className="px-3 py-2 border-b border-gray-100">
+      <div className="px-3 py-2 border-b border-gray-100 dark:border-slate-800">
         <button
           onClick={toggleFlip}
           className={`w-full flex items-center gap-2 px-2 py-1.5 text-sm rounded transition-colors ${
             isFlipped
               ? 'bg-grass/10 text-grass-dark border border-grass/30'
-              : 'hover:bg-gray-50 text-gray-600 border border-transparent'
+              : 'hover:bg-gray-50 dark:hover:bg-slate-800 text-gray-600 dark:text-gray-400 border border-transparent'
           }`}
           title="Flip field orientation"
         >
@@ -136,7 +136,7 @@ export function DesignerSidebar() {
           </svg>
           Flip Field
           <span className={`ml-auto text-xs px-1.5 py-0.5 rounded ${
-            isFlipped ? 'bg-grass/20 text-grass-dark' : 'bg-gray-100 text-gray-400'
+            isFlipped ? 'bg-grass/20 text-grass-dark' : 'bg-gray-100 dark:bg-slate-800 text-gray-400 dark:text-gray-500'
           }`}>
             {isFlipped ? 'ON' : 'OFF'}
           </span>
@@ -145,22 +145,22 @@ export function DesignerSidebar() {
 
       {/* Selected player info */}
       {selectedPlayer && (activeTool === 'select' || activeTool === 'drawRoute' || activeTool === 'drawBlock') && (
-        <div className="p-3 border-b border-gray-100">
-          <h3 className="text-xs font-semibold text-gray-500 uppercase mb-2">Selected Player</h3>
+        <div className="p-3 border-b border-gray-100 dark:border-slate-800">
+          <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">Selected Player</h3>
           <div className="space-y-2">
             <div>
-              <label className="text-xs text-gray-500">Label</label>
+              <label className="text-xs text-gray-500 dark:text-gray-400">Label</label>
               <input
                 type="text"
                 value={selectedPlayer.label}
                 onChange={(e) =>
                   updatePlayerLabel(selectedSide as 'offense' | 'defense', selectedPlayer.id, e.target.value)
                 }
-                className="block w-full mt-0.5 px-2 py-1 text-sm border border-gray-200 rounded"
+                className="block w-full mt-0.5 px-2 py-1 text-sm border border-gray-200 dark:border-slate-700 rounded dark:bg-slate-800 dark:text-gray-100"
                 maxLength={3}
               />
             </div>
-            <div className="text-xs text-gray-400">
+            <div className="text-xs text-gray-400 dark:text-gray-500">
               Position: ({selectedPlayer.x}, {selectedPlayer.y})
             </div>
             <button
@@ -174,14 +174,14 @@ export function DesignerSidebar() {
       )}
 
       {/* Offense formations */}
-      <div className="p-3 border-b border-gray-100">
-        <h3 className="text-xs font-semibold text-gray-500 uppercase mb-2">Offense Formations</h3>
+      <div className="p-3 border-b border-gray-100 dark:border-slate-800">
+        <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">Offense Formations</h3>
         <div className="space-y-1">
           {OFFENSE_FORMATIONS.map((f) => (
             <button
               key={f.id}
               onClick={() => loadFormation('offense', f.players)}
-              className="block w-full text-left px-2 py-1.5 text-sm rounded hover:bg-gray-50 transition-colors"
+              className="block w-full text-left px-2 py-1.5 text-sm rounded hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
             >
               {f.name}
             </button>
@@ -190,13 +190,13 @@ export function DesignerSidebar() {
       </div>
 
       {/* Defense formations */}
-      <div className="p-3 border-b border-gray-100">
+      <div className="p-3 border-b border-gray-100 dark:border-slate-800">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="text-xs font-semibold text-gray-500 uppercase">Defense Formations</h3>
+          <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Defense Formations</h3>
           <button
             onClick={() => setShowDefense(!showDefense)}
             className={`text-xs px-1.5 py-0.5 rounded ${
-              showDefense ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-gray-400'
+              showDefense ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300' : 'bg-gray-100 dark:bg-slate-800 text-gray-400 dark:text-gray-500'
             }`}
           >
             {showDefense ? 'ON' : 'OFF'}
@@ -207,7 +207,7 @@ export function DesignerSidebar() {
             <button
               key={f.id}
               onClick={() => loadFormation('defense', f.players)}
-              className="block w-full text-left px-2 py-1.5 text-sm rounded hover:bg-gray-50 transition-colors disabled:opacity-50"
+              className="block w-full text-left px-2 py-1.5 text-sm rounded hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors disabled:opacity-50"
               disabled={!showDefense}
             >
               {f.name}
@@ -218,8 +218,8 @@ export function DesignerSidebar() {
 
       {/* Help text */}
       <div className="p-3 mt-auto">
-        <div className="text-xs text-gray-400 space-y-1">
-          <p className="font-medium text-gray-500">Quick tips:</p>
+        <div className="text-xs text-gray-400 dark:text-gray-500 space-y-1">
+          <p className="font-medium text-gray-500 dark:text-gray-400">Quick tips:</p>
           <p>Select a formation to start</p>
           <p>Drag players to move them</p>
           <p>Select a player, then use Route/Block tool to draw</p>

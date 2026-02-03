@@ -11,8 +11,8 @@ interface ButtonProps {
 
 const variants = {
   primary: 'bg-grass text-white hover:bg-grass-dark',
-  secondary: 'bg-white text-grass-dark border border-grass hover:bg-grass/5',
-  ghost: 'text-gray-600 hover:text-grass-dark hover:bg-gray-100',
+  secondary: 'bg-white dark:bg-slate-900 text-grass-dark border border-grass hover:bg-grass/5',
+  ghost: 'text-gray-600 dark:text-gray-400 hover:text-grass-dark hover:bg-gray-100 dark:hover:bg-slate-800',
 }
 
 const sizes = {

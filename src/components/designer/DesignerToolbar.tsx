@@ -70,13 +70,13 @@ export function DesignerToolbar() {
   }, [playName])
 
   return (
-    <div className="flex items-center justify-between gap-3 px-4 py-2 bg-white border-b border-gray-200">
+    <div className="flex items-center justify-between gap-3 px-4 py-2 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-700">
       {/* Play name */}
       <input
         type="text"
         value={playName}
         onChange={(e) => setPlayName(e.target.value)}
-        className="text-lg font-semibold text-grass-dark bg-transparent border-b border-transparent hover:border-gray-300 focus:border-grass focus:outline-none px-1 py-0.5 min-w-0 flex-shrink"
+        className="text-lg font-semibold text-grass-dark bg-transparent border-b border-transparent hover:border-gray-300 dark:hover:border-slate-600 focus:border-grass focus:outline-none px-1 py-0.5 min-w-0 flex-shrink dark:bg-slate-800 dark:text-gray-100"
         placeholder="Play name..."
       />
 
@@ -89,7 +89,7 @@ export function DesignerToolbar() {
         {/* Save draft */}
         <button
           onClick={saveDraft}
-          className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md transition-colors"
+          className="px-3 py-1.5 text-sm bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 text-gray-700 dark:text-gray-300 rounded-md transition-colors"
         >
           Save Draft
         </button>
@@ -108,22 +108,22 @@ export function DesignerToolbar() {
           {isExportOpen && (
             <>
               <div className="fixed inset-0 z-10" onClick={() => setIsExportOpen(false)} />
-              <div className="absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-20 py-1 min-w-[140px]">
+              <div className="absolute right-0 top-full mt-1 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-lg shadow-lg z-20 py-1 min-w-[140px]">
                 <button
                   onClick={handleExportPNG}
-                  className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-50"
+                  className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-slate-800"
                 >
                   Export as PNG
                 </button>
                 <button
                   onClick={handleExportSVG}
-                  className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-50"
+                  className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-slate-800"
                 >
                   Export as SVG
                 </button>
                 <button
                   onClick={handleExportJSON}
-                  className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-50"
+                  className="block w-full text-left px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-slate-800"
                 >
                   Export as JSON
                 </button>
@@ -135,7 +135,7 @@ export function DesignerToolbar() {
         {/* New play */}
         <button
           onClick={reset}
-          className="p-1.5 text-gray-400 hover:text-gray-600 transition-colors"
+          className="p-1.5 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
           title="New play"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

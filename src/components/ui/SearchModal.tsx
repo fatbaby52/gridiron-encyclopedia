@@ -94,9 +94,9 @@ export function SearchModal() {
             exit={{ opacity: 0, scale: 0.95 }}
             className="fixed top-[15%] left-1/2 -translate-x-1/2 w-full max-w-xl z-50"
           >
-            <div className="bg-white rounded-xl shadow-2xl mx-4 overflow-hidden">
-              <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-200">
-                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white dark:bg-slate-900 rounded-xl shadow-2xl mx-4 overflow-hidden">
+              <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-200 dark:border-slate-700">
+                <svg className="w-5 h-5 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <input
@@ -105,15 +105,15 @@ export function SearchModal() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Search articles..."
-                  className="flex-1 text-sm outline-none"
+                  className="flex-1 text-sm outline-none dark:bg-slate-900 dark:text-gray-100"
                 />
-                <kbd className="hidden sm:inline text-xs text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded">
+                <kbd className="hidden sm:inline text-xs text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">
                   ESC
                 </kbd>
               </div>
               <div className="max-h-80 overflow-y-auto">
                 {query && results.length === 0 && (
-                  <div className="px-4 py-8 text-center text-gray-400 text-sm">
+                  <div className="px-4 py-8 text-center text-gray-400 dark:text-gray-500 text-sm">
                     No articles found for &quot;{query}&quot;
                   </div>
                 )}
@@ -122,14 +122,14 @@ export function SearchModal() {
                     key={article.slug}
                     href={`/${article.category}/${article.slug}`}
                     onClick={handleClose}
-                    className="block px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-0"
+                    className="block px-4 py-3 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors border-b border-gray-100 dark:border-slate-800 last:border-0"
                   >
-                    <div className="text-sm font-medium text-gray-900">{article.title}</div>
-                    <div className="text-xs text-gray-500 mt-0.5">{article.category}</div>
+                    <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{article.title}</div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{article.category}</div>
                   </Link>
                 ))}
                 {!query && (
-                  <div className="px-4 py-8 text-center text-gray-400 text-sm">
+                  <div className="px-4 py-8 text-center text-gray-400 dark:text-gray-500 text-sm">
                     Type to search the encyclopedia...
                   </div>
                 )}

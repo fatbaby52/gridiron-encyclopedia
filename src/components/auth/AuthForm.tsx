@@ -86,8 +86,8 @@ export function AuthForm({ mode }: AuthFormProps) {
 
   return (
     <div className="max-w-md mx-auto mt-16 p-6">
-      <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
-        <h1 className="text-2xl font-bold text-grass-dark text-center mb-6">
+      <div className="bg-white dark:bg-slate-900 rounded-xl shadow-lg border border-gray-200 dark:border-slate-700 p-8">
+        <h1 className="text-2xl font-bold text-grass-dark dark:text-grass-light text-center mb-6">
           {mode === 'login' ? 'Sign In' : 'Create Account'}
         </h1>
 
@@ -95,7 +95,7 @@ export function AuthForm({ mode }: AuthFormProps) {
         <div className="space-y-2 mb-6">
           <button
             onClick={() => handleOAuth('google')}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-200 dark:border-slate-700 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors text-sm font-medium"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
@@ -119,7 +119,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           </button>
           <button
             onClick={() => handleOAuth('facebook')}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-200 dark:border-slate-700 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors text-sm font-medium"
           >
             <svg className="w-5 h-5" fill="#1877F2" viewBox="0 0 24 24">
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -130,10 +130,10 @@ export function AuthForm({ mode }: AuthFormProps) {
 
         <div className="relative mb-6">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-200" />
+            <div className="w-full border-t border-gray-200 dark:border-slate-700" />
           </div>
           <div className="relative flex justify-center">
-            <span className="bg-white px-3 text-xs text-gray-400 uppercase">or</span>
+            <span className="bg-white dark:bg-slate-900 px-3 text-xs text-gray-400 dark:text-gray-500 uppercase">or</span>
           </div>
         </div>
 
@@ -146,7 +146,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           )}
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Email
             </label>
             <input
@@ -155,13 +155,13 @@ export function AuthForm({ mode }: AuthFormProps) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-grass/20 focus:border-grass outline-none"
+              className="w-full px-3 py-2 border border-gray-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-grass/20 focus:border-grass outline-none dark:bg-slate-800 dark:text-gray-100"
               placeholder="you@example.com"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Password
             </label>
             <input
@@ -171,7 +171,7 @@ export function AuthForm({ mode }: AuthFormProps) {
               onChange={(e) => setPassword(e.target.value)}
               required
               minLength={6}
-              className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-grass/20 focus:border-grass outline-none"
+              className="w-full px-3 py-2 border border-gray-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-grass/20 focus:border-grass outline-none dark:bg-slate-800 dark:text-gray-100"
               placeholder="At least 6 characters"
             />
           </div>
@@ -185,7 +185,7 @@ export function AuthForm({ mode }: AuthFormProps) {
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-gray-500">
+        <p className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
           {mode === 'login' ? (
             <>
               Don&apos;t have an account?{' '}

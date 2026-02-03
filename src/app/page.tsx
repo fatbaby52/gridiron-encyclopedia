@@ -56,7 +56,7 @@ export default function HomePage() {
 
       {/* Browse by Category */}
       <section className="max-w-7xl mx-auto px-4 py-12">
-        <h2 className="text-2xl font-bold text-grass-dark mb-6">Browse by Category</h2>
+        <h2 className="text-2xl font-bold text-grass-dark dark:text-grass-light mb-6">Browse by Category</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
           {topCategories.map((key) => {
             const cat = CATEGORIES[key]
@@ -76,7 +76,7 @@ export default function HomePage() {
       {/* Featured Articles */}
       {featuredArticles.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 py-12">
-          <h2 className="text-2xl font-bold text-grass-dark mb-6">Featured Articles</h2>
+          <h2 className="text-2xl font-bold text-grass-dark dark:text-grass-light mb-6">Featured Articles</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {featuredArticles.map((article) => (
               <ArticleCard key={article.slug} article={article} />
@@ -120,12 +120,12 @@ export default function HomePage() {
       </section>
 
       {/* Downloads CTA */}
-      <section className="bg-chalk">
+      <section className="bg-chalk dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 py-12 text-center">
-          <h2 className="text-2xl font-bold text-grass-dark mb-3">
+          <h2 className="text-2xl font-bold text-grass-dark dark:text-grass-light mb-3">
             Free Playbooks &amp; Workout Templates
           </h2>
-          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto">
             Download printable playbooks and training logs for your program. Spread offense,
             Wing-T, defensive schemes, and position-specific workouts.
           </p>
@@ -139,10 +139,10 @@ export default function HomePage() {
       </section>
 
       {/* AI CTA */}
-      <section className="bg-chalk">
+      <section className="bg-chalk dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 py-12 text-center">
-          <h2 className="text-2xl font-bold text-grass-dark mb-3">Have a Football Question?</h2>
-          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+          <h2 className="text-2xl font-bold text-grass-dark dark:text-grass-light mb-3">Have a Football Question?</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-xl mx-auto">
             Our AI assistant can answer questions about plays, rules, strategy, and football
             history. Try it out.
           </p>
@@ -158,8 +158,8 @@ export default function HomePage() {
       {/* About */}
       <section className="max-w-7xl mx-auto px-4 py-12">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-grass-dark mb-3">About Gridiron Encyclopedia</h2>
-          <p className="text-gray-600 leading-relaxed">
+          <h2 className="text-2xl font-bold text-grass-dark dark:text-grass-light mb-3">About Gridiron Encyclopedia</h2>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
             Gridiron Encyclopedia is a free, comprehensive resource for learning about American
             football. Whether you&apos;re a new fan trying to understand the basics, a coach looking
             for scheme ideas, or a lifelong student of the game, we&apos;ve got you covered. Our

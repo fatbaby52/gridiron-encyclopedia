@@ -87,9 +87,9 @@ export const LEVEL_LABELS: Record<string, string> = {
 }
 
 export const LEVEL_COLORS: Record<string, string> = {
-  hs: 'bg-blue-100 text-blue-800',
-  college: 'bg-orange-100 text-orange-800',
-  nfl: 'bg-red-100 text-red-800',
+  hs: 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300',
+  college: 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300',
+  nfl: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300',
 }
 
 export const CHAT_LIMITS = {

@@ -32,8 +32,8 @@ export function ResourcesPageClient() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Free Downloads</h1>
-        <p className="text-gray-500">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Free Downloads</h1>
+        <p className="text-gray-500 dark:text-gray-400">
           Printable playbooks and workout templates for your program.
         </p>
       </div>
@@ -55,12 +55,12 @@ export function ResourcesPageClient() {
       </div>
 
       <div className="mt-12 text-center">
-        <p className="text-sm text-gray-500 mb-3">
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
           Looking for more training content?
         </p>
         <Link
           href="/training"
-          className="inline-block px-5 py-2.5 text-sm font-medium rounded-lg border border-grass text-grass-dark hover:bg-grass/5 transition-colors"
+          className="inline-block px-5 py-2.5 text-sm font-medium rounded-lg border border-grass text-grass-dark dark:text-grass-light hover:bg-grass/5 transition-colors"
         >
           Browse Training Articles
         </Link>

@@ -58,7 +58,7 @@ export function Pagination({ page, totalPages, onPageChange, className = '' }: P
         onClick={() => onPageChange(page - 1)}
         disabled={page <= 1}
         aria-label="Go to previous page"
-        className="px-3 py-2 text-sm font-medium rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-gray-600 hover:bg-gray-100 disabled:hover:bg-transparent"
+        className="px-3 py-2 text-sm font-medium rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-800 disabled:hover:bg-transparent"
       >
         Previous
       </button>
@@ -70,7 +70,7 @@ export function Pagination({ page, totalPages, onPageChange, className = '' }: P
             return (
               <span
                 key={`ellipsis-${index}`}
-                className="px-2 py-2 text-sm text-gray-400"
+                className="px-2 py-2 text-sm text-gray-400 dark:text-gray-500"
                 aria-hidden="true"
               >
                 ...
@@ -90,7 +90,7 @@ export function Pagination({ page, totalPages, onPageChange, className = '' }: P
               className={`min-w-[2.25rem] px-2 py-2 text-sm font-medium rounded-lg transition-colors ${
                 isCurrent
                   ? 'bg-grass text-white cursor-default'
-                  : 'text-gray-600 hover:bg-gray-100'
+                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-800'
               }`}
             >
               {entry}
@@ -100,7 +100,7 @@ export function Pagination({ page, totalPages, onPageChange, className = '' }: P
       </div>
 
       {/* Mobile page indicator */}
-      <span className="sm:hidden text-sm text-gray-500 px-2">
+      <span className="sm:hidden text-sm text-gray-500 dark:text-gray-400 px-2">
         Page {page} of {totalPages}
       </span>
 
@@ -109,7 +109,7 @@ export function Pagination({ page, totalPages, onPageChange, className = '' }: P
         onClick={() => onPageChange(page + 1)}
         disabled={page >= totalPages}
         aria-label="Go to next page"
-        className="px-3 py-2 text-sm font-medium rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-gray-600 hover:bg-gray-100 disabled:hover:bg-transparent"
+        className="px-3 py-2 text-sm font-medium rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-800 disabled:hover:bg-transparent"
       >
         Next
       </button>

@@ -8,7 +8,7 @@ export function ChatHeader() {
   const { toggleChat } = useUIStore()
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-grass-dark text-white">
+    <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-slate-700 bg-grass-dark text-white">
       <div>
         <h2 className="font-semibold text-sm">Football AI Assistant</h2>
         <p className="text-xs text-grass-light">{queryCount}/10 queries today</p>

@@ -10,9 +10,9 @@ export function ArticleCard({ article }: ArticleCardProps) {
   return (
     <Link
       href={`/${article.category}/${article.slug}`}
-      className="block p-4 rounded-lg border border-gray-200 hover:border-grass/50 hover:shadow-md transition-all"
+      className="block p-4 rounded-lg border border-gray-200 dark:border-slate-700 hover:border-grass/50 hover:shadow-md transition-all"
     >
-      <div className="text-xs text-gray-400 mb-1">
+      <div className="text-xs text-gray-400 dark:text-gray-500 mb-1">
         {article.category
           .split('/')
           .map((p) =>
@@ -23,9 +23,9 @@ export function ArticleCard({ article }: ArticleCardProps) {
           )
           .join(' > ')}
       </div>
-      <h3 className="font-semibold text-gray-900 mb-2">{article.title}</h3>
+      <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">{article.title}</h3>
       {article.description && (
-        <p className="text-sm text-gray-500 mb-3 line-clamp-2">{article.description}</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 line-clamp-2">{article.description}</p>
       )}
       <div className="flex flex-wrap gap-1.5">
         {article.level.map((lvl) => (

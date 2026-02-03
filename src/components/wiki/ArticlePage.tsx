@@ -52,7 +52,7 @@ export function ArticlePage({ article }: ArticlePageProps) {
             <EditButton slug={slug} />
             <a
               href={`/history/${slug}`}
-              className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-sm text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
               title="View edit history"
             >
               History

@@ -24,14 +24,14 @@ export function MobileMenu() {
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed left-0 top-0 bottom-0 w-72 bg-white z-50 shadow-xl"
+            className="fixed left-0 top-0 bottom-0 w-72 bg-white dark:bg-slate-900 z-50 shadow-xl"
           >
             <div className="p-4">
               <div className="flex items-center justify-between mb-6">
-                <span className="text-lg font-bold text-grass-dark">Menu</span>
+                <span className="text-lg font-bold text-grass-dark dark:text-grass-light">Menu</span>
                 <button
                   onClick={closeMobileMenu}
-                  className="p-2 hover:bg-gray-100 rounded-lg"
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg"
                   aria-label="Close menu"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,7 +46,7 @@ export function MobileMenu() {
                     key={item.href}
                     href={item.href}
                     onClick={closeMobileMenu}
-                    className="block px-3 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium transition-colors"
+                    className="block px-3 py-2.5 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 font-medium transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -63,13 +63,13 @@ export function MobileMenu() {
                 </Link>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-gray-200 space-y-2">
+              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-slate-700 space-y-2">
                 <button
                   onClick={() => {
                     closeMobileMenu()
                     toggleSearch()
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2.5 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                  className="w-full flex items-center gap-2 px-3 py-2.5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -81,7 +81,7 @@ export function MobileMenu() {
                     closeMobileMenu()
                     toggleChat()
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2.5 text-grass-dark hover:bg-grass/10 rounded-lg font-medium transition-colors"
+                  className="w-full flex items-center gap-2 px-3 py-2.5 text-grass-dark dark:text-grass-light hover:bg-grass/10 rounded-lg font-medium transition-colors"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
